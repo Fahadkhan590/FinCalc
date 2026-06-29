@@ -7,4 +7,5 @@ Allow: /terms.html
 Disallow: /readme.html
 Disallow: /readme
 
-Sitemap: https://yourdomain.com
+Sitemap: https://vercel.app
+
