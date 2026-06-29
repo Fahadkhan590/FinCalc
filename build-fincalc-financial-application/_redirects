@@ -1,1 +1,10 @@
-/readme    /readme.html    200
+/readme         /build-fincalc-financial-application/readme.html       200
+/faq            /build-fincalc-financial-application/faq.html          200
+/privacy        /build-fincalc-financial-application/privacy.html      200
+/terms          /build-fincalc-financial-application/terms.html        200
+/llms.txt       /build-fincalc-financial-application/llms.txt          200
+/robots.txt     /build-fincalc-financial-application/robots.txt        200
+/sitemap.xml    /build-fincalc-financial-application/sitemap.xml       200
+
+/*              /build-fincalc-financial-application/index.html        200
+
