@@ -1,7 +1,9 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/readme", "destination": "/readme.html" }
+  "trailingSlash": false,
+  "routes": [
+    { "source": "/readme", "dest": "/readme.html" },
+    { "source": "/(.*)", "dest": "/$1" }
   ]
 }
