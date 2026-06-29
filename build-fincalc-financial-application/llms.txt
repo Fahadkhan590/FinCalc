@@ -4,7 +4,7 @@ An ultra-responsive suite of client-side financial and tech utility calculators 
 
 ## Core Operational Elements
 
-- [/index.html](https://yourdomain.com): Main execution dashboard featuring live CoinGecko crypto conversions, loan estimators, and digital marketing calculators.
-- [/faq.html](https://yourdomain.com): Public resource index addressing algorithmic computations and support routing pipelines.
-- [/privacy.html](https://yourdomain.com): Google AdSense compliance declaration regarding local data non-retention.
-- [/terms.html](https://yourdomain.com): Official operational usage framework and comprehensive financial liability waivers.
+- [/index.html](https://fincalctools.vercel.app): Main execution dashboard featuring live CoinGecko crypto conversions, loan estimators, and digital marketing calculators.
+- [/faq.html](https://fincalctools.vercel.app): Public resource index addressing algorithmic computations and support routing pipelines.
+- [/privacy.html](https://fincalctools.vercel.app): Google AdSense compliance declaration regarding local data non-retention.
+- [/terms.html](https://fincalctools.vercel.app): Official operational usage framework and comprehensive financial liability waivers.
