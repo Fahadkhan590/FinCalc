@@ -23,6 +23,13 @@
             box-sizing: border-box;
         }
         
+        /* 🛠️ PRO FIX: Forces the header's inner icon to be exactly 24px wide from millisecond zero. This kills the flash instantly! */
+        header svg {
+            width: 24px !important;
+            height: 24px !important;
+            flex-shrink: 0 !important;
+        }
+        
         /* FIXED: Force-stops any favicon vector code leaks from stretching out over your website page */
         svg:not(head *) {
             max-width: 100% !important;
@@ -58,7 +65,7 @@
             <p class="hidden sm:block text-slate-400 text-sm whitespace-nowrap">Professional Financial Tools</p>
         </div>
     </header>
-
+    
     <!-- ADSENSE BANNER PLACEHOLDER - Below Header -->
     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
         <!-- ADSENSE BANNER PLACEHOLDER Container with hidden x-overflow for safe mobile wrapping -->
