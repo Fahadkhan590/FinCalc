@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FinCalc.ai - Financial Calculator Suite</title>
     
-    <!-- Inline Vector Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Inter,system-ui,sans-serif' font-size='50' font-weight='900' fill='white' text-anchor='middle'%3E$%3C/text%3E%3C/svg%3E">
+    <!-- 1. FIXED: Clean link-based favicon to completely prevent vector code stretching on screen -->
+    <link rel="icon" type="image/png" href="https://icons8.com">
     
     <!-- Fast-Track Connection to Fonts Server -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
     
-    <!-- 1. FIXED: Precompiled Minified Tailwind v4 Stylesheet Engine (Saves 2,510ms of mobile render block) -->
-    <link rel="stylesheet" href="https://jsdelivr.net">
+    <!-- 2. FIXED: Fully pre-compiled static CSS stylesheet engine to completely clear the 2.5 second render block -->
+    <link rel="stylesheet" href="https://cloudflare.com" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- 2. FIXED: Non-blocking Asynchronous Font Engine Loading -->
-    <link rel="preload" as="style" href="https://googleapis.com" />
-    <link rel="stylesheet" href="https://googleapis.com" media="print" onload="this.media='all'">
+    <!-- Non-blocking Asynchronous Font Engine Loading -->
+    <link rel="preload" as="style" href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 
     <style>
         * { 
@@ -25,9 +25,24 @@
             box-sizing: border-box;
         }
         html { scroll-behavior: smooth; }
+
+        /* 3. FIXED: Global theme variables mapping layer overrides */
+        .bg-slate-900 { background-color: #0f172a !important; }
+        .bg-slate-950 { background-color: #020617 !important; }
+        .bg-slate-800\/80 { background-color: rgba(30, 41, 59, 0.8) !important; }
+        .bg-slate-800\/50 { background-color: rgba(30, 41, 59, 0.5) !important; }
+        .border-slate-700\/50 { border-color: rgba(51, 65, 85, 0.5) !important; }
+        .border-slate-700\/60 { border-color: rgba(51, 65, 85, 0.6) !important; }
+        .text-slate-100 { color: #f8fafc !important; }
+        .text-slate-200 { color: #e2e8f0 !important; }
+        .text-slate-400 { color: #94a3b8 !important; }
+        .text-slate-500 { color: #64748b !important; }
+        .min-h-dvh { min-height: 100vh; min-height: 100dvh; }
+
+        /* Custom Presentation Elements */
         .tab-active { 
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            color: white;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+            color: white !important;
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         }
         .overflow-x-auto { -webkit-overflow-scrolling: touch; }
@@ -35,18 +50,18 @@
         .overflow-x-auto::-webkit-scrollbar-track { background: transparent; }
         .overflow-x-auto::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 4px; }
         
-        input[type="number"], select, textarea { font-size: 16px; }
+        input[type="number"], select, textarea { font-size: 16px; color: #f8fafc !important; }
         .result-card {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
         .input-field {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(100, 116, 139, 0.3);
+            background: rgba(30, 41, 59, 0.8) !important;
+            border: 1px solid rgba(100, 116, 139, 0.3) !important;
             transition: all 0.3s ease;
         }
         .input-field:focus {
-            border-color: #6366f1;
+            border-color: #6366f1 !important;
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
             outline: none;
         }
@@ -54,16 +69,6 @@
         .glow-indigo { text-shadow: 0 0 20px rgba(99, 102, 241, 0.5); }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        .crypto-icon { 
-            width: 48px; 
-            height: 48px; 
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-        }
         .placeholder-box {
             background: repeating-linear-gradient(
                 45deg,
@@ -73,9 +78,6 @@
                 rgba(100, 116, 139, 0.05) 20px
             );
             border: 2px dashed rgba(100, 116, 139, 0.4);
-        }
-        .breakdown-bar {
-            transition: width 0.5s ease-out;
         }
     </style>
 </head>
