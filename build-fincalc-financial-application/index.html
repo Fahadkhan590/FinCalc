@@ -5,50 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FinCalc.ai - Financial Calculator Suite</title>
     
-    <!-- Fast-Track Network Optimization (Fixes Chained Critical Requests warning) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://jsdelivr.net" crossorigin>
-    
-    <!-- Original Custom SVG Favicon -->
+    <!-- Restored Your Original Custom SVG Favicon (Perfectly isolated inside head) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Inter,system-ui,sans-serif' font-size='50' font-weight='900' fill='white' text-anchor='middle'%3E$%3C/text%3E%3C/svg%3E">
     
-    <!-- 1. FIXED MODALITY: Pre-compiled static Tailwind v4 style sheet (Saves 2,560ms of script render block entirely) -->
-    <link rel="stylesheet" href="https://jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.global.css">
+    <!-- FIXED SPEED ENGINE: Keeps your exact Tailwind v4 design but uses 'defer' so mobile page speed loads smoothly -->
+    <script src="https://jsdelivr.net" defer></script>
     
-    <!-- 2. Non-blocking Asynchronous Font Loader Engine -->
-    <link rel="preload" as="style" href="https://googleapis.com" />
-    <link rel="stylesheet" href="https://googleapis.com" media="print" onload="this.media='all'">
-
-    <!-- Core Structural Controls & Core Styling Fallbacks -->
+    <!-- Google Fonts Connections -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Core Structural Controls -->
     <style>
         * { 
             font-family: 'Inter', sans-serif; 
             box-sizing: border-box;
         }
-        
-        /* 3. FIXED THEME FLASH: Ensures canvas is instant deep-dark slate while styles resolve */
-        body { 
-            background-color: #0f172a !important; 
-            color: #f8fafc !important; 
-        }
 
-        /* 4. FIXED LOGO FLASH: Locks the header SVG down to 24px so it CANNOT stretch for even half a second */
-        header svg {
-            width: 24px !important;
-            height: 24px !important;
-            flex-shrink: 0 !important;
-            display: inline-block !important;
-        }
-        
-        /* Forces isolation on any system favicon vector leaks */
-        svg:not(head *) {
+        /* HARD FORCED FIX: Prevents any SVG anywhere on the page from blowing up, even before script files load */
+        svg {
             max-width: 100% !important;
             max-height: 100% !important;
-            display: inline-block;
+            height: auto;
         }
 
-        /* Controls display logic so inactive calculator tabs stay hidden completely */
+        /* Keeps the small inner icons inside your header and tab buttons perfect */
+        header svg, button svg {
+            width: 24px !important;
+            height: 24px !important;
+        }
+        
+        /* FIXED: Core display engine logic so that non-active tabs stay hidden completely */
         .tab-content { 
             display: none !important; 
         }
