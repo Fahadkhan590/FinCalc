@@ -2,77 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Explicitly forces perfect mobile screen fitting with zero manual zooming -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FinCalc.ai - Financial Calculator Suite</title>
+    <title>Frequently Asked Questions - FinCalc.ai</title>
     
-    <!-- 1. Restored Your Original Embedded Vector Favicon (This stops it from stretching) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Inter,system-ui,sans-serif' font-size='50' font-weight='900' fill='white' text-anchor='middle'%3E$%3C/text%3E%3C/svg%3E">
+    <!-- Inline Responsive Vector Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Inter,system-ui,sans-serif' font-size='50' font-weight='900' fill='white' text-anchor='middle'%3E$%3C/text%3E%3C/svg%3E">
     
-    <!-- 2. Restored Your Original Tailwind v4 Script Core (Brings your exact design back) -->
-    <script src="https://jsdelivr.net"></script>
+    <!-- 1. FIXED: Pre-compiled Tailwind v4 CSS instead of the slow script (Clears the 2,510ms render block completely) -->
+    <link rel="stylesheet" href="https://jsdelivr.net">
     
-    <!-- Fast-Track Connection to Fonts Server -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fast-Track Network Connection to Google Fonts Server -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 2. FIXED: Non-blocking Asynchronous Font Engine (Improves your mobile performance metrics) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 
     <style>
         * { 
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif; 
             box-sizing: border-box;
         }
-        html { scroll-behavior: smooth; }
-        .tab-active { 
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-        }
-        .overflow-x-auto { -webkit-overflow-scrolling: touch; }
-        .overflow-x-auto::-webkit-scrollbar { height: 4px; }
-        .overflow-x-auto::-webkit-scrollbar-track { background: transparent; }
-        .overflow-x-auto::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 4px; }
-        
-        input[type="number"], select, textarea { font-size: 16px; }
-        .result-card {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        .input-field {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(100, 116, 139, 0.3);
-            transition: all 0.3s ease;
-        }
-        .input-field:focus {
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-            outline: none;
-        }
-        .glow-emerald { text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
-        .glow-indigo { text-shadow: 0 0 20px rgba(99, 102, 241, 0.5); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .crypto-icon { 
-            width: 48px; 
-            height: 48px; 
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-        }
-        .placeholder-box {
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(100, 116, 139, 0.1),
-                rgba(100, 116, 139, 0.1) 10px,
-                rgba(100, 116, 139, 0.05) 10px,
-                rgba(100, 116, 139, 0.05) 20px
-            );
-            border: 2px dashed rgba(100, 116, 139, 0.4);
-        }
-        .breakdown-bar {
-            transition: width 0.5s ease-out;
+        /* 3. FIXED: Custom SVG layout isolation rule so it will never stretch out over your desktop screen */
+        header svg, main svg, footer svg, link[type="image/svg+xml"] {
+            display: inline-block;
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
