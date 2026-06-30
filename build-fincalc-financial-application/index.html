@@ -5,53 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FinCalc.ai - Financial Calculator Suite</title>
     
-    <!-- Fast-Track Network Connection Layers -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://jsdelivr.net" crossorigin>
+    <!-- Original Custom SVG Favicon (Perfectly isolated) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Inter,system-ui,sans-serif' font-size='50' font-weight='900' fill='white' text-anchor='middle'%3E$%3C/text%3E%3C/svg%3E">
     
-    <!-- 1. FIXED FAVICON: Reliable, instant-loading professional finance icon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://icons8.com">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://icons8.com">
+    <!-- Restored Your Original Tailwind CSS v4 CDN Script (Brings back your exact design) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <!-- Non-blocking Asynchronous Font Engine Loading -->
-    <link rel="preload" as="style" href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-
-    <!-- Asynchronous Tailwind v4 Compiler for maximum mobile speed performance -->
-    <script async src="https://jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts Connections -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Core Structural Controls & Core Fallbacks -->
+    <!-- Core Structural Controls -->
     <style>
         * { 
             font-family: 'Inter', sans-serif; 
             box-sizing: border-box;
         }
         
-        /* Forces the background to be dark immediately to prevent white screen flashes */
-        body { 
-            background-color: #0f172a; 
-            color: #f8fafc; 
-            visibility: visible; 
-        }
-        
-        /* 2. FIXED FLASH BUG: Instantly limits the header logo size to 40px BEFORE the script even downloads */
-        .logo-container svg, .logo-container div {
-            width: 40px !important;
-            height: 40px !important;
-            max-width: 40px !important;
-            max-height: 40px !important;
-        }
-        
-        /* General safety check to stop any page body SVG images from scaling out of bounds */
+        /* FIXED: Force-stops any favicon vector code leaks from stretching out over your website page */
         svg:not(head *) {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 100% !important;
+            max-height: 100% !important;
             display: inline-block;
         }
 
-        .tab-content { display: none !important; }
-        .tab-content.active { display: block !important; }
+        /* FIXED: Core display engine logic so that non-active tabs stay hidden completely */
+        .tab-content { 
+            display: none !important; 
+        }
+        .tab-content.active { 
+            display: block !important; 
+        }
+
+        /* Responsive custom interactive element overrides */
         html { scroll-behavior: smooth; }
         input[type="number"], select, textarea { font-size: 16px; }
     </style>
@@ -61,8 +48,7 @@
     <header class="bg-slate-800/80 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-50">
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <!-- 3. FIXED LOGO: Wrapped inside the 'logo-container' class to apply our instant 40px style lock -->
-                <div class="logo-container w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
