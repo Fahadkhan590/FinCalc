@@ -2,63 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Frequently Asked Questions - FinCalc.ai</title>
+    
+    <!-- Original Custom SVG Favicon (Perfectly isolated) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Inter,system-ui,sans-serif' font-size='50' font-weight='900' fill='white' text-anchor='middle'%3E$%3C/text%3E%3C/svg%3E">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Original Tailwind CSS v4 CDN Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" crossorigin="anonymous"></script>
+    
+    <!-- Google Fonts Connections -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Core Structural Controls (CSS Only) -->
     <style>
-        * { font-family: 'Inter', sans-serif; }
+        * { 
+            font-family: 'Inter', sans-serif; 
+            box-sizing: border-box;
+        }
+        
+        /* Forces the header's inner icon to be exactly 24px wide from millisecond zero. This kills the flash instantly! */
+        header svg {
+            width: 24px !important;
+            height: 24px !important;
+            flex-shrink: 0 !important;
+        }
+        
+        /* Force-stops any favicon vector code leaks from stretching out over your website page */
+        svg:not(head *) {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            display: inline-block;
+        }
+
+        html { scroll-behavior: smooth; }
     </style>
+
+    <!-- FAQ URL Enhancements Schema Module (Correctly separated outside the style tag) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are the cryptocurrency conversion rates live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Our converter connects directly to CoinGecko's keyless public API endpoint to pull real-time exchange rates across multiple worldwide fiat currencies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you store any of my financial input data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All calculations happen purely client-side in your browser's local memory. We retain zero personal data or calculation logs."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white w-full overflow-x-hidden">
+    
+    <!-- Header -->
     <header class="bg-slate-800/80 backdrop-blur-md border-b border-slate-700/60 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200 flex-shrink-0">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
-                <span class="text-2xl font-extrabold bg-gradient-to-r from-indigo-400 via-slate-100 to-purple-400 bg-clip-text text-transparent">FinCalc.ai</span>
+                <span class="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-indigo-400 via-slate-100 to-purple-400 bg-clip-text text-transparent">FinCalc.ai</span>
             </a>
-            <a href="index.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700 transition-all">
+            <a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700 transition-all whitespace-nowrap">
                 Back to Calculators
             </a>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-12 flex-1 w-full">
+    <!-- Main Content Area -->
+    <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
         <div class="mb-10 text-center sm:text-left">
             <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">Frequently Asked Questions</h1>
-            <p class="text-slate-400 mt-3 text-base">Answers to common questions about FinCalc.ai tools and calculations.</p>
+            <p class="text-slate-400 mt-3 text-sm sm:text-base">Answers to common questions about FinCalc.ai tools and calculations.</p>
         </div>
 
-        <div class="space-y-6">
-            <div class="bg-slate-800/50 rounded-3xl p-6 md:p-8 border border-slate-700/50">
-                <h3 class="text-xl font-bold text-white mb-2">Are the cryptocurrency conversion rates live?</h3>
-                <p class="text-slate-300 text-sm leading-relaxed">Yes! Our converter connects directly to CoinGecko's keyless public API endpoint to pull real-time exchange rates across multiple worldwide fiat currencies.</p>
+        <div class="space-y-6 w-full">
+            <div class="bg-slate-800/50 rounded-2xl sm:rounded-3xl p-6 md:p-8 border border-slate-700/50 w-full">
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Are the cryptocurrency conversion rates live?</h3>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">Yes! Our converter connects directly to CoinGecko's keyless public API endpoint to pull real-time exchange rates across multiple worldwide fiat currencies.</p>
             </div>
-            <div class="bg-slate-800/50 rounded-3xl p-6 md:p-8 border border-slate-700/50">
-                <h3 class="text-xl font-bold text-white mb-2">Do you store any of my financial input data?</h3>
-                <p class="text-slate-300 text-sm leading-relaxed">No. All calculations happen purely client-side in your browser's local memory. We retain zero personal data or calculation logs.</p>
+            <div class="bg-slate-800/50 rounded-2xl sm:rounded-3xl p-6 md:p-8 border border-slate-700/50 w-full">
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Do you store any of my financial input data?</h3>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">No. All calculations happen purely client-side in your browser's local memory. We retain zero personal data or calculation logs.</p>
             </div>
-            <div class="bg-slate-800/50 rounded-3xl p-6 md:p-8 border border-slate-700/50">
-                <h3 class="text-xl font-bold text-white mb-2">How can I contact customer support?</h3>
-                <p class="text-slate-300 text-sm leading-relaxed">You can reach our team via email at <a href="mailto:believerbk4@gmail.com" class="text-indigo-400 underline">believerbk4@gmail.com</a> or message us directly on WhatsApp at <a href="https://wa.me/923145265503" target="_blank" class="text-emerald-400 underline">03145265503</a>.</p>
+            <div class="bg-slate-800/50 rounded-2xl sm:rounded-3xl p-6 md:p-8 border border-slate-700/50 w-full">
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-2">How can I contact customer support?</h3>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">You can reach our team via email at <a href="mailto:believerbk4@gmail.com" class="text-indigo-400 underline hover:text-indigo-300 transition-colors">believerbk4@gmail.com</a> or message us directly on WhatsApp at <a href="https://wa.me/923145265503" target="_blank" class="text-emerald-400 underline hover:text-emerald-300 transition-colors">03145265503</a>.</p>
             </div>
         </div>
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-900/80 py-8 mt-12">
-        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900/80 py-8 mt-12 w-full">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <p>© 2026 FinCalc.ai. All rights reserved.</p>
-            <div class="flex items-center gap-6 font-medium">
+            <div class="flex items-center gap-6 font-medium flex-wrap justify-center">
                 <a href="privacy.html" class="hover:text-emerald-400 transition-colors">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-emerald-400 transition-colors">Terms of Service</a>
-                <a href="index.html" class="hover:text-indigo-400 transition-colors">Calculator Suite</a>
+                <a href="/" class="hover:text-indigo-400 transition-colors">Calculator Suite</a>
             </div>
         </div>
     </footer>
