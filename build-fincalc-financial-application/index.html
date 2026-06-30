@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FinCalc.ai - Financial Calculator Suite</title>
     
-    <!-- Fast-Track Network Connection Layers (URLs Fixed Completely) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <!-- Fast-Track Network Connection Layers -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://jsdelivr.net" crossorigin>
     
-    <!-- 1. FIXED: Clean, professional link-based PNG image favicon to permanently kill any image stretching bugs -->
-    <link rel="icon" type="image/png" href="https://icons8.com">
+    <!-- 1. FIXED FAVICON: Reliable, instant-loading professional finance icon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://icons8.com">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://icons8.com">
     
-    <!-- 2. FIXED: Correctly routed Non-blocking Asynchronous Font Engine Loading -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <!-- Non-blocking Asynchronous Font Engine Loading -->
+    <link rel="preload" as="style" href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 
-    <!-- 3. FIXED: Properly formatted asynchronous Tailwind v4 compiler link for lightning fast mobile loads -->
-    <script async src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Asynchronous Tailwind v4 Compiler for maximum mobile speed performance -->
+    <script async src="https://jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     <!-- Core Structural Controls & Core Fallbacks -->
     <style>
@@ -27,21 +28,28 @@
             box-sizing: border-box;
         }
         
-        /* Fallback layer to ensure page looks dark even while scripts load in background */
+        /* Forces the background to be dark immediately to prevent white screen flashes */
         body { 
             background-color: #0f172a; 
             color: #f8fafc; 
             visibility: visible; 
         }
         
-        /* 4. FIXED: Explicit security block to prevent any body SVG images from distorting layout canvases */
+        /* 2. FIXED FLASH BUG: Instantly limits the header logo size to 40px BEFORE the script even downloads */
+        .logo-container svg, .logo-container div {
+            width: 40px !important;
+            height: 40px !important;
+            max-width: 40px !important;
+            max-height: 40px !important;
+        }
+        
+        /* General safety check to stop any page body SVG images from scaling out of bounds */
         svg:not(head *) {
-            max-width: 100% !important;
-            max-height: 100% !important;
+            max-width: 100%;
+            max-height: 100%;
             display: inline-block;
         }
 
-        /* 5. FIXED: Tight tab display rules to prevent tool text stacking downward below layouts */
         .tab-content { display: none !important; }
         .tab-content.active { display: block !important; }
         html { scroll-behavior: smooth; }
@@ -53,7 +61,8 @@
     <header class="bg-slate-800/80 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-50">
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <!-- 3. FIXED LOGO: Wrapped inside the 'logo-container' class to apply our instant 40px style lock -->
+                <div class="logo-container w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
