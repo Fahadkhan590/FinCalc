@@ -1,4 +1,4 @@
-# FinCalcHub
+# FinCalcHub.xyz
 
 An ultra-responsive suite of client-side financial and tech utility calculators processing high-intent algorithmic logic directly inside user web browsers.
 
