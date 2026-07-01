@@ -106,10 +106,9 @@
     </script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-dvh flex flex-col justify-between w-full overflow-x-hidden">
-        <!-- Header -->
+    <!-- Header -->
     <header class="bg-slate-800/80 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-50">
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,86 +117,10 @@
                 </div>
                 <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">FinCalcHub Marketing</h1>
             </div>
+            <p class="hidden sm:block text-slate-400 text-sm whitespace-nowrap">Professional Financial Tools</p>
+        </div>
+    </header>
 
-            <!-- ✅ UPDATED: Right-Side Subtitle & Global Currency Selector Group -->
-            <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-                <p class="hidden sm:block text-slate-400 text-sm whitespace-nowrap">Professional Financial Tools</p>
-                
-                <!-- 🌐 UNIVERSAL GLOBAL CURRENCY SELECTOR DROPDOWN -->
-                <div class="relative inline-block text-left">
-                    <button type="button" 
-                        onclick="document.getElementById('global-currency-menu').classList.toggle('hidden')" 
-                        class="inline-flex items-center gap-x-2 rounded-xl bg-slate-900 px-3.5 py-2 text-xs sm:text-sm font-bold text-white shadow-md ring-1 ring-inset ring-slate-700/60 hover:bg-slate-800 hover:ring-slate-600 transition-all duration-200">
-                        <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                        </svg>
-                        <span id="global-active-currency">PKR (Rs)</span>
-                        <svg class="-mr-1 h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-
-                  <!-- Dropdown Options Drop-List Container -->
-<div id="global-currency-menu" class="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-xl bg-slate-900 border border-slate-700/60 shadow-2xl ring-1 ring-black ring-opacity-5 hidden focus:outline-none">
-    <div class="py-1.5 max-h-64 overflow-y-auto custom-scrollbar" role="none">
-        <!-- USD -->
-        <button type="button" data-code="USD" data-symbol="$" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>US <span class="font-bold text-slate-400">USD</span></span>
-            <span class="text-slate-500 font-medium">$</span>
-        </button>
-        <!-- EUR -->
-        <button type="button" data-code="EUR" data-symbol="€" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>EU <span class="font-bold text-slate-400">EUR</span></span>
-            <span class="text-slate-500 font-medium">€</span>
-        </button>
-        <!-- GBP -->
-        <button type="button" data-code="GBP" data-symbol="£" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>GB <span class="font-bold text-slate-400">GBP</span></span>
-            <span class="text-slate-500 font-medium">£</span>
-        </button>
-        <!-- CAD -->
-        <button type="button" data-code="CAD" data-symbol="$" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>CA <span class="font-bold text-slate-400">CAD</span></span>
-            <span class="text-slate-500 font-medium">CA$</span>
-        </button>
-        <!-- AUD -->
-        <button type="button" data-code="AUD" data-symbol="$" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>AU <span class="font-bold text-slate-400">AUD</span></span>
-            <span class="text-slate-500 font-medium">A$</span>
-        </button>
-        <!-- PKR -->
-        <button type="button" data-code="PKR" data-symbol="Rs" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>PK <span class="font-bold text-slate-400">PKR</span></span>
-            <span class="text-slate-500 font-medium">Rs</span>
-        </button>
-        <!-- INR -->
-        <button type="button" data-code="INR" data-symbol="₹" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>IN <span class="font-bold text-slate-400">INR</span></span>
-            <span class="text-slate-500 font-medium">₹</span>
-        </button>
-        <!-- AED -->
-        <button type="button" data-code="AED" data-symbol="د.إ" class="global-currency-item w-full flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-left">
-            <span>AE <span class="font-bold text-slate-400">AED</span></span>
-            <span class="text-slate-500 font-medium">د.إ</span>
-        </button>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</header>
-
-<!-- Robust Outside Click & Dropdown Toggle Script -->
-<script>
-window.addEventListener('click', function(e) {
-    const menu = document.getElementById('global-currency-menu');
-    // Ensure the menu exists and the click happened entirely outside the menu container and the trigger button
-    if (menu && !menu.contains(e.target) && !e.target.closest('button[onclick*="global-currency-menu"]')) {
-        menu.classList.add('hidden');
-    }
-});
-</script>
-    
     <!-- ADSENSE BANNER PLACEHOLDER - Below Header -->
     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
         <!-- ADSENSE BANNER PLACEHOLDER Container with hidden x-overflow for safe mobile wrapping -->
@@ -257,26 +180,26 @@ window.addEventListener('click', function(e) {
                             </div>
                         </div>
                         
-                        <!-- Worldwide Fiat Selector (✅ Kept for background JavaScript processing, hidden from UI view) -->
-<div class="hidden mb-6 bg-slate-900/60 p-4 rounded-2xl border border-slate-700/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-    <label for="fiat-selector" class="text-sm font-medium text-slate-300 flex items-center gap-2">
-        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        Select Local Fiat Currency:
-    </label>
-    <select id="fiat-selector" onchange="onFiatChange()" class="input-field px-4 py-2.5 rounded-xl text-white font-semibold bg-slate-800 border border-slate-600 focus:border-indigo-500 cursor-pointer">
-        <option value="USD">USD ($ - US Dollar)</option>
-        <option value="EUR">EUR (€ - Euro)</option>
-        <option value="GBP">GBP (£ - British Pound)</option>
-        <option value="CAD">CAD ($ - Canadian Dollar)</option>
-        <option value="AUD">AUD ($ - Australian Dollar)</option>
-        <option value="PKR" selected>PKR (₨ - Pakistani Rupee)</option>
-        <option value="INR">INR (₹ - Indian Rupee)</option>
-        <option value="AED">AED (د.إ - UAE Dirham)</option>
-    </select>
-</div>
-                        
+                        <!-- Worldwide Fiat Selector -->
+                        <div class="mb-6 bg-slate-900/60 p-4 rounded-2xl border border-slate-700/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <label for="fiat-selector" class="text-sm font-medium text-slate-300 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                Select Local Fiat Currency:
+                            </label>
+                            <select id="fiat-selector" onchange="onFiatChange()" class="input-field px-4 py-2.5 rounded-xl text-white font-semibold bg-slate-800 border border-slate-600 focus:border-indigo-500 cursor-pointer">
+                                <option value="USD" selected>USD ($ - US Dollar)</option>
+                                <option value="EUR">EUR (€ - Euro)</option>
+                                <option value="GBP">GBP (£ - British Pound)</option>
+                                <option value="CAD">CAD ($ - Canadian Dollar)</option>
+                                <option value="AUD">AUD ($ - Australian Dollar)</option>
+                                <option value="PKR">PKR (₨ - Pakistani Rupee)</option>
+                                <option value="INR">INR (₹ - Indian Rupee)</option>
+                                <option value="AED">AED (د.إ - UAE Dirham)</option>
+                            </select>
+                        </div>
+
                         <!-- Currency Selector Rows featuring symbols, official names, ticker labels exactly -->
                         <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-6 sm:mb-8">
                             <button onclick="selectCrypto('btc')" id="btn-btc" class="crypto-selector active p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border-2 border-amber-500 transition-all duration-300 flex flex-col items-center">
@@ -443,10 +366,7 @@ window.addEventListener('click', function(e) {
                         <!-- Input Fields Row 1 -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                             <div>
-                              <!-- ✅ Updated dynamic label hook synced to the Global Currency Selector -->
-                                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">
-                                    Campaign Cost (<span class="universal-currency-label">Rs</span>)
-                                </label>
+                                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Campaign Cost ($)</label>
                                 <input type="number" id="campaign-cost" value="5000" min="0" step="100"
                                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                                     oninput="calculateCPM()">
@@ -527,13 +447,8 @@ window.addEventListener('click', function(e) {
                             <p class="text-sm font-medium text-slate-400 mb-4">Detailed Performance Metrics</p>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                                 <div>
-                                    <!-- ✅ Updated dynamic CPC result display synced to the Global Currency Selector -->
-                                <div>
-                                      <p class="text-xs text-slate-500 mb-1">CPC (Cost per Click)</p>
-                                      <p class="text-lg font-bold text-white" id="cpc-result">
-                                      <span class="universal-currency-label">Rs</span>0.40
-                                     </p>
-                                </div>
+                                    <p class="text-xs text-slate-500 mb-1">CPC (Cost per Click)</p>
+                                    <p class="text-lg font-bold text-white" id="cpc-result">$0.40</p>
                                 </div>
                                 <div>
                                     <p class="text-xs text-slate-500 mb-1">CTR (Click-Through)</p>
@@ -1277,80 +1192,6 @@ function calculateCPM() {
             calculateMortgage();
             calculateCPM();
         });
-
-    <!-- ==========================================
-     GLOBAL CURRENCY INITIALIZATION & SYNC ENGINE
-     ========================================== -->
-        
-const GlobalCurrencyEngine = {
-    // Application defaults
-    activeCode: 'PKR',
-    activeSymbol: 'Rs',
-
-    init() {
-        // Load persistent user data profiles or fallback cleanly to PKR
-        this.activeCode = localStorage.getItem('site_global_currency') || 'PKR';
-        this.activeSymbol = localStorage.getItem('site_global_symbol') || 'Rs';
-        
-        this.updateSystemState(this.activeCode, this.activeSymbol);
-        this.bindUserInterfaceEvents();
-    },
-
-    bindUserInterfaceEvents() {
-        // Handle option selections inside the global dropdown menu matrix
-        document.querySelectorAll('.global-currency-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const code = item.getAttribute('data-code');
-                const symbol = item.getAttribute('data-symbol');
-                this.updateSystemState(code, symbol);
-                
-                // Hide dropdown container instantly after selection
-                const menu = document.getElementById('global-currency-menu');
-                if (menu) menu.classList.add('hidden');
-            });
-        });
-    },
-
-    updateSystemState(code, symbol) {
-        this.activeCode = code;
-        this.activeSymbol = symbol;
-
-        // Persist selection across all browser refresh actions
-        localStorage.setItem('site_global_currency', code);
-        localStorage.setItem('site_global_symbol', symbol);
-
-        // Synchronize the text inside the top navigation button container real-time
-        const triggerLabel = document.getElementById('global-active-currency');
-        if (triggerLabel) triggerLabel.textContent = `${code} (${symbol})`;
-
-        // 1. Sync any local selectors inside individual tools (like your crypto dropdown)
-        const localToolDropdown = document.getElementById('fiat-selector');
-        if (localToolDropdown) {
-            localToolDropdown.value = code;
-        }
-
-        // 2. Update legacy variables inside your older tool frameworks
-        if (typeof selectedFiat !== 'undefined') selectedFiat = code;
-        if (typeof fiatSymbol !== 'undefined') fiatSymbol = symbol;
-
-        // 3. Automatically replace static labels wrapped in 'universal-currency-label' classes
-        document.querySelectorAll('.universal-currency-label').forEach(el => {
-            el.textContent = symbol;
-        });
-
-        // 4. Fire recalculation triggers on operational page engines
-        if (typeof fetchLiveCryptoRates === 'function') fetchLiveCryptoRates();
-        if (typeof calculateCPM === 'function') calculateCPM();
-
-        // 5. Broadcast a custom system-wide event for any future tools you add later
-        window.dispatchEvent(new CustomEvent('globalCurrencyChange', {
-            detail: { code: this.activeCode, symbol: this.activeSymbol }
-        }));
-    }
-};
-
-// Mount the management loop when document elements finish processing
-document.addEventListener('DOMContentLoaded', () => GlobalCurrencyEngine.init());
-</script>
+    </script>
 </body>
 </html>
