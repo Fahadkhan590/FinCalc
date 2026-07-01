@@ -835,87 +835,139 @@
             }
         }
 
-        // ==============================
-        // REAL-TIME WORLDWIDE CRYPTO & FIAT CONVERTER
-        // ==============================
-        let selectedCrypto = 'btc';
+       // ==============================
+// REAL-TIME WORLDWIDE CRYPTO & FIAT CONVERTER (GLOBAL ENGINE SYNCED)
+// ==============================
+let selectedCrypto = 'btc';
 
-        function onFiatChange() {
-            const selector = document.getElementById('fiat-selector');
-            selectedFiat = selector.value;
-            fiatSymbol = FIAT_INFO[selectedFiat] ? FIAT_INFO[selectedFiat].symbol : selectedFiat + ' ';
-            
-            // Update labels
-            const fiatInputLabelText = document.getElementById('fiat-input-label-text');
-            if (fiatInputLabelText) fiatInputLabelText.textContent = `You Receive (${selectedFiat})`;
-            const fiatInputLabel = document.getElementById('fiat-input-label');
-            if (fiatInputLabel) fiatInputLabel.textContent = selectedFiat;
+// 1. LISTEN TO GLOBAL STATE CHANGES
+// This block intercepts the global currency change event broadcast from your header dropdown
+window.addEventListener('currencyChanged', (event) => {
+    const globalCurrency = event.detail.code; // e.g., 'USD', 'GBP'
+    
+    // Check if your local fiat selector element exists on this page
+    const localSelector = document.getElementById('fiat-selector');
+    if (localSelector) {
+        localSelector.value = globalCurrency;
+    }
+    
+    // Synchronize your local tracking variables with the global manager state
+    selectedFiat = globalCurrency;
+    fiatSymbol = event.detail.symbol; // e.g., '$', '£'
+    
+    // Execute local UI label formatting loops
+    syncCryptoLabels();
+    
+    // Fetch fresh API prices based on the new synchronized global anchor currency
+    fetchLiveCryptoRates();
+});
 
-            // Fetch live rates
-            fetchLiveCryptoRates();
-        }
+// 2. BACKWARD COMPATIBILITY: LOCAL SELECTOR CHANGE HANDLER
+// If a user changes the selector dropdown inside the crypto tool itself, sync it back up
+function onFiatChange() {
+    const selector = document.getElementById('fiat-selector');
+    if (!selector) return;
+    
+    const newFiatCode = selector.value;
+    
+    // If the Global CurrencyManager script is present, update globally
+    if (typeof CurrencyManager !== 'undefined' && typeof CurrencyManager.setCurrency === 'function') {
+        CurrencyManager.setCurrency(newFiatCode);
+    } else {
+        // Fallback execution loop if running the crypto tool standalone without the global header
+        selectedFiat = newFiatCode;
+        fiatSymbol = FIAT_INFO[selectedFiat] ? FIAT_INFO[selectedFiat].symbol : selectedFiat + ' ';
+        syncCryptoLabels();
+        fetchLiveCryptoRates();
+    }
+}
 
-        async function fetchLiveCryptoRates() {
-            const statusEl = document.getElementById('api-status');
-            if (statusEl) statusEl.textContent = 'Fetching Live Rates...';
+// Helper function to update tool labels cleanly
+function syncCryptoLabels() {
+    const fiatInputLabelText = document.getElementById('fiat-input-label-text');
+    if (fiatInputLabelText) fiatInputLabelText.textContent = `You Receive (${selectedFiat})`;
+    
+    const fiatInputLabel = document.getElementById('fiat-input-label');
+    if (fiatInputLabel) fiatInputLabel.textContent = selectedFiat;
+}
 
-            const fiatLower = selectedFiat.toLowerCase();
-            const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=${fiatLower}`;
+// 3. ASYNC LIVE API FETCH (OPTIMIZED FOR SYNC ENGINE)
+async function fetchLiveCryptoRates() {
+    const statusEl = document.getElementById('api-status');
+    if (statusEl) statusEl.textContent = 'Fetching Live Rates...';
 
-            try {
-                const response = await fetch(apiUrl, { 
-                    method: 'GET',
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (!response.ok) throw new Error('Rate limited or network issue');
-                
-                const data = await response.json();
+    // Ensure selectedFiat variable is assigned; default back to USD if empty
+    if (typeof selectedFiat === 'undefined') {
+        selectedFiat = localStorage.getItem('global_currency') || 'USD';
+    }
 
-                if (data.bitcoin && data.bitcoin[fiatLower]) {
-                    EXCHANGE_RATES.btc = parseFloat(data.bitcoin[fiatLower]);
-                    EXCHANGE_RATES.eth = parseFloat(data.ethereum[fiatLower]);
-                    EXCHANGE_RATES.sol = parseFloat(data.solana[fiatLower]);
-                    if (statusEl) statusEl.textContent = `Live • ${selectedFiat}`;
-                    if (statusEl) statusEl.style.color = '#10b981';
-                } else {
-                    throw new Error('Data format error');
-                }
-            } catch (err) {
-                console.log('Using fallback rates for', selectedFiat);
-                const multiplier = FIAT_INFO[selectedFiat] ? FIAT_INFO[selectedFiat].rate : 1.0;
-                EXCHANGE_RATES.btc = BASE_USD_RATES.btc * multiplier;
-                EXCHANGE_RATES.eth = BASE_USD_RATES.eth * multiplier;
-                EXCHANGE_RATES.sol = BASE_USD_RATES.sol * multiplier;
-                if (statusEl) {
-                    statusEl.textContent = `Market • ${selectedFiat}`;
-                    statusEl.style.color = '#eab308';
-                }
+    const fiatLower = selectedFiat.toLowerCase();
+    const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=${fiatLower}`;
+
+    try {
+        const response = await fetch(apiUrl, { 
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+        });
+        
+        if (!response.ok) throw new Error('Rate limited or network issue');
+        
+        const data = await response.json();
+
+        if (data.bitcoin && data.bitcoin[fiatLower]) {
+            EXCHANGE_RATES.btc = parseFloat(data.bitcoin[fiatLower]);
+            EXCHANGE_RATES.eth = parseFloat(data.ethereum[fiatLower]);
+            EXCHANGE_RATES.sol = parseFloat(data.solana[fiatLower]);
+            if (statusEl) {
+                statusEl.textContent = `Live • ${selectedFiat}`;
+                statusEl.style.color = '#10b981';
             }
-
-            updatePriceDisplays();
-            convertCrypto();
-            updateSidebar('crypto');
+        } else {
+            throw new Error('Data format error');
         }
-
-        function updatePriceDisplays() {
-            // Update selector cards
-            const cardBtc = document.getElementById('card-rate-btc');
-            if (cardBtc) cardBtc.textContent = `${fiatSymbol}${EXCHANGE_RATES.btc.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            const cardEth = document.getElementById('card-rate-eth');
-            if (cardEth) cardEth.textContent = `${fiatSymbol}${EXCHANGE_RATES.eth.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            const cardSol = document.getElementById('card-rate-sol');
-            if (cardSol) cardSol.textContent = `${fiatSymbol}${EXCHANGE_RATES.sol.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-
-            // Update overview rows
-            const rowBtc = document.getElementById('row-rate-btc');
-            if (rowBtc) rowBtc.textContent = `${fiatSymbol}${EXCHANGE_RATES.btc.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            const rowEth = document.getElementById('row-rate-eth');
-            if (rowEth) rowEth.textContent = `${fiatSymbol}${EXCHANGE_RATES.eth.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            const rowSol = document.getElementById('row-rate-sol');
-            if (rowSol) rowSol.textContent = `${fiatSymbol}${EXCHANGE_RATES.sol.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    } catch (err) {
+        console.log('Using fallback rates for', selectedFiat);
+        // Fallback resolution using structural mapping objects
+        const multiplier = (typeof CurrencyManager !== 'undefined') 
+            ? CurrencyManager.registry[selectedFiat]?.rate 
+            : (FIAT_INFO[selectedFiat] ? FIAT_INFO[selectedFiat].rate : 1.0);
+            
+        EXCHANGE_RATES.btc = BASE_USD_RATES.btc * multiplier;
+        EXCHANGE_RATES.eth = BASE_USD_RATES.eth * multiplier;
+        EXCHANGE_RATES.sol = BASE_USD_RATES.sol * multiplier;
+        
+        if (statusEl) {
+            statusEl.textContent = `Market • ${selectedFiat}`;
+            statusEl.style.color = '#eab308';
         }
+    }
 
+    updatePriceDisplays();
+    if (typeof convertCrypto === 'function') convertCrypto();
+    if (typeof updateSidebar === 'function') updateSidebar('crypto');
+}
+
+function updatePriceDisplays() {
+    // Generate regional formatting parameters for financial display consistency
+    const formatConfig = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+    
+    // Update individual selector cards
+    const cardBtc = document.getElementById('card-rate-btc');
+    if (cardBtc) cardBtc.textContent = `${fiatSymbol}${EXCHANGE_RATES.btc.toLocaleString('en-US', formatConfig)}`;
+    const cardEth = document.getElementById('card-rate-eth');
+    if (cardEth) cardEth.textContent = `${fiatSymbol}${EXCHANGE_RATES.eth.toLocaleString('en-US', formatConfig)}`;
+    const cardSol = document.getElementById('card-rate-sol');
+    if (cardSol) cardSol.textContent = `${fiatSymbol}${EXCHANGE_RATES.sol.toLocaleString('en-US', formatConfig)}`;
+
+    // Update system overview table rows
+    const rowBtc = document.getElementById('row-rate-btc');
+    if (rowBtc) rowBtc.textContent = `${fiatSymbol}${EXCHANGE_RATES.btc.toLocaleString('en-US', formatConfig)}`;
+    const rowEth = document.getElementById('row-rate-eth');
+    if (rowEth) rowEth.textContent = `${fiatSymbol}${EXCHANGE_RATES.eth.toLocaleString('en-US', formatConfig)}`;
+    const rowSol = document.getElementById('row-rate-sol');
+    if (rowSol) rowSol.textContent = `${fiatSymbol}${EXCHANGE_RATES.sol.toLocaleString('en-US', formatConfig)}`;
+}
+        
         function selectCrypto(crypto) {
             selectedCrypto = crypto;
             
