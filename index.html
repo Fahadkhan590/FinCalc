@@ -1322,7 +1322,7 @@ function calculateCPM() {
         // ==========================================================
         document.addEventListener('DOMContentLoaded', () => {
             // Trigger baseline population across individual workspace layout components
-            if (typeof fetchPrices === 'function') fetchPrices();
+            if (typeof fetchPrices === 'function') livefetchPrices();
             if (typeof calculateMortgage === 'function') calculateMortgage();
             if (typeof calculateCPM === 'function') calculateCPM();
         });
