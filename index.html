@@ -987,14 +987,58 @@
                 totalPayout = principal;
             } else {
                 monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
-                totalPayout = monthlyPayment * numPayments;
-                totalInterest = totalPayout - principal;
-            }
+                totalPayout =         // ==============================
+        // MORTGAGE & LOAN CALCULATOR
+        // ==============================
+        function calculateMortgage() {
+            const principal = parseFloat(document.getElementById('loan-amount').value) || 0;
+            const annualRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+            const years = parseFloat(document.getElementById('loan-term').value) || 1;
             
-            // Update display
-            document.getElementById('monthly-payment').textContent = '$' + Math.round(monthlyPayment).toLocaleString('en-US');
-            document.getElementById('total-interest').textContent = '$' + Math.round(totalInterest).toLocaleString('en-US');
-            document.getElementById('total-payout').textContent = '$' + Math.round(totalPayout).toLocaleString('en-US');
+            const monthlyRate = annualRate / 100 / 12;
+            const numPayments = years * 12;
+            
+            let monthlyPayment;
+            
+            if (monthlyRate === 0) {
+                monthlyPayment = principal / numPayments;
+            } else {
+                monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+            }
+
+             // ==============================
+        // MORTGAGE & LOAN CALCULATOR
+        // ==============================
+        function calculateMortgage() {
+            const principal = parseFloat(document.getElementById('loan-amount').value) || 0;
+            const annualRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+            const years = parseFloat(document.getElementById('loan-term').value) || 1;
+            
+            const monthlyRate = annualRate / 100 / 12;
+            const numPayments = years * 12;
+            
+            let monthlyPayment;
+            
+            if (monthlyRate === 0) {
+                monthlyPayment = principal / numPayments;
+            } else {
+                monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+            }
+
+            // Calculate exact total payout first, then derive total interest
+            const totalPayout = monthlyPayment * numPayments;
+            const totalInterest = totalPayout - principal;
+            
+            // Helper function to format strings cleanly to 2 decimal places with commas
+            const formatCurrency = (val) => parseFloat(val.toFixed(2)).toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            
+            // Update display with two decimal places
+            document.getElementById('monthly-payment').textContent = '$' + formatCurrency(monthlyPayment);
+            document.getElementById('total-interest').textContent = '$' + formatCurrency(totalInterest);
+            document.getElementById('total-payout').textContent = '$' + formatCurrency(totalPayout);
             
             // Update breakdown bar
             const principalPercent = totalPayout > 0 ? (principal / totalPayout * 100) : 50;
