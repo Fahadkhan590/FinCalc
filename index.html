@@ -274,7 +274,7 @@
     </div>
 </div>
 
-   <!-- Mortgage & Loan Tab -->
+  <!-- Mortgage & Loan Tab -->
 <div id="mortgage" class="tab-content">
     <div class="bg-slate-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-slate-700/50">
         <h2 class="text-2xl font-bold mb-2">Mortgage & Loan Estimator</h2>
@@ -283,19 +283,19 @@
         <!-- Input Fields -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div>
-                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount ($)</label>
+                <label for="loan-amount" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount ($)</label>
                 <input type="number" id="loan-amount" value="250000" min="0" step="1000"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateMortgage()">
             </div>
             <div>
-                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Interest Rate (%)</label>
+                <label for="interest-rate" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Interest Rate (%)</label>
                 <input type="number" id="interest-rate" value="6.5" min="0" step="0.1"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateMortgage()">
             </div>
             <div>
-                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Term (Years)</label>
+                <label for="loan-term" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Term (Years)</label>
                 <input type="number" id="loan-term" value="30" min="1" max="50" step="1"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateMortgage()">
@@ -321,24 +321,24 @@
                 <p class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400" id="total-payout">$568,905.85</p>
             </div>
         </div>
-    </div>
-</div>
 
-      <!-- Visual Breakdown -->
-<div class="bg-slate-700/30 rounded-2xl p-6">
-    <p class="text-sm font-medium text-slate-400 mb-4">Payment Breakdown</p>
-    <div class="relative h-8 bg-slate-600/50 rounded-full overflow-hidden">
-        <div id="principal-bar" class="breakdown-bar absolute left-0 top-0 h-full bg-gradient-to-r from-indigo-500 to-indigo-400 rounded-l-full transition-all duration-500 ease-out" style="width: 44%"></div>
-        <div id="interest-bar" class="breakdown-bar absolute top-0 h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-r-full transition-all duration-500 ease-out" style="width: 56%"></div>
-    </div>
-    <div class="flex justify-between mt-4 text-sm">
-        <div class="flex items-center gap-2">
-            <div class="w-3 h-3 bg-indigo-500 rounded-full"></div>
-            <span class="text-slate-400">Principal: <span id="principal-percent" class="text-white font-semibold">44%</span></span>
-        </div>
-        <div class="flex items-center gap-2">
-            <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
-            <span class="text-slate-400">Interest: <span id="interest-percent" class="text-white font-semibold">56%</span></span>
+        <!-- Visual Breakdown (Now Safely Nested Inside the Container) -->
+        <div class="bg-slate-700/30 rounded-2xl p-6">
+            <p class="text-sm font-medium text-slate-400 mb-4">Payment Breakdown</p>
+            <div class="relative h-8 bg-slate-600/50 rounded-full overflow-hidden">
+                <div id="principal-bar" class="breakdown-bar absolute left-0 top-0 h-full bg-gradient-to-r from-indigo-500 to-indigo-400 rounded-l-full transition-all duration-500 ease-out" style="width: 44%"></div>
+                <div id="interest-bar" class="breakdown-bar absolute top-0 h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-r-full transition-all duration-500 ease-out" style="width: 56%"></div>
+            </div>
+            <div class="flex justify-between mt-4 text-sm">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-indigo-500 rounded-full"></div>
+                    <span class="text-slate-400">Principal: <span id="principal-percent" class="text-white font-semibold">44%</span></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
+                    <span class="text-slate-400">Interest: <span id="interest-percent" class="text-white font-semibold">56%</span></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -352,13 +352,13 @@
         <!-- Input Fields Row 1 -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
             <div>
-                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Campaign Cost ($)</label>
+                <label for="campaign-cost" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Campaign Cost ($)</label>
                 <input type="number" id="campaign-cost" value="5000" min="0" step="100"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateCPM()">
             </div>
             <div>
-                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Total Impressions</label>
+                <label for="impressions" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Total Impressions</label>
                 <input type="number" id="impressions" value="500000" min="0" step="1000"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateCPM()">
@@ -368,133 +368,136 @@
         <!-- Input Fields Row 2: CTR and Conversion Rate -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
             <div>
-                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">CTR - Click-Through Rate (%)</label>
+                <label for="ctr-input" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">CTR - Click-Through Rate (%)</label>
                 <input type="number" id="ctr-input" value="2.5" min="0" max="100" step="0.01"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateCPM()">
-                <p class="text-xs text-slate-500 mt-1">Percentage of impressions that clicked</p>
+                <p class="text-xs text-slate-400 mt-1">Percentage of impressions that clicked</p>
             </div>
             <div>
-                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Conversion Rate (%)</label>
+                <label for="conversion-rate" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Conversion Rate (%)</label>
                 <input type="number" id="conversion-rate" value="10" min="0" max="100" step="0.1"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateCPM()">
-                <p class="text-xs text-slate-500 mt-1">Percentage of clicks that converted</p>
+                <p class="text-xs text-slate-400 mt-1">Percentage of clicks that converted</p>
             </div>
         </div>
 
         <!-- Revenue per Conversion -->
         <div class="mb-8">
-            <label class="block text-sm font-medium text-slate-400 mb-2">Revenue per Conversion ($)</label>
+            <label for="revenue-per-conversion" class="block text-sm font-medium text-slate-400 mb-2">Revenue per Conversion ($)</label>
             <input type="number" id="revenue-per-conversion" value="50" min="0" step="1"
                 class="input-field w-full md:w-1/3 px-4 py-4 rounded-xl text-xl font-bold text-white"
                 oninput="calculateCPM()">
         </div>
 
-      <!-- Calculated Clicks Output (Real-time) -->
-<div class="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-2xl p-5 mb-8">
-    <div class="flex items-center justify-between flex-wrap gap-4">
-        <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
-                <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
-                </svg>
+        <!-- Calculated Clicks Output (Real-time) -->
+        <div class="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-2xl p-5 mb-8">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 text-sm font-medium">Total Clicks Generated</p>
+                        <p class="text-2xl md:text-3xl font-bold text-indigo-400" id="clicks-result">12,500</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-slate-400">Formula Applied</p>
+                    <p class="text-xs text-slate-400 font-mono">Impressions × (CTR ÷ 100)</p>
+                </div>
             </div>
-            <div>
-                <p class="text-slate-400 text-sm font-medium">Total Clicks Generated</p>
-                <p class="text-2xl md:text-3xl font-bold text-indigo-400" id="clicks-result">12,500</p>
+        </div>
+
+        <!-- Primary Results Display -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                <p class="text-slate-400 text-xs sm:text-sm mb-2">CPM (Cost per 1K)</p>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 glow-emerald" id="cpm-result">$10.00</p>
+            </div>
+            <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                <p class="text-slate-400 text-xs sm:text-sm mb-2">Total Conversions</p>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-400 glow-indigo" id="conversions-result">1,250</p>
+            </div>
+            <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                <p class="text-slate-400 text-xs sm:text-sm mb-2">Return on Investment</p>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-bold glow-emerald" id="roi-result">1,150.00%</p>
             </div>
         </div>
-        <div class="text-right">
-            <p class="text-xs text-slate-500">Formula Applied</p>
-            <p class="text-xs text-slate-400 font-mono">Impressions × (CTR ÷ 100)</p>
-        </div>
     </div>
 </div>
 
-<!-- Primary Results Display -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
-    <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
-        <p class="text-slate-400 text-xs sm:text-sm mb-2">CPM (Cost per 1K)</p>
-        <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 glow-emerald" id="cpm-result">$10.00</p>
-    </div>
-    <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
-        <p class="text-slate-400 text-xs sm:text-sm mb-2">Total Conversions</p>
-        <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-400 glow-indigo" id="conversions-result">1,250</p>
-    </div>
-    <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
-        <p class="text-slate-400 text-xs sm:text-sm mb-2">Return on Investment</p>
-        <p class="text-2xl sm:text-3xl md:text-4xl font-bold glow-emerald" id="roi-result">1150%</p>
-    </div>
-</div>
+               <!-- Detailed Metrics -->
+        <div class="bg-slate-700/30 rounded-2xl p-6 mt-6">
+            <p class="text-sm font-medium text-slate-400 mb-4">Detailed Performance Metrics</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div>
+                    <p class="text-xs text-slate-400 mb-1">CPC (Cost per Click)</p>
+                    <p class="text-lg font-bold text-white" id="cpc-result">$0.40</p>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-1">CTR (Click-Through)</p>
+                    <p class="text-lg font-bold text-indigo-400" id="ctr-result">2.50%</p>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-1">Total Revenue</p>
+                    <p class="text-lg font-bold text-emerald-400" id="revenue-result">$62,500.00</p>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-1">Net Profit</p>
+                    <p class="text-lg font-bold text-amber-400" id="profit-result">$57,500.00</p>
+                </div>
+            </div>
+        </div>
 
-<!-- Detailed Metrics -->
-<div class="bg-slate-700/30 rounded-2xl p-6">
-    <p class="text-sm font-medium text-slate-400 mb-4">Detailed Performance Metrics</p>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <div>
-            <p class="text-xs text-slate-500 mb-1">CPC (Cost per Click)</p>
-            <p class="text-lg font-bold text-white" id="cpc-result">$0.40</p>
+        <!-- Mathematical Flow Visualization -->
+        <div class="mt-4 sm:mt-6 bg-slate-900/60 rounded-xl sm:rounded-2xl p-3 sm:p-5 border border-slate-700/50 overflow-x-auto">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 sm:mb-3">Calculation Flow</p>
+            <div class="flex items-center justify-start sm:justify-between text-xs sm:text-sm gap-2 sm:gap-3 min-w-max sm:min-w-0 pb-2 sm:pb-0">
+                <div class="flex items-center gap-1.5 sm:gap-2 bg-slate-800/80 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg flex-shrink-0">
+                    <span class="text-slate-400">Impressions</span>
+                    <span class="text-white font-bold" id="flow-impressions">500,000</span>
+                </div>
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                <div class="flex items-center gap-1.5 sm:gap-2 bg-indigo-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-indigo-500/30 flex-shrink-0">
+                    <span class="text-indigo-400">× CTR</span>
+                    <span class="text-indigo-300 font-bold" id="flow-ctr">2.5%</span>
+                </div>
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                <div class="flex items-center gap-1.5 sm:gap-2 bg-emerald-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-emerald-500/30 flex-shrink-0">
+                    <span class="text-emerald-400">= Clicks</span>
+                    <span class="text-emerald-300 font-bold" id="flow-clicks">12,500</span>
+                </div>
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                <div class="flex items-center gap-1.5 sm:gap-2 bg-amber-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-amber-500/30 flex-shrink-0">
+                    <span class="text-amber-400">× Conv%</span>
+                    <span class="text-amber-300 font-bold" id="flow-convrate">10%</span>
+                </div>
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                <div class="flex items-center gap-1.5 sm:gap-2 bg-purple-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-purple-500/30 flex-shrink-0">
+                    <span class="text-purple-400">= Conversions</span>
+                    <span class="text-purple-300 font-bold" id="flow-conversions">1,250</span>
+                </div>
+            </div>
         </div>
-        <div>
-            <p class="text-xs text-slate-500 mb-1">CTR (Click-Through)</p>
-            <p class="text-lg font-bold text-indigo-400" id="ctr-result">2.50%</p>
-        </div>
-        <div>
-            <p class="text-xs text-slate-500 mb-1">Total Revenue</p>
-            <p class="text-lg font-bold text-emerald-400" id="revenue-result">$62,500</p>
-        </div>
-        <div>
-            <p class="text-xs text-slate-500 mb-1">Net Profit</p>
-            <p class="text-lg font-bold text-amber-400" id="profit-result">$57,500</p>
-        </div>
-    </div>
-</div>
+    </div> <!-- Cleanly closes the inner background card container -->
+</div> <!-- Cleanly closes the CPM tab layout section -->
 
-<!-- Mathematical Flow Visualization -->
-<div class="mt-4 sm:mt-6 bg-slate-900/60 rounded-xl sm:rounded-2xl p-3 sm:p-5 border border-slate-700/50 overflow-x-auto">
-    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 sm:mb-3">Calculation Flow</p>
-    <div class="flex items-center justify-start sm:justify-between text-xs sm:text-sm gap-2 sm:gap-3 min-w-max sm:min-w-0 pb-2 sm:pb-0">
-        <div class="flex items-center gap-1.5 sm:gap-2 bg-slate-800/80 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg flex-shrink-0">
-            <span class="text-slate-400">Impressions</span>
-            <span class="text-white font-bold" id="flow-impressions">500,000</span>
-        </div>
-        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-        <div class="flex items-center gap-1.5 sm:gap-2 bg-indigo-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-indigo-500/30 flex-shrink-0">
-            <span class="text-indigo-400">× CTR</span>
-            <span class="text-indigo-300 font-bold" id="flow-ctr">2.5%</span>
-        </div>
-        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-        <div class="flex items-center gap-1.5 sm:gap-2 bg-emerald-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-emerald-500/30 flex-shrink-0">
-            <span class="text-emerald-400">= Clicks</span>
-            <span class="text-emerald-300 font-bold" id="flow-clicks">12,500</span>
-        </div>
-        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-        <div class="flex items-center gap-1.5 sm:gap-2 bg-amber-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-amber-500/30 flex-shrink-0">
-            <span class="text-amber-400">× Conv%</span>
-            <span class="text-amber-300 font-bold" id="flow-convrate">10%</span>
-        </div>
-        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-        <div class="flex items-center gap-1.5 sm:gap-2 bg-purple-500/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-purple-500/30 flex-shrink-0">
-            <span class="text-purple-400">= Conversions</span>
-            <span class="text-purple-300 font-bold" id="flow-conversions">1,250</span>
-        </div>
-    </div>
-</div>
-
-<!-- Sidebar -->
-<aside class="w-full lg:w-80 lg:flex-shrink-0">
+<!-- Sidebar Container (Now loads outside the tabs to remain visible on all screens!) -->
+<aside class="w-full lg:w-80 lg:flex-shrink-0 mt-6 lg:mt-0">
     <!-- ADSENSE BANNER PLACEHOLDER - Sidebar -->
     <div class="mb-6">
-        <!-- ADSENSE BANNER PLACEHOLDER -->
-        <div class="placeholder-box rounded-xl p-6 text-center text-slate-400 text-sm">
-            <svg class="w-8 h-8 mx-auto mb-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="placeholder-box bg-slate-800/40 border border-slate-700/50 rounded-xl p-6 text-center text-slate-400 text-sm">
+            <svg class="w-8 h-8 mx-auto mb-2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
-            <!-- Paste Google AdSense code here -->
             AdSense Sidebar (300x250)
         </div>
     </div>
+</aside>
 
     <!-- System Information Card (Dual Notification) -->
     <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden">
@@ -1091,14 +1094,22 @@ function calculateMortgage() {
         }
     }
     
-             // ==========================================
+           // ==========================================
     // MORTGAGE VIEW UPDATES & RATIO GRAPH SYNC
     // ==========================================
 
-    // 1. Refresh core textual numeric result readouts using integer rounding formats
-    document.getElementById('monthly-payment').textContent = '$' + Math.round(monthlyPayment).toLocaleString('en-US');
-    document.getElementById('total-interest').textContent = '$' + Math.round(totalInterest).toLocaleString('en-US');
-    document.getElementById('total-payout').textContent = '$' + Math.round(totalPayout).toLocaleString('en-US');
+    // Helper function to format strings cleanly to 2 decimal places with commas
+    const formatCurrency = (val) => {
+        return val.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    };
+
+    // 1. Refresh core textual numeric result readouts using tight two-decimal formats
+    document.getElementById('monthly-payment').textContent = '$' + formatCurrency(monthlyPayment);
+    document.getElementById('total-interest').textContent = '$' + formatCurrency(totalInterest);
+    document.getElementById('total-payout').textContent = '$' + formatCurrency(totalPayout);
     
     // 2. Evaluate balance ratios safely to avoid division by zero anomalies
     const principalPercent = totalPayout > 0 ? (principal / totalPayout * 100) : 50;
@@ -1111,14 +1122,11 @@ function calculateMortgage() {
     const iTxt = document.getElementById('interest-percent');
 
     if (pBar && iBar && pTxt && iTxt) {
-        // Set inline dimensional styles
+        // Set inline dimensional width styles
         pBar.style.width = principalPercent + '%';
         iBar.style.width = interestPercent + '%';
-        
-        // Adjust the geometric entry coordinate for the trailing interest component segment
-        iBar.style.left = principalPercent + '%';
 
-        // Render clean integer data strings back inside text nodes
+        // Render clean integer data strings back inside percentage indicator text nodes
         pTxt.textContent = Math.round(principalPercent) + '%';
         iTxt.textContent = Math.round(interestPercent) + '%';
 
@@ -1137,7 +1145,7 @@ function calculateMortgage() {
     }
 }
 
-       // ==========================================================
+    // ==========================================================
 // CPM & ROI CALCULATOR (Fixed Mathematical Flow Engine)
 // ==========================================================
 
@@ -1182,21 +1190,21 @@ function calculateCPM() {
     // Manage Return on Investment tracking styles dynamically
     const roiEl = document.getElementById('roi-result');
     if (roiEl) {
-        roiEl.textContent = roi.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+        roiEl.textContent = roi.toLocaleString('en-US', fmtDec) + '%';
         roiEl.className = roi >= 0 
             ? 'text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 glow-emerald' 
             : 'text-2xl sm:text-3xl md:text-4xl font-bold text-rose-400';
     }
     
-    // 4. Update the secondary metric grid variables
+    // 4. Update the secondary metric grid variables (Enforcing 2 Decimal Places)
     document.getElementById('cpc-result').textContent = '$' + cpc.toLocaleString('en-US', fmtDec);
     document.getElementById('ctr-result').textContent = ctrInput.toLocaleString('en-US', fmtDec) + '%';
-    document.getElementById('revenue-result').textContent = '$' + Math.round(totalRevenue).toLocaleString('en-US', fmtInt);
+    document.getElementById('revenue-result').textContent = '$' + totalRevenue.toLocaleString('en-US', fmtDec);
     
-    // Manage profit text coloration based on performance yields
+    // Manage profit text coloration based on performance yields (Enforcing 2 Decimal Places)
     const profitEl = document.getElementById('profit-result');
     if (profitEl) {
-        profitEl.textContent = (profit >= 0 ? '$' : '-$') + Math.abs(Math.round(profit)).toLocaleString('en-US', fmtInt);
+        profitEl.textContent = (profit >= 0 ? '$' : '-$') + Math.abs(profit).toLocaleString('en-US', fmtDec);
         profitEl.className = profit >= 0 
             ? 'text-lg font-bold text-amber-400' 
             : 'text-lg font-bold text-rose-400';
@@ -1210,9 +1218,9 @@ function calculateCPM() {
     const fConversions = document.getElementById('flow-conversions');
 
     if (fImpressions) fImpressions.textContent = impressions.toLocaleString('en-US', fmtInt);
-    if (fCtr)         fCtr.textContent = ctrInput.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%';
+    if (fCtr)         fCtr.textContent = ctrInput.toLocaleString('en-US', fmtDec) + '%';
     if (fClicks)      fClicks.textContent = Math.round(clicks).toLocaleString('en-US', fmtInt);
-    if (fConvRate)    fConvRate.textContent = conversionRate.toLocaleString('en-US', { maximumFractionDigits: 1 }) + '%';
+    if (fConvRate)    fConvRate.textContent = conversionRate.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + '%';
     if (fConversions) fConversions.textContent = Math.round(conversions).toLocaleString('en-US', fmtInt);
 }
 
@@ -1309,15 +1317,16 @@ function calculateCPM() {
             }
         });
 
-        // ==========================================================
+                // ==========================================================
         // INITIALIZATION APPARATUS SEQUENCE
         // ==========================================================
         document.addEventListener('DOMContentLoaded', () => {
             // Trigger baseline population across individual workspace layout components
-            if (typeof fetchLiveCryptoRates === 'function') fetchLiveCryptoRates();
+            if (typeof fetchPrices === 'function') fetchPrices();
             if (typeof calculateMortgage === 'function') calculateMortgage();
             if (typeof calculateCPM === 'function') calculateCPM();
         });
     </script>
 </body>
 </html>
+
