@@ -283,51 +283,51 @@
                     </div>
                 </div>
 
-                <!-- Mortgage & Loan Tab -->
+                               <!-- Mortgage & Loan Tab -->
                 <div id="mortgage" class="tab-content">
                     <div class="bg-slate-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-slate-700/50">
                         <h2 class="text-2xl font-bold mb-2">Mortgage & Loan Estimator</h2>
                         <p class="text-slate-400 mb-8">Calculate your monthly payments and total cost</p>
 
-                        <!-- Input Fields -->
+                        <!-- Input Fields (With explicit for="" label connections) -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                             <div>
-                                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount ($)</label>
+                                <label for="loan-amount" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount ($)</label>
                                 <input type="number" id="loan-amount" value="250000" min="0" step="1000"
                                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                                     oninput="calculateMortgage()">
                             </div>
                             <div>
-                                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Interest Rate (%)</label>
+                                <label for="interest-rate" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Interest Rate (%)</label>
                                 <input type="number" id="interest-rate" value="6.5" min="0" step="0.1"
                                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                                     oninput="calculateMortgage()">
                             </div>
                             <div>
-                                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Term (Years)</label>
+                                <label for="loan-term" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Term (Years)</label>
                                 <input type="number" id="loan-term" value="30" min="1" max="50" step="1"
                                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                                     oninput="calculateMortgage()">
                             </div>
                         </div>
 
-                        <!-- Results Display -->
+                        <!-- Results Display (Updated with two-decimal formatting fallback placeholders) -->
                         <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
                             <div class="text-center">
                                 <p class="text-slate-400 text-xs sm:text-sm mb-2">Monthly Payment</p>
-                                <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-400 glow-emerald" id="monthly-payment">$1,580</p>
+                                <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-400 glow-emerald" id="monthly-payment">$1,580.17</p>
                             </div>
                         </div>
 
-                        <!-- Breakdown Grid -->
+                        <!-- Breakdown Grid (Updated to two-decimal formatting placeholder values) -->
                         <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
                             <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
                                 <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Interest</p>
-                                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400" id="total-interest">$318,906</p>
+                                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400" id="total-interest">$318,861.20</p>
                             </div>
                             <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
                                 <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Payout</p>
-                                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400" id="total-payout">$568,906</p>
+                                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400" id="total-payout">$568,861.20</p>
                             </div>
                         </div>
 
