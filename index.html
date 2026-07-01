@@ -125,22 +125,22 @@
         </div>
     </div>
 
-    <!-- Tab Navigation -->
+       <!-- Tab Navigation -->
     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6">
         <div class="flex flex-wrap gap-1.5 sm:gap-2 p-1.5 sm:p-2 bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-700/30">
-            <button onclick="switchTab('crypto')" id="tab-crypto" class="tab-btn tab-active flex-1 min-w-[85px] sm:min-w-[140px] px-2 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base tracking-tight sm:tracking-normal cursor-pointer">
+            <button onclick="showTab('crypto')" id="tab-crypto" class="tab-btn bg-indigo-600 text-white flex-1 min-w-[85px] sm:min-w-[140px] px-2 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base tracking-tight sm:tracking-normal cursor-pointer">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 10v1m0-13a9 9 0 110 18 9 9 0 010-18z"></path>
                 </svg>
                 <span><span class="hidden xs:inline sm:hidden md:inline">Crypto</span> Converter</span>
             </button>
-            <button onclick="switchTab('mortgage')" id="tab-mortgage" class="tab-btn flex-1 min-w-[85px] sm:min-w-[140px] px-2 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-slate-700/50 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base tracking-tight sm:tracking-normal cursor-pointer">
+            <button onclick="showTab('mortgage')" id="tab-mortgage" class="tab-btn flex-1 min-w-[85px] sm:min-w-[140px] px-2 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-slate-700/50 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base tracking-tight sm:tracking-normal cursor-pointer">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                 </svg>
                 <span><span class="hidden xs:inline sm:hidden md:inline">Mortgage</span> & Loan</span>
             </button>
-            <button onclick="switchTab('cpm')" id="tab-cpm" class="tab-btn flex-1 min-w-[85px] sm:min-w-[140px] px-2 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-slate-700/50 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base tracking-tight sm:tracking-normal cursor-pointer">
+            <button onclick="showTab('cpm')" id="tab-cpm" class="tab-btn flex-1 min-w-[85px] sm:min-w-[140px] px-2 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-slate-700/50 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base tracking-tight sm:tracking-normal cursor-pointer">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                 </svg>
