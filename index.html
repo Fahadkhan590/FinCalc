@@ -283,74 +283,74 @@
                     </div>
                 </div>
 
-                               <!-- Mortgage & Loan Tab -->
-                <div id="mortgage" class="tab-content">
-                    <div class="bg-slate-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-slate-700/50">
-                        <h2 class="text-2xl font-bold mb-2">Mortgage & Loan Estimator</h2>
-                        <p class="text-slate-400 mb-8">Calculate your monthly payments and total cost</p>
+         <!-- Mortgage & Loan Tab -->
+<div id="mortgage" class="tab-content">
+    <div class="bg-slate-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-slate-700/50">
+        <h2 class="text-2xl font-bold mb-2">Mortgage & Loan Estimator</h2>
+        <p class="text-slate-400 mb-8">Calculate your monthly payments and total cost</p>
 
-                        <!-- Input Fields (With explicit for="" label connections) -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-                            <div>
-                                <label for="loan-amount" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount ($)</label>
-                                <input type="number" id="loan-amount" value="250000" min="0" step="1000"
-                                    class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
-                                    oninput="calculateMortgage()">
-                            </div>
-                            <div>
-                                <label for="interest-rate" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Interest Rate (%)</label>
-                                <input type="number" id="interest-rate" value="6.5" min="0" step="0.1"
-                                    class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
-                                    oninput="calculateMortgage()">
-                            </div>
-                            <div>
-                                <label for="loan-term" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Term (Years)</label>
-                                <input type="number" id="loan-term" value="30" min="1" max="50" step="1"
-                                    class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
-                                    oninput="calculateMortgage()">
-                            </div>
-                        </div>
+        <!-- Input Fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div>
+                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount ($)</label>
+                <input type="number" id="loan-amount" value="250000" min="0" step="1000"
+                    class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
+                    oninput="calculateMortgage()">
+            </div>
+            <div>
+                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Interest Rate (%)</label>
+                <input type="number" id="interest-rate" value="6.5" min="0" step="0.1"
+                    class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
+                    oninput="calculateMortgage()">
+            </div>
+            <div>
+                <label class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Term (Years)</label>
+                <input type="number" id="loan-term" value="30" min="1" max="50" step="1"
+                    class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
+                    oninput="calculateMortgage()">
+            </div>
+        </div>
 
-                        <!-- Results Display (Updated with two-decimal formatting fallback placeholders) -->
-                        <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
-                            <div class="text-center">
-                                <p class="text-slate-400 text-xs sm:text-sm mb-2">Monthly Payment</p>
-                                <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-400 glow-emerald" id="monthly-payment">$1,580.17</p>
-                            </div>
-                        </div>
+        <!-- Results Display -->
+        <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+            <div class="text-center">
+                <p class="text-slate-400 text-xs sm:text-sm mb-2">Monthly Payment</p>
+                <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-400 glow-emerald" id="monthly-payment">$1,580</p>
+            </div>
+        </div>
 
-                        <!-- Breakdown Grid (Updated to two-decimal formatting placeholder values) -->
-                        <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
-                            <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
-                                <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Interest</p>
-                                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400" id="total-interest">$318,861.20</p>
-                            </div>
-                            <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
-                                <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Payout</p>
-                                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400" id="total-payout">$568,861.20</p>
-                            </div>
-                        </div>
+        <!-- Breakdown Grid -->
+        <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
+                <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Interest</p>
+                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400" id="total-interest">$318,906</p>
+            </div>
+            <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
+                <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Payout</p>
+                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400" id="total-payout">$568,906</p>
+            </div>
+        </div>
 
-                        <!-- Visual Breakdown -->
-                        <div class="bg-slate-700/30 rounded-2xl p-6">
-                            <p class="text-sm font-medium text-slate-400 mb-4">Payment Breakdown</p>
-                            <div class="relative h-8 bg-slate-600/50 rounded-full overflow-hidden">
-                                <div id="principal-bar" class="breakdown-bar absolute left-0 top-0 h-full bg-gradient-to-r from-indigo-500 to-indigo-400 rounded-l-full" style="width: 44%"></div>
-                                <div id="interest-bar" class="breakdown-bar absolute top-0 h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-r-full" style="width: 56%"></div>
-                            </div>
-                            <div class="flex justify-between mt-4 text-sm">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-3 h-3 bg-indigo-500 rounded-full"></div>
-                                    <span class="text-slate-400">Principal: <span id="principal-percent" class="text-white font-semibold">44%</span></span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
-                                    <span class="text-slate-400">Interest: <span id="interest-percent" class="text-white font-semibold">56%</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Visual Breakdown -->
+        <div class="bg-slate-700/30 rounded-2xl p-6">
+            <p class="text-sm font-medium text-slate-400 mb-4">Payment Breakdown</p>
+            <div class="relative h-8 bg-slate-600/50 rounded-full overflow-hidden">
+                <div id="principal-bar" class="breakdown-bar absolute left-0 top-0 h-full bg-gradient-to-r from-indigo-500 to-indigo-400 rounded-l-full" style="width: 44%"></div>
+                <div id="interest-bar" class="breakdown-bar absolute top-0 h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-r-full" style="width: 56%"></div>
+            </div>
+            <div class="flex justify-between mt-4 text-sm">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-indigo-500 rounded-full"></div>
+                    <span class="text-slate-400">Principal: <span id="principal-percent" class="text-white font-semibold">44%</span></span>
                 </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
+                    <span class="text-slate-400">Interest: <span id="interest-percent" class="text-white font-semibold">56%</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!-- CPM & ROI Tab -->
                 <div id="cpm" class="tab-content">
@@ -1005,50 +1005,44 @@
                 monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
             }
 
-             // ==============================
-        // MORTGAGE & LOAN CALCULATOR
-        // ==============================
-        function calculateMortgage() {
-            const principal = parseFloat(document.getElementById('loan-amount').value) || 0;
-            const annualRate = parseFloat(document.getElementById('interest-rate').value) || 0;
-            const years = parseFloat(document.getElementById('loan-term').value) || 1;
+           // ==============================
+// MORTGAGE & LOAN CALCULATOR
+// ==============================
+function calculateMortgage() {
+    const principal = parseFloat(document.getElementById('loan-amount').value) || 0;
+    const annualRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+    const years = parseFloat(document.getElementById('loan-term').value) || 1;
+    
+    const monthlyRate = annualRate / 100 / 12;
+    const numPayments = years * 12;
+    
+    let monthlyPayment, totalInterest, totalPayout;
+    
+    if (monthlyRate === 0) {
+        monthlyPayment = principal / numPayments;
+        totalInterest = 0;
+        totalPayout = principal;
+    } else {
+        monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+        totalPayout = monthlyPayment * numPayments;
+        totalInterest = totalPayout - principal;
+    }
+    
+    // Update display
+    document.getElementById('monthly-payment').textContent = '$' + Math.round(monthlyPayment).toLocaleString('en-US');
+    document.getElementById('total-interest').textContent = '$' + Math.round(totalInterest).toLocaleString('en-US');
+    document.getElementById('total-payout').textContent = '$' + Math.round(totalPayout).toLocaleString('en-US');
+    
+    // Update breakdown bar
+    const principalPercent = totalPayout > 0 ? (principal / totalPayout * 100) : 50;
+    const interestPercent = 100 - principalPercent;
+    
+    document.getElementById('principal-bar').style.width = principalPercent + '%';
+    document.getElementById('interest-bar').style.width = interestPercent + '%';
+    document.getElementById('principal-percent').textContent = Math.round(principalPercent) + '%';
+    document.getElementById('interest-percent').textContent = Math.round(interestPercent) + '%';
+}
             
-            const monthlyRate = annualRate / 100 / 12;
-            const numPayments = years * 12;
-            
-            let monthlyPayment;
-            
-            if (monthlyRate === 0) {
-                monthlyPayment = principal / numPayments;
-            } else {
-                monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
-            }
-
-            // Calculate exact total payout first, then derive total interest
-            const totalPayout = monthlyPayment * numPayments;
-            const totalInterest = totalPayout - principal;
-            
-            // Helper function to format strings cleanly to 2 decimal places with commas
-            const formatCurrency = (val) => parseFloat(val.toFixed(2)).toLocaleString('en-US', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-            
-            // Update display with two decimal places
-            document.getElementById('monthly-payment').textContent = '$' + formatCurrency(monthlyPayment);
-            document.getElementById('total-interest').textContent = '$' + formatCurrency(totalInterest);
-            document.getElementById('total-payout').textContent = '$' + formatCurrency(totalPayout);
-            
-            // Update breakdown bar
-            const principalPercent = totalPayout > 0 ? (principal / totalPayout * 100) : 50;
-            const interestPercent = 100 - principalPercent;
-            
-            document.getElementById('principal-bar').style.width = principalPercent + '%';
-            document.getElementById('interest-bar').style.width = interestPercent + '%';
-            document.getElementById('principal-percent').textContent = Math.round(principalPercent) + '%';
-            document.getElementById('interest-percent').textContent = Math.round(interestPercent) + '%';
-        }
-
         // ==============================
         // CPM & ROI CALCULATOR (Fixed Mathematical Flow)
         // ==============================
