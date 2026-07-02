@@ -183,19 +183,28 @@
         </div>
     </header>
 
-    <!-- ADSENSE BANNER PLACEHOLDER - Below Header -->
-    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-        <!-- ADSENSE BANNER PLACEHOLDER Container with hidden x-overflow for safe mobile wrapping -->
-        <div class="w-full overflow-x-hidden select-none py-1">
-            <div class="placeholder-box rounded-xl p-6 text-center text-slate-500 text-sm w-full bg-slate-800/40 border border-slate-700/30 flex flex-col items-center justify-center min-h-[90px]">
-                <svg class="w-8 h-8 mx-auto mb-2 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                <!-- Paste Google AdSense code here -->
-                <span class="block text-xs sm:text-sm font-medium tracking-wide text-slate-400 px-2 text-center break-words max-w-full">AdSense Banner Placeholder (728x90)</span>
-            </div>
+   <!-- ADSENSE BANNER PLACEHOLDER - Below Header -->
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <!-- ADSENSE BANNER PLACEHOLDER Container with hidden x-overflow for safe mobile wrapping -->
+    <div class="w-full overflow-x-hidden select-none py-1">
+        <!-- ✅ UPDATED: Responsive Programmatic AdSense Grid Frame -->
+        <div class="rounded-xl p-2 sm:p-4 text-center w-full bg-slate-800/40 border border-slate-700/30 flex flex-col items-center justify-center min-h-[90px] relative">
+            <!-- Regulatory Ad Label Required by Google Policies -->
+            <span class="absolute top-1 left-3 text-[9px] font-bold tracking-widest text-slate-600 uppercase pointer-events-none">Advertisement</span>
+            
+            <!-- Live Programmatic AdSense Delivery Tag -->
+            <ins class="adsbygoogle"
+                 style="display:block; width:100%; max-width:728px; height:90px;"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" <!-- ⚠️ REPLACE: Put your actual AdSense Publisher ID here -->
+                 data-ad-slot="1234567890"               <!-- ⚠️ REPLACE: Put your actual Top Banner Slot ID here -->
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
+</div>
 
     <!-- Tab Navigation -->
     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6">
@@ -574,18 +583,27 @@
                 </div> <!-- ✅ FIXED: Closes master #cpm tab element block -->
 
             <!-- Sidebar -->
-            <aside class="w-full lg:w-80 lg:flex-shrink-0">
-                <!-- ADSENSE BANNER PLACEHOLDER - Sidebar -->
-                <div class="mb-6">
-                    <!-- ADSENSE BANNER PLACEHOLDER -->
-                    <div class="placeholder-box rounded-xl p-6 text-center text-slate-400 text-sm">
-                        <svg class="w-8 h-8 mx-auto mb-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        <!-- Paste Google AdSense code here -->
-                        AdSense Sidebar (300x250)
-                    </div>
-                </div>
+<aside class="w-full lg:w-80 lg:flex-shrink-0">
+    <!-- ADSENSE BANNER PLACEHOLDER - Sidebar -->
+    <div class="mb-6">
+        <!-- ✅ UPDATED: Fixed-Dimension Programmatic AdSense Rectangle Frame -->
+        <div class="rounded-xl p-4 text-center w-full bg-slate-800/40 border border-slate-700/30 flex flex-col items-center justify-center min-h-[280px] relative overflow-hidden">
+            <!-- Regulatory Ad Label Required by Google Policies -->
+            <span class="absolute top-1 left-3 text-[9px] font-bold tracking-widest text-slate-600 uppercase pointer-events-none">Advertisement</span>
+            
+            <div class="w-full flex items-center justify-center mt-2">
+                <!-- Live Programmatic AdSense Delivery Tag (Strict 300x250 Medium Rectangle Dimensions) -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block; width:300px; height:250px;"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" <!-- ⚠️ REPLACE: Put your actual AdSense Publisher ID here -->
+                     data-ad-slot="0987654321"               <!-- ⚠️ REPLACE: Put your actual Sidebar Slot ID here -->
+                     data-ad-format="rectangle"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </div>
 
                 <!-- System Information Card (Dual Notification) -->
                 <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden">
