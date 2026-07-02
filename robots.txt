@@ -6,13 +6,13 @@ User-agent: *
 # Crawling Rules (Explicitly Allow Production Nodes)
 Allow: /
 Allow: /index.html
-Allow: /faq.html
-Allow: /privacy.html
-Allow: /terms.html
+Allow: /faq
+Allow: /privacy
+Allow: /terms
 
 # Security & Admin Protections (Hide System Logs)
 Disallow: /readme.html
 Disallow: /readme
 
-# ✅ FIXED: Direct path pointer to your automated primary XML schema structure
+# Direct path pointer to your automated primary XML schema structure
 Sitemap: https://fincalchub.xyz
