@@ -1310,7 +1310,7 @@ function selectGlobalCurrency(code, symbol) {
     localStorage.setItem('site_global_currency', code);
     localStorage.setItem('site_global_symbol', symbol);
 
-    // 1. Update the top navigation header label text
+        // 1. Update the top navigation header label text
     const label = document.getElementById('global-active-currency');
     if (label) {
         label.textContent = `${code} (${symbol})`;
