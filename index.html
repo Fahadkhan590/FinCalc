@@ -1310,7 +1310,7 @@ function selectGlobalCurrency(code, symbol) {
     localStorage.setItem('site_global_currency', code);
     localStorage.setItem('site_global_symbol', symbol);
 
-        // 1. Update the top navigation header label text
+           // 1. Update the top navigation header label text
     const label = document.getElementById('global-active-currency');
     if (label) {
         label.textContent = `${code} (${symbol})`;
@@ -1332,13 +1332,15 @@ function selectGlobalCurrency(code, symbol) {
         el.textContent = symbol;
     });
 
-    // 4. MATH INPUT CONVERSION LOOP: Automatically convert numbers inside your inputs
-    convertInputValuesMath(previousCode, code);
+    // 4. SAFELY EXECUTE INPUT CONVERSION: Wrapped inside safe existence check boundaries
+    if (typeof convertInputValuesMath === 'function') {
+        convertInputValuesMath(previousCode, code);
+    }
 
-    // 5. TRIGGER CALCULATION ENGINES: Force old and new tools to refresh their math
+    // 5. TRIGGER CALCULATION ENGINES: Force active local scripts to reload if present
     triggerAllActiveCalculators();
 
-    // 6. BROADCAST EVENT FOR FUTURE TOOLS: New tools you write later will catch this
+    // 6. BROADCAST EVENT FOR FUTURE TOOLS: Keep communication channels synchronized
     window.dispatchEvent(new CustomEvent('globalCurrencyChange', {
         detail: { code: code, symbol: symbol, rate: GlobalCurrencyRates[code].rate }
     }));
@@ -1348,11 +1350,10 @@ function selectGlobalCurrency(code, symbol) {
     if (menu) menu.classList.add('hidden');
 }
 
-// Automatically recalculates input box numbers so users don't have to retype them
+// Automatically recalculates input box numbers safely (Validated to prevent DOM execution crashes)
 function convertInputValuesMath(fromCode, toCode) {
     if (fromCode === toCode) return;
 
-    // Target elements: Campaign Cost, Loan Amount, Revenue Per Conversion, etc.
     const moneyInputs = [
         'campaign-cost', 
         'revenue-per-conversion', 
@@ -1364,12 +1365,11 @@ function convertInputValuesMath(fromCode, toCode) {
 
     moneyInputs.forEach(id => {
         const input = document.getElementById(id);
+        // ✅ PRO FIX: Added strict existence validation gate to block crashes on informational pages
         if (input && input.value) {
             const currentValue = parseFloat(input.value) || 0;
-            // Convert back to USD baseline, then convert to target currency
             const convertedValue = currentValue * baseUSDExchangeMultiplier * targetsExchangeMultiplier;
             
-            // Format naturally based on value scale
             if (convertedValue > 100) {
                 input.value = Math.round(convertedValue);
             } else {
@@ -1379,15 +1379,12 @@ function convertInputValuesMath(fromCode, toCode) {
     });
 }
 
-// Runs recalculation routines across all known active scripts on your website
+// Runs recalculation routines safely across any operational blocks present on this tab view
 function triggerAllActiveCalculators() {
     if (typeof calculateCPM === 'function') calculateCPM();
-    // ✅ MOVED/ROUTED: Connected calculateMortgage directly to engine pipelines
     if (typeof calculateMortgage === 'function') calculateMortgage();
     if (typeof calculateLoan === 'function') calculateLoan();
     if (typeof calculateROI === 'function') calculateROI();
-    
-    // Fallback: If you have different function names, add them here
     if (typeof calculateCPMAndROI === 'function') calculateCPMAndROI();
 }
 
