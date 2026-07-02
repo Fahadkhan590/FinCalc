@@ -221,5 +221,37 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+    // System Initialization: Read and set saved currency on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedCode = localStorage.getItem('site_global_currency') || 'PKR';
+        const savedSymbol = localStorage.getItem('site_global_symbol') || 'Rs';
+        
+        const label = document.getElementById('global-active-currency');
+        if (label) label.textContent = `${savedCode} (${savedSymbol})`;
+    });
+
+    // Handle updates if user changes the dropdown while on this page
+    function selectGlobalCurrency(code, symbol) {
+        localStorage.setItem('site_global_currency', code);
+        localStorage.setItem('site_global_symbol', symbol);
+
+        const label = document.getElementById('global-active-currency');
+        if (label) label.textContent = `${code} (${symbol})`;
+
+        // Close dropdown menu safely
+        const menu = document.getElementById('global-currency-menu');
+        if (menu) menu.classList.add('hidden');
+    }
+
+    // Close menu when clicking outside
+    window.addEventListener('click', function(e) {
+        const menu = document.getElementById('global-currency-menu');
+        if (menu && !menu.contains(e.target) && !e.target.closest('button')) {
+            menu.classList.add('hidden');
+        }
+    });
+    </script>
 </body>
 </html>
