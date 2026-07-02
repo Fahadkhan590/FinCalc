@@ -338,7 +338,7 @@
                     </div>
                 </div>
 
-       <!-- Mortgage & Loan Tab -->
+      <!-- Mortgage & Loan Tab -->
 <div id="mortgage" class="tab-content">
     <div class="bg-slate-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-slate-700/50">
         <h2 class="text-2xl font-bold mb-2">Mortgage & Loan Estimator</h2>
@@ -347,7 +347,8 @@
         <!-- Input Fields -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div>
-                <label for="loan-amount" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount ($)</label>
+                <!-- ✅ UPDATED INPUT LABEL -->
+                <label for="loan-amount" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Loan Amount (<span class="universal-currency-label">Rs</span>)</label>
                 <input type="number" id="loan-amount" value="250000" min="0" step="1000"
                     class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white"
                     oninput="calculateMortgage()">
@@ -370,7 +371,8 @@
         <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
             <div class="text-center">
                 <p class="text-slate-400 text-xs sm:text-sm mb-2">Monthly Payment</p>
-                <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-400 glow-emerald" id="monthly-payment">$1,580.17</p>
+                <!-- ✅ UPDATED RESULT DISP -->
+                <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-400 glow-emerald" id="monthly-payment"><span class="universal-currency-label">Rs</span>1,580.17</p>
             </div>
         </div>
 
@@ -378,11 +380,13 @@
         <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
             <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
                 <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Interest</p>
-                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400" id="total-interest">$318,861.22</p>
+                <!-- ✅ UPDATED RESULT DISP -->
+                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400" id="total-interest"><span class="universal-currency-label">Rs</span>318,861.22</p>
             </div>
             <div class="bg-slate-700/30 rounded-xl sm:rounded-2xl p-3 sm:p-5">
                 <p class="text-slate-400 text-xs sm:text-sm mb-1">Total Payout</p>
-                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400" id="total-payout">$568,861.22</p>
+                <!-- ✅ UPDATED RESULT DISP -->
+                <p class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400" id="total-payout"><span class="universal-currency-label">Rs</span>568,861.22</p>
             </div>
         </div>
 
@@ -406,7 +410,6 @@
         </div>
     </div>
 </div>
-
 
                 <!-- CPM & ROI Tab -->
                 <div id="cpm" class="tab-content">
@@ -1075,8 +1078,8 @@ function updatePriceDisplays() {
             if (rateEl) rateEl.textContent = `1 ${selectedCrypto.toUpperCase()} = ${fiatSymbol}${EXCHANGE_RATES[selectedCrypto].toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${selectedFiat}`;
         }
 
-      // ==============================
-// MORTGAGE & LOAN CALCULATOR
+    // ==============================
+// MORTGAGE & LOAN CALCULATOR (Fully Dynamic Currency Sync)
 // ==============================
 function calculateMortgage() {
     const principal = parseFloat(document.getElementById('loan-amount').value) || 0;
@@ -1104,17 +1107,26 @@ function calculateMortgage() {
         });
     };
     
-    document.getElementById('monthly-payment').textContent = '$' + formatCurrency(monthlyPayment);
-    document.getElementById('total-interest').textContent = '$' + formatCurrency(totalInterest);
-    document.getElementById('total-payout').textContent = '$' + formatCurrency(totalPayout);
+    // ✅ FIXED: Using innerHTML with dynamic global classes instead of hardcoded strings
+    const currencySpan = `<span class="universal-currency-label">${currentCurrencySymbol}</span>`;
+    
+    if (document.getElementById('monthly-payment')) {
+        document.getElementById('monthly-payment').innerHTML = currencySpan + formatCurrency(monthlyPayment);
+    }
+    if (document.getElementById('total-interest')) {
+        document.getElementById('total-interest').innerHTML = currencySpan + formatCurrency(totalInterest);
+    }
+    if (document.getElementById('total-payout')) {
+        document.getElementById('total-payout').innerHTML = currencySpan + formatCurrency(totalPayout);
+    }
     
     const principalPercent = totalPayout > 0 ? (principal / totalPayout * 100) : 50;
     const interestPercent = 100 - principalPercent;
     
-    document.getElementById('principal-bar').style.width = principalPercent + '%';
-    document.getElementById('interest-bar').style.width = interestPercent + '%';
-    document.getElementById('principal-percent').textContent = Math.round(principalPercent) + '%';
-    document.getElementById('interest-percent').textContent = Math.round(interestPercent) + '%';
+    if (document.getElementById('principal-bar')) document.getElementById('principal-bar').style.width = principalPercent + '%';
+    if (document.getElementById('interest-bar')) document.getElementById('interest-bar').style.width = interestPercent + '%';
+    if (document.getElementById('principal-percent')) document.getElementById('principal-percent').textContent = Math.round(principalPercent) + '%';
+    if (document.getElementById('interest-percent')) document.getElementById('interest-percent').textContent = Math.round(interestPercent) + '%';
 }
 
 // ==========================================================
@@ -1244,19 +1256,36 @@ function calculateCPM() {
             }
         });
 
-        // ==============================
-        // INITIALIZATION
-        // ==============================
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchLiveCryptoRates();
-            calculateMortgage();
-            calculateCPM();
-        });
+       // ==========================================================
+// INITIALIZATION ENGINE (Mounts all tools cleanly on page bootup)
+// ==========================================================
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Instantly pull currency configurations out of local device storage histories
+    const savedCode = localStorage.getItem('site_global_currency') || 'PKR';
+    const savedSymbol = localStorage.getItem('site_global_symbol') || 'Rs';
+    
+    currentCurrencyCode = savedCode;
+    currentCurrencySymbol = savedSymbol;
+
+    // 2. Synchronize the header text indicator element
+    const label = document.getElementById('global-active-currency');
+    if (label) label.textContent = `${savedCode} (${savedSymbol})`;
+
+    // 3. Update static text labels across layout containers
+    document.querySelectorAll('.universal-currency-label').forEach(el => {
+        el.textContent = savedSymbol;
+    });
+
+    // 4. Fire baseline metric calculations across calculator apps
+    if (typeof fetchLiveCryptoRates === 'function') fetchLiveCryptoRates();
+    if (typeof calculateMortgage === 'function') calculateMortgage();
+    if (typeof calculateCPM === 'function') calculateCPM();
+});
         
-// ==========================================
+// ==========================================================
 // MASTER GLOBAL CURRENCY REGISTRY & CONVERSION RATES
 // All rates are tracked relative to USD as a baseline
-// ==========================================
+// ==========================================================
 const GlobalCurrencyRates = {
     USD: { symbol: '$',   rate: 1.0 },
     EUR: { symbol: '€',   rate: 0.92 },
@@ -1276,6 +1305,10 @@ function selectGlobalCurrency(code, symbol) {
     const previousCode = currentCurrencyCode;
     currentCurrencyCode = code;
     currentCurrencySymbol = symbol;
+
+    // Persist configuration states in localized browser profiles
+    localStorage.setItem('site_global_currency', code);
+    localStorage.setItem('site_global_symbol', symbol);
 
     // 1. Update the top navigation header label text
     const label = document.getElementById('global-active-currency');
@@ -1349,6 +1382,8 @@ function convertInputValuesMath(fromCode, toCode) {
 // Runs recalculation routines across all known active scripts on your website
 function triggerAllActiveCalculators() {
     if (typeof calculateCPM === 'function') calculateCPM();
+    // ✅ MOVED/ROUTED: Connected calculateMortgage directly to engine pipelines
+    if (typeof calculateMortgage === 'function') calculateMortgage();
     if (typeof calculateLoan === 'function') calculateLoan();
     if (typeof calculateROI === 'function') calculateROI();
     
