@@ -289,22 +289,25 @@
             <input type="number" id="crypto-input" value="1" min="0" step="0.00000001" 
                 class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white focus:outline-none"
                 oninput="convertCrypto()">
+            <!-- Dynamic placeholder tag that JavaScript changes to BTC, ETH, or SOL instantly -->
             <span id="crypto-input-label" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm sm:text-base">BTC</span>
         </div>
     </div>
     <div>
-        <!-- ✅ FIXED FOR ACCESSIBILITY: Matched label for to the clean flat ID name -->
-        <label for="fiat-output-input" id="fiat-input-label-text" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">You Receive (PKR)</label>
+        <!-- ✅ FIXED FOR ALL 3 CRYPTOS: Dynamic label utilizing the universal currency flag marker -->
+        <label for="fiat-output-input" id="fiat-input-label-text" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">
+            You Receive (<span class="universal-currency-label">USD</span>)
+        </label>
         <div class="relative">
-            <!-- ✅ OPTIMIZED ID: Replaced static 'usd-input' with a generic 'fiat-output-input' to clear console loop blockages -->
             <input type="number" id="fiat-output-input" 
                 class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white focus:outline-none"
                 oninput="convertFromUSD()">
-            <span id="fiat-input-label" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm sm:text-base">PKR</span>
+            <!-- ✅ FIXED FOR ALL 3 CRYPTOS: Dynamic symbol marker synced seamlessly to your dropdown selection -->
+            <span id="fiat-input-label" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm sm:text-base universal-currency-label">USD</span>
         </div>
     </div>
 </div>
-
+                        
                                                <!-- Result Display -->
                         <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6">
                             <p class="text-slate-400 text-xs sm:text-sm mb-2">Live Equivalent Conversion Result</p>
@@ -991,15 +994,15 @@ document.addEventListener('keydown', (e) => {
             }
         }
 
-       // ==============================
+    // ==============================
 // REAL-TIME WORLDWIDE CRYPTO & FIAT CONVERTER (GLOBAL ENGINE SYNCED)
 // ==============================
 let selectedCrypto = 'btc';
 
 // 1. LISTEN TO GLOBAL STATE CHANGES
-// This block intercepts the global currency change event broadcast from your header dropdown
-window.addEventListener('currencyChanged', (event) => {
-    const globalCurrency = event.detail.code; // e.g., 'USD', 'GBP'
+// This block intercepts the global currency change event broadcast from your right-upper corner dropdown
+window.addEventListener('globalCurrencyChange', (event) => {
+    const globalCurrency = event.detail.code; // e.g., 'USD', 'PKR', 'EUR'
     
     // Check if your local fiat selector element exists on this page
     const localSelector = document.getElementById('fiat-selector');
@@ -1009,7 +1012,7 @@ window.addEventListener('currencyChanged', (event) => {
     
     // Synchronize your local tracking variables with the global manager state
     selectedFiat = globalCurrency;
-    fiatSymbol = event.detail.symbol; // e.g., '$', '£'
+    fiatSymbol = event.detail.symbol; // e.g., '$', 'Rs', '€'
     
     // Execute local UI label formatting loops
     syncCryptoLabels();
@@ -1026,13 +1029,14 @@ function onFiatChange() {
     
     const newFiatCode = selector.value;
     
-    // If the Global CurrencyManager script is present, update globally
-    if (typeof CurrencyManager !== 'undefined' && typeof CurrencyManager.setCurrency === 'function') {
-        CurrencyManager.setCurrency(newFiatCode);
+    // If the Global selectGlobalCurrency function is present, update globally
+    if (typeof selectGlobalCurrency === 'function') {
+        const tempSymbol = typeof GlobalCurrencyRates !== 'undefined' ? GlobalCurrencyRates[newFiatCode]?.symbol : '$';
+        selectGlobalCurrency(newFiatCode, tempSymbol);
     } else {
         // Fallback execution loop if running the crypto tool standalone without the global header
         selectedFiat = newFiatCode;
-        fiatSymbol = FIAT_INFO[selectedFiat] ? FIAT_INFO[selectedFiat].symbol : selectedFiat + ' ';
+        fiatSymbol = typeof GlobalCurrencyRates !== 'undefined' ? GlobalCurrencyRates[selectedFiat]?.symbol : '$';
         syncCryptoLabels();
         fetchLiveCryptoRates();
     }
@@ -1041,10 +1045,14 @@ function onFiatChange() {
 // Helper function to update tool labels cleanly
 function syncCryptoLabels() {
     const fiatInputLabelText = document.getElementById('fiat-input-label-text');
-    if (fiatInputLabelText) fiatInputLabelText.textContent = `You Receive (${selectedFiat})`;
+    if (fiatInputLabelText) {
+        fiatInputLabelText.innerHTML = `You Receive (<span class="universal-currency-label">${fiatSymbol}</span>)`;
+    }
     
     const fiatInputLabel = document.getElementById('fiat-input-label');
-    if (fiatInputLabel) fiatInputLabel.textContent = selectedFiat;
+    if (fiatInputLabel) {
+        fiatInputLabel.textContent = selectedFiat;
+    }
 }
 
 // 3. ASYNC LIVE API FETCH (OPTIMIZED FOR SYNC ENGINE)
@@ -1052,9 +1060,10 @@ async function fetchLiveCryptoRates() {
     const statusEl = document.getElementById('api-status');
     if (statusEl) statusEl.textContent = 'Fetching Live Rates...';
 
-    // Ensure selectedFiat variable is assigned; default back to USD if empty
-    if (typeof selectedFiat === 'undefined') {
-        selectedFiat = localStorage.getItem('global_currency') || 'USD';
+    // Ensure selectedFiat variable is assigned; default back to PKR/Rs if empty
+    if (typeof selectedFiat === 'undefined' || !selectedFiat) {
+        selectedFiat = localStorage.getItem('site_global_currency') || 'PKR';
+        fiatSymbol = localStorage.getItem('site_global_symbol') || 'Rs';
     }
 
     const fiatLower = selectedFiat.toLowerCase();
@@ -1083,10 +1092,10 @@ async function fetchLiveCryptoRates() {
         }
     } catch (err) {
         console.log('Using fallback rates for', selectedFiat);
-        // Fallback resolution using structural mapping objects
-        const multiplier = (typeof CurrencyManager !== 'undefined') 
-            ? CurrencyManager.registry[selectedFiat]?.rate 
-            : (FIAT_INFO[selectedFiat] ? FIAT_INFO[selectedFiat].rate : 1.0);
+        // Fallback resolution using master mapping registry objects
+        const multiplier = (typeof GlobalCurrencyRates !== 'undefined') 
+            ? GlobalCurrencyRates[selectedFiat]?.rate 
+            : 1.0;
             
         EXCHANGE_RATES.btc = BASE_USD_RATES.btc * multiplier;
         EXCHANGE_RATES.eth = BASE_USD_RATES.eth * multiplier;
@@ -1098,7 +1107,8 @@ async function fetchLiveCryptoRates() {
         }
     }
 
-    updatePriceDisplays();
+   // Force values to instantly populate input text fields and left side summary cards
+    if (typeof updatePriceDisplays === 'function') updatePriceDisplays();
     if (typeof convertCrypto === 'function') convertCrypto();
     if (typeof updateSidebar === 'function') updateSidebar('crypto');
 }
@@ -1122,63 +1132,71 @@ function updatePriceDisplays() {
     if (rowEth) rowEth.textContent = `${fiatSymbol}${EXCHANGE_RATES.eth.toLocaleString('en-US', formatConfig)}`;
     const rowSol = document.getElementById('row-rate-sol');
     if (rowSol) rowSol.textContent = `${fiatSymbol}${EXCHANGE_RATES.sol.toLocaleString('en-US', formatConfig)}`;
+    
+    // Forces input boxes to refresh whenever the global manager fetches fresh API rates
+    if (typeof convertCrypto === 'function') convertCrypto();
 }
         
-        function selectCrypto(crypto) {
-            selectedCrypto = crypto;
-            
-            // Update button styles
-            document.querySelectorAll('.crypto-selector').forEach(btn => {
-                btn.classList.remove('active');
-                btn.style.borderColor = 'transparent';
-            });
-            
-            const activeBtn = document.getElementById('btn-' + crypto);
-            if (activeBtn) {
-                activeBtn.classList.add('active');
-                const colors = { btc: 'rgb(245, 158, 11)', eth: 'rgb(99, 102, 241)', sol: 'rgb(168, 85, 247)' };
-                activeBtn.style.borderColor = colors[crypto];
-            }
-            
-            // Update label
-            const labelEl = document.getElementById('crypto-input-label');
-            if (labelEl) labelEl.textContent = crypto.toUpperCase();
-            
-            // Convert
-            convertCrypto();
-        }
+function selectCrypto(crypto) {
+    selectedCrypto = crypto;
+    
+    // Update button styles
+    document.querySelectorAll('.crypto-selector').forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.borderColor = 'transparent';
+    });
+    
+    const activeBtn = document.getElementById('btn-' + crypto);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+        const colors = { btc: 'rgb(245, 158, 11)', eth: 'rgb(99, 102, 241)', sol: 'rgb(168, 85, 247)' };
+        activeBtn.style.borderColor = colors[crypto];
+    }
+    
+    // Update label
+    const labelEl = document.getElementById('crypto-input-label');
+    if (labelEl) labelEl.textContent = crypto.toUpperCase();
+    
+    // Convert
+    convertCrypto();
+}
 
-        function convertCrypto() {
-            const input = parseFloat(document.getElementById('crypto-input').value) || 0;
-            const fiatValue = input * EXCHANGE_RATES[selectedCrypto];
-            
-            const usdInput = document.getElementById('usd-input');
-            if (usdInput && document.activeElement !== usdInput) {
-                usdInput.value = fiatValue.toFixed(2);
-            }
-            
-            const resultEl = document.getElementById('crypto-result');
-            if (resultEl) resultEl.textContent = fiatSymbol + fiatValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            
-            const rateEl = document.getElementById('crypto-rate');
-            if (rateEl) rateEl.textContent = `1 ${selectedCrypto.toUpperCase()} = ${fiatSymbol}${EXCHANGE_RATES[selectedCrypto].toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${selectedFiat}`;
-        }
+function convertCrypto() {
+    const input = parseFloat(document.getElementById('crypto-input').value) || 0;
+    const fiatValue = input * EXCHANGE_RATES[selectedCrypto];
+    
+    // ✅ FIXED: Target matched cleanly to your new dynamic accessibility input ID element
+    const fiatOutputField = document.getElementById('fiat-output-input');
+    if (fiatOutputField && document.activeElement !== fiatOutputField) {
+        fiatOutputField.value = fiatValue.toFixed(2);
+    }
+    
+    const resultEl = document.getElementById('crypto-result');
+    if (resultEl) resultEl.textContent = fiatSymbol + fiatValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    
+    const rateEl = document.getElementById('crypto-rate');
+    if (rateEl) rateEl.textContent = `1 ${selectedCrypto.toUpperCase()} = ${fiatSymbol}${EXCHANGE_RATES[selectedCrypto].toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${selectedFiat}`;
+}
 
-        function convertFromUSD() {
-            const fiatInput = parseFloat(document.getElementById('usd-input').value) || 0;
-            const cryptoValue = fiatInput / EXCHANGE_RATES[selectedCrypto];
-            
-            const cryptoInput = document.getElementById('crypto-input');
-            if (cryptoInput && document.activeElement !== cryptoInput) {
-                cryptoInput.value = cryptoValue.toFixed(8);
-            }
-            
-            const resultEl = document.getElementById('crypto-result');
-            if (resultEl) resultEl.textContent = fiatSymbol + fiatInput.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            
-            const rateEl = document.getElementById('crypto-rate');
-            if (rateEl) rateEl.textContent = `1 ${selectedCrypto.toUpperCase()} = ${fiatSymbol}${EXCHANGE_RATES[selectedCrypto].toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${selectedFiat}`;
-        }
+function convertFromUSD() {
+    // ✅ FIXED: Reads directly from your updated output field container cleanly
+    const fiatOutputField = document.getElementById('fiat-output-input');
+    if (!fiatOutputField) return;
+
+    const fiatInput = parseFloat(fiatOutputField.value) || 0;
+    const cryptoValue = fiatInput / EXCHANGE_RATES[selectedCrypto];
+    
+    const cryptoInput = document.getElementById('crypto-input');
+    if (cryptoInput && document.activeElement !== cryptoInput) {
+        cryptoInput.value = cryptoValue.toFixed(8);
+    }
+    
+    const resultEl = document.getElementById('crypto-result');
+    if (resultEl) resultEl.textContent = fiatSymbol + fiatInput.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    
+    const rateEl = document.getElementById('crypto-rate');
+    if (rateEl) rateEl.textContent = `1 ${selectedCrypto.toUpperCase()} = ${fiatSymbol}${EXCHANGE_RATES[selectedCrypto].toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${selectedFiat}`;
+}
 
     // ==============================
 // MORTGAGE & LOAN CALCULATOR (Fully Dynamic Currency Sync)
