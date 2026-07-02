@@ -286,25 +286,28 @@
     <div>
         <label for="crypto-input" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">You Send Crypto</label>
         <div class="relative">
-            <input type="number" id="crypto-input" value="1" min="0" step="0.00000001" 
+            <input type="number" id="crypto-input" value="1" min="0" step="0.00000001" placeholder="0.00"
                 class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white focus:outline-none"
                 oninput="convertCrypto()">
             <span id="crypto-input-label" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm sm:text-base">BTC</span>
         </div>
     </div>
     <div>
-        <!-- ✅ FIXED FOR ACCESSIBILITY: Matched label for to the clean flat ID name -->
-        <label for="fiat-output-input" id="fiat-input-label-text" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">You Receive (PKR)</label>
+        <!-- ✅ FIXED FOR DYNAMIC CONVERSION: Synced the label text dynamically using the global tracker span -->
+        <label for="fiat-output-input" id="fiat-input-label-text" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">
+            You Receive (<span class="universal-currency-label">Rs</span>)
+        </label>
         <div class="relative">
-            <!-- ✅ OPTIMIZED ID: Replaced static 'usd-input' with a generic 'fiat-output-input' to clear console loop blockages -->
-            <input type="number" id="fiat-output-input" 
+            <!-- ✅ OPTIMIZED ID: Keeps your precise 'fiat-output-input' attribute alive for smooth layout delivery -->
+            <input type="number" id="fiat-output-input" placeholder="0.00"
                 class="input-field w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold text-white focus:outline-none"
                 oninput="convertFromUSD()">
-            <span id="fiat-input-label" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm sm:text-base">PKR</span>
+            <!-- ✅ FIXED FOR DYNAMIC CONVERSION: Synced the suffix badge to adapt seamlessly to PKR, USD, EUR, etc. -->
+            <span id="fiat-input-label" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm sm:text-base universal-currency-label">Rs</span>
         </div>
     </div>
 </div>
-
+                        
                                                <!-- Result Display -->
                         <div class="result-card rounded-xl sm:rounded-2xl p-4 sm:p-6">
                             <p class="text-slate-400 text-xs sm:text-sm mb-2">Live Equivalent Conversion Result</p>
@@ -1038,13 +1041,19 @@ function onFiatChange() {
     }
 }
 
-// Helper function to update tool labels cleanly
+// Helper function to update tool labels cleanly (✅ Updated to handle dynamic inner HTML layout tags)
 function syncCryptoLabels() {
     const fiatInputLabelText = document.getElementById('fiat-input-label-text');
-    if (fiatInputLabelText) fiatInputLabelText.textContent = `You Receive (${selectedFiat})`;
+    if (fiatInputLabelText) {
+        // ✅ FIXED: Uses innerHTML so our dynamic helper text spans do not break when currency updates
+        fiatInputLabelText.innerHTML = `You Receive (<span class="universal-currency-label">${selectedFiat}</span>)`;
+    }
     
     const fiatInputLabel = document.getElementById('fiat-input-label');
-    if (fiatInputLabel) fiatInputLabel.textContent = selectedFiat;
+    if (fiatInputLabel) {
+        // Synchronizes the inline input field text suffix label box parameter
+        fiatInputLabel.textContent = selectedFiat;
+    }
 }
 
 // 3. ASYNC LIVE API FETCH (OPTIMIZED FOR SYNC ENGINE)
