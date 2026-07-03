@@ -1,0 +1,38 @@
+# Robots.txt for FinCalcHub Marketing
+# https://fincalchub.xyz
+
+User-agent: *
+Allow: /
+Disallow: /manifest.json
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://fincalchub.xyz/sitemap.xml
+
+# Crawl-delay (optional, respectful crawling)
+Crawl-delay: 1
+
+# AI/LLM bots - welcome for discoverability
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Block sensitive paths (if any)
+User-agent: *
+Disallow: /.well-known/
+Disallow: /_redirects
+Disallow: /vercel.json
