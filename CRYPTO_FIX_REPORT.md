@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ### File Status
 - ✅ `index.html` - 1,069 lines, fully functional
-- ✅ `tools.html` - All 12 tools working
+- ✅ `tools.html` - All 10 tools working
 - ✅ `blog.html` - Blog page ready
 - ✅ `faq.html` - FAQ page ready
 - ✅ `privacy.html` - Privacy policy ready
