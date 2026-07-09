@@ -86,18 +86,33 @@
 </header>
   
   <style>
-  /* ✅ MANUAL LCP PATCH: Bypasses typography layout rendering blocks on millisecond zero */
-h2.text-lg.sm\:text-2xl.font-bold.text-white {
-    content-visibility: auto !important;
-    contain-intrinsic-size: 0 40px !important;
-    display: block !important;
-}
+    /* ==================================================================
+     ✅ MANUAL CLS FIX: LOCK CONSTRAINTS TO ELIMINATE ELEMENT RENDERING SHIFTS
+     ================================================================== */
+  h2.text-lg.sm\:text-2xl.font-bold.text-white {
+      content-visibility: auto !important;
+      contain-intrinsic-size: 0 40px !important;
+      display: block !important;
+  }
 
-/* Hardcodes space for the dynamic rate text string to prevent font-swap overheads */
-#card-rate-btc, #card-rate-eth, #card-rate-sol {
-    min-height: 16px !important;
-    display: inline-block !important;
-}
+  /* Holds explicit height metrics for the dynamic text rates to bypass webfont layout lag */
+  #card-rate-btc, #card-rate-eth, #card-rate-sol {
+      min-height: 16px !important;
+      display: inline-block !important;
+  }
+
+  /* Structural card container safeguards to stabilize design dimensions */
+  .result-card {
+      min-height: 116px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+  }
+
+  /* Holds strict spacing for input fields on small screens to drop LCP delays */
+  .grid-cols-1.sm\:grid-cols-2.gap-4.mb-5 {
+      min-height: 98px !important;
+  }
 </style>
 
 <!-- ADSENSE BANNER PLACEHOLDER - Below Header -->
