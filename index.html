@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
 <title>FinCalcHub Marketing - Financial Calculator Suite | fincalchub.xyz</title>
 
-  <!-- Google tag (gtag.js) - Lazy 1.5s non-blocking load -->
+  <!-- Google tag (gtag.js) - Lazy 2s non-blocking load -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
@@ -20,7 +20,7 @@
         gtag('js', new Date());
         gtag('config', 'G-4LEKFYK37L');
       };
-    }, 1500);
+    }, 2000);
   });
 </script>
   
@@ -696,7 +696,7 @@
 
   <div class="bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden">
     <div class="p-4 border-b border-slate-700/50">
-      <h3 class="text-sm font-bold mb-3 flex items-center gap-2"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>System Info</h3>
+      <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>System Info</h3>
       <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 mb-2">
         <p class="text-[11px] text-slate-300"><b class="text-white">Live Crypto:</b> CoinGecko public API — real-time prices, auto-refresh every 30s.</p>
       </div>
@@ -708,7 +708,7 @@
   </div>
 
   <div class="bg-slate-800/50 rounded-2xl p-5 border border-slate-700/50" id="tipsBox">
-    <h3 class="text-sm font-bold mb-3 flex items-center gap-2">💡 Quick Tips</h3>
+    <h3 class="text-sm font-bold text-indigo-300 mb-3 flex items-center gap-2">💡 Quick Tips</h3>
     <div id="tips" class="space-y-2 text-[11px] text-slate-300">
       <p>💡 Rule of 72: divide 72 by your interest rate to estimate doubling time.</p>
       <p>💡 Starting early is the #1 factor in compound interest.</p>
@@ -717,7 +717,7 @@
   </div>
 
   <div class="bg-slate-800/50 rounded-2xl p-5 border border-slate-700/50">
-    <h3 class="text-sm font-bold mb-3 flex items-center gap-2">📲 Install App</h3>
+    <h3 class="text-sm font-bold text-emerald-400 mb-3 flex items-center gap-2">📲 Install App</h3>
     <p class="text-[11px] text-slate-400 mb-3">Add FinCalcHub to your home screen for instant access.</p>
     <button id="installBtn" onclick="installApp()" class="hidden w-full px-4 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-sm cursor-pointer transition">Install FinCalcHub</button>
     <p class="text-[10px] text-slate-300" id="installHint">Use browser menu → "Add to Home Screen"</p>
@@ -754,8 +754,7 @@
   <a href="mailto:believerbk4@gmail.com?subject=FinCalcHub%20Marketing%20Feedback" aria-label="Feedback" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all bg-gradient-to-br from-indigo-500 to-indigo-700" style="box-shadow:0 4px 20px rgba(99,102,241,.4)"><svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
 </div>
 
-<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js" defer></script>
-<script defer src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+<!-- jsPDF and SheetJS are loaded on-demand when user clicks export — not during startup -->
 
 <!-- ================== JAVASCRIPT ================== -->
 <script>
@@ -1474,36 +1473,54 @@ function gatherToolData(toolId) {
   return { inputs, outputs };
 }
 
+// Lazy script loader — returns a promise that resolves once the CDN lib is ready
+function _loadScript(src, readyCheck) {
+  return new Promise((resolve, reject) => {
+    if (readyCheck()) { resolve(); return; }
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error('Failed to load: ' + src));
+    document.body.appendChild(s);
+  });
+}
+
 function exportToolToPDF(toolName, inputs, outputs) {
-  if (!window.jspdf) { alert('PDF export unavailable — please check your internet connection.'); return; }
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  const ts = new Date().toISOString().slice(0, 16).replace('T', ' ');
-  doc.setFontSize(16); doc.setFont('helvetica', 'bold');
-  doc.text(toolName, 15, 20);
-  doc.setFontSize(9); doc.setFont('helvetica', 'normal');
-  doc.text(ts, 195, 20, { align: 'right' });
-  doc.setDrawColor(99, 102, 241); doc.line(15, 25, 195, 25);
-  doc.setFontSize(11); doc.setFont('helvetica', 'bold');
-  doc.text('Input Variables', 15, 34); doc.text('Financial Outputs', 110, 34);
-  doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
-  let y = 42;
-  const inArr = Object.entries(inputs), outArr = Object.entries(outputs);
-  const rows = Math.max(inArr.length, outArr.length);
-  for (let i = 0; i < rows; i++) {
-    if (inArr[i]) { doc.setTextColor(150, 150, 150); doc.text(String(inArr[i][0]).slice(0,32), 15, y); doc.setTextColor(0,0,0); doc.text(String(inArr[i][1]).slice(0,28), 65, y); }
-    if (outArr[i]) { doc.setTextColor(150, 150, 150); doc.text(String(outArr[i][0]).slice(0,25), 110, y); doc.setTextColor(0,0,0); doc.text(String(outArr[i][1]).slice(0,25), 155, y); }
-    y += 8;
-    if (y > 270) { doc.addPage(); y = 20; }
-  }
-  doc.setFontSize(8); doc.setTextColor(120,120,120);
-  doc.text('Generated privately via FinCalcHub.xyz. No data was transmitted or saved on a server.', 105, 285, { align: 'center' });
-  doc.save(toolName.replace(/\s+/g,'-').toLowerCase() + '-report.pdf');
+  _loadScript(
+    'https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js',
+    () => !!(window.jspdf && window.jspdf.jsPDF)
+  ).then(() => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const ts = new Date().toISOString().slice(0, 16).replace('T', ' ');
+    doc.setFontSize(16); doc.setFont('helvetica', 'bold');
+    doc.text('FINCALCHUB PRO OPERATIONAL REPORT', 105, 14, { align: 'center' });
+    doc.setFontSize(11); doc.setFont('helvetica', 'bold');
+    doc.text(toolName, 15, 22);
+    doc.setFontSize(9); doc.setFont('helvetica', 'normal');
+    doc.text(ts, 195, 22, { align: 'right' });
+    doc.setDrawColor(99, 102, 241); doc.line(15, 26, 195, 26);
+    doc.setFontSize(11); doc.setFont('helvetica', 'bold');
+    doc.text('Input Variables', 15, 35); doc.text('Financial Outputs', 110, 35);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
+    let y = 43;
+    const inArr = Object.entries(inputs), outArr = Object.entries(outputs);
+    const rows = Math.max(inArr.length, outArr.length);
+    for (let i = 0; i < rows; i++) {
+      if (inArr[i]) { doc.setTextColor(150,150,150); doc.text(String(inArr[i][0]).slice(0,32), 15, y); doc.setTextColor(0,0,0); doc.text(String(inArr[i][1]).slice(0,28), 65, y); }
+      if (outArr[i]) { doc.setTextColor(150,150,150); doc.text(String(outArr[i][0]).slice(0,25), 110, y); doc.setTextColor(0,0,0); doc.text(String(outArr[i][1]).slice(0,25), 155, y); }
+      y += 8;
+      if (y > 270) { doc.addPage(); y = 20; }
+    }
+    doc.setFontSize(8); doc.setTextColor(120,120,120);
+    doc.text('Generated privately via FinCalcHub.xyz. No data was transmitted or saved on a server.', 105, 285, { align: 'center' });
+    doc.save(toolName.replace(/\s+/g,'-').toLowerCase() + '-report.pdf');
+  }).catch(() => alert('PDF export unavailable — please check your internet connection.'));
 }
 
 function exportToolToCSV(toolName, inputs, outputs) {
   const ts = new Date().toISOString().slice(0, 16).replace('T', ' ');
-  const lines = ['# ' + toolName + ' Export - ' + ts, '# Inputs', 'Field,Value'];
+  const lines = ['# FINCALCHUB PRO OPERATIONAL REPORT', '# ' + toolName + ' — ' + ts, '# Inputs', 'Field,Value'];
   Object.entries(inputs).forEach(([k, v]) => lines.push('"' + k.replace(/"/g,'""') + '","' + String(v).replace(/"/g,'""') + '"'));
   lines.push('', '# Outputs', 'Field,Value');
   Object.entries(outputs).forEach(([k, v]) => lines.push('"' + k.replace(/"/g,'""') + '","' + String(v).replace(/"/g,'""') + '"'));
@@ -1514,19 +1531,26 @@ function exportToolToCSV(toolName, inputs, outputs) {
 }
 
 function exportToolToXLSX(toolName, inputs, outputs) {
-  if (!window.XLSX) { alert('Export unavailable — please check your internet connection.'); return; }
-  const toRows = obj => [['Field', 'Value'], ...Object.entries(obj)];
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(toRows(inputs)), 'Inputs');
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(toRows(outputs)), 'Outputs');
-  XLSX.writeFile(wb, toolName.replace(/\s+/g,'-').toLowerCase() + '-data.xlsx');
+  _loadScript(
+    'https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js',
+    () => !!window.XLSX
+  ).then(() => {
+    const toRows = obj => [['Field', 'Value'], ...Object.entries(obj)];
+    const wb = XLSX.utils.book_new();
+    const headerRow = [['FINCALCHUB PRO OPERATIONAL REPORT'], [toolName], []];
+    const inputSheet = XLSX.utils.aoa_to_sheet([...headerRow, ['Field', 'Value'], ...Object.entries(inputs)]);
+    const outputSheet = XLSX.utils.aoa_to_sheet([...headerRow, ['Field', 'Value'], ...Object.entries(outputs)]);
+    XLSX.utils.book_append_sheet(wb, inputSheet, 'Inputs');
+    XLSX.utils.book_append_sheet(wb, outputSheet, 'Outputs');
+    XLSX.writeFile(wb, toolName.replace(/\s+/g,'-').toLowerCase() + '-data.xlsx');
+  }).catch(() => alert('XLSX export unavailable — please check your internet connection.'));
 }
 
 const TOOL_LABELS = { crypto:'Crypto Converter', roas:'RoAS Planner', invoice:'Invoice Tracker', abtest:'A/B Split Test', compound:'Compound Interest', sip:'SIP Planner', tax:'Income Tax', savings:'Savings Goal', retirement:'Retirement', profit:'Profit Margin', freelancer:'Freelancer Rate', saas:'SaaS Metrics', ecom:'E-Commerce Profit' };
 
 function downloadPDF(toolId) { const { inputs, outputs } = gatherToolData(toolId); exportToolToPDF(TOOL_LABELS[toolId] || toolId, inputs, outputs); }
 function downloadCSV(toolId) { const { inputs, outputs } = gatherToolData(toolId); exportToolToCSV(TOOL_LABELS[toolId] || toolId, inputs, outputs); }
-function downloadXLSX(toolId) { if (!window.XLSX) { alert('Export unavailable — please check your internet connection.'); return; } const { inputs, outputs } = gatherToolData(toolId); exportToolToXLSX(TOOL_LABELS[toolId] || toolId, inputs, outputs); }
+function downloadXLSX(toolId) { const { inputs, outputs } = gatherToolData(toolId); exportToolToXLSX(TOOL_LABELS[toolId] || toolId, inputs, outputs); }
 </script>
 </body>
 </html>
