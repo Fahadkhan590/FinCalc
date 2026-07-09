@@ -5,24 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
 <title>FinCalcHub Marketing - Financial Calculator Suite | fincalchub.xyz</title>
 
-  <!-- Google tag (gtag.js) - Lazy 2s non-blocking load -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      var s = document.createElement('script');
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4LEKFYK37L';
-      s.async = true;
-      document.head.appendChild(s);
-      s.onload = function() {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-4LEKFYK37L');
-      };
-    }, 2000);
-  });
-</script>
+  <!-- Google tag (gtag.js) - loaded lazily after window load, see main script block -->
   
 <meta name="description" content="FinCalcHub Marketing — professional financial calculators: live crypto converter (CoinGecko API), compound interest, SIP, income tax, savings goal, retirement, profit margin, freelancer rate, SaaS CAC/LTV, e-commerce profit.">
 <meta name="keywords" content="financial calculator, crypto converter, compound interest, SIP, Pakistan tax, retirement planner, freelancer calculator, SaaS metrics, e-commerce profit, fincalchub">
@@ -1252,6 +1235,16 @@ window.addEventListener('beforeinstallprompt',e=>{
   const h=document.getElementById('installHint');
   if(h)h.textContent='Tap below to install →';
 });
+
+// Wire the installHint element directly as a click target in addition to the button
+document.addEventListener('DOMContentLoaded',()=>{
+  const hint=document.getElementById('installHint');
+  if(hint){
+    hint.style.cursor='pointer';
+    hint.addEventListener('click',()=>installApp());
+  }
+});
+
 function installApp(){
   if(window.deferredPrompt){
     window.deferredPrompt.prompt();
@@ -1440,14 +1433,38 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Restore session before calculations
   restoreSession();
 
-  // Run all calculators with restored values
+  // Run all calculators with restored values — synchronous, zero network cost
   triggerAllActiveCalculators();
+
+  // Paint UI immediately using local fallback rates (already populated by initFallbackRates)
   renderCrypto();
-  fetchCrypto().catch(()=>{});
-  startAutoRefresh();
 
   // Bind session listeners after DOM ready
   bindSessionListeners();
+
+  // Defer live CoinGecko network request — fires 1.5s after layout is fully responsive
+  setTimeout(()=>{
+    fetchCrypto().catch(()=>{});
+    startAutoRefresh();
+  }, 1500);
+});
+
+// GTM: injected only after the full page load is complete + 3.5s idle buffer
+// This removes GTM entirely from the critical render path and eliminates the long main-thread task
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    const s=document.createElement('script');
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-4LEKFYK37L';
+    s.async=true;
+    document.head.appendChild(s);
+    s.onload=function(){
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag=gtag;
+      gtag('js',new Date());
+      gtag('config','G-4LEKFYK37L');
+    };
+  },3500);
 });
 
 // Close menus on outside click

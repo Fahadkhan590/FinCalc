@@ -7,9 +7,9 @@
 <meta name="theme-color" content="#1e293b">
 <link rel="manifest" href="manifest.json">
 
-<!-- Google Tag Manager - Lazy 1.5s non-blocking load -->
+<!-- Google Tag Manager - Lazy 3.5s post-load injection -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  window.addEventListener('load', function() {
     setTimeout(function() {
       var s = document.createElement('script');
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4LEKFYK37L';
@@ -22,7 +22,7 @@
         gtag('js', new Date());
         gtag('config', 'G-4LEKFYK37L');
       };
-    }, 1500);
+    }, 3500);
   });
 </script>
 
