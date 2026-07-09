@@ -2,14 +2,14 @@
 
 ## Introduction
 
-FinCalcHub Enhancement Project adds multiple modules of improvements to the existing pure client-side, single-file HTML financial calculator suite (`index.html` with 13 tools, `tools.html` with 10 tools). All enhancements must work without any backend, npm, or build step. The stack is vanilla JavaScript, HTML5, and inlined Tailwind CSS v4, with external libraries loaded via CDN only.
+FinCalcHub Enhancement Project adds multiple modules of improvements to the existing pure client-side, single-file HTML financial calculator suite (`index.html` with 13 tools (10 existing + 3 new: RoAS Planner, Invoice Tracker, A/B Test Engine), `tools.html` with 10 tools). All enhancements must work without any backend, npm, or build step. The stack is vanilla JavaScript, HTML5, and inlined Tailwind CSS v4, with external libraries loaded via CDN only.
 
 The eight modules are:
 1. **Client-Side Persistence & Universal PDF Engine** — localStorage history sidebar and jsPDF export for every tool
 2. **Core Calculator Upgrades** — SaaS ARPU display, E-Com LTV/CAC fields, Income Tax regional dropdown
 3. **Trust & Transparency UI** — Formula accordions per tool and a sticky privacy badge
 4. **Look & Feel (UI/UX)** — Emoji headers and responsive mobile grid fixes
-5. **Three New High-Retention Tools** — RoAS Planner, Invoice Tracker, A/B Test Engine (inserted at tab positions 2, 3, 4 in `index.html`)
+5. **Three New High-Retention Tools (RoAS Planner, Invoice Tracker, A/B Test Engine)** — inserted at tab positions 2, 3, 4 in `index.html`
 6. **SessionStorage Input Persistence Engine** — auto-save and restore all input values across page refreshes within the same browser session
 7. **PWA Install Banner Refinement & Crypto Fetch Crash Recovery** — dismissible install banner on `beforeinstallprompt` and graceful fallback to cached rates on API failure
 8. **Content Page Navigation Sync** — updated header navigation and PWA manifest links in `faq.html`, `privacy.html`, and `terms.html`
@@ -335,19 +335,19 @@ The eight modules are:
 #### Acceptance Criteria
 
 1. THE `index.html` tab bar SHALL display exactly 13 tools in this order:
-   1. ₿ Crypto Converter
-   2. 📊 Daily Media Buyer RoAS Planner (new)
-   3. 📝 Client Invoice Hours & Bench Tracker (new)
-   4. 💥 A/B Split-Test Significance Engine (new)
-   5. 📈 Compound Interest Tool
-   6. 💰 SIP Calculator
-   7. 🏛️ Income Tax Estimator
-   8. 🎯 Savings Planner
-   9. 🏖️ Retirement Suite
-   10. 💹 Margin/Markup Tool
-   11. 💼 Freelancer Rate Calculator
-   12. 🚀 SaaS CAC/LTV Engine
-   13. 🛒 E-Com Profit Calculator
+   1. ₿ Crypto Converter (existing, `id="crypto"`)
+   2. 📊 Daily Media Buyer RoAS Planner (NEW, `id="roas"`)
+   3. 📝 Client Invoice Hours & Bench Tracker (NEW, `id="invoice"`)
+   4. 💥 A/B Split-Test Significance Engine (NEW, `id="abtest"`)
+   5. 📈 Compound Interest Tool (`id="compound"`)
+   6. 💰 SIP Calculator (`id="sip"`)
+   7. 🏛️ Income Tax Estimator (`id="tax"`)
+   8. 🎯 Savings Planner (`id="savings"`)
+   9. 🏖️ Retirement Suite (`id="retirement"`)
+   10. 💹 Margin/Markup Tool (`id="profit"`)
+   11. 💼 Freelancer Rate Calculator (`id="freelancer"`)
+   12. 🚀 SaaS CAC/LTV Engine (`id="saas"`)
+   13. 🛒 E-Com Profit Calculator (`id="ecom"`)
 2. EACH new tool's tab button SHALL display its emoji and a short label: "RoAS" for the planner, "Invoice" for the tracker, "A/B Test" for the significance engine.
 3. THE `switchTab()` function SHALL be updated to include the three new tool IDs: `roas`, `invoice`, `abtest`.
 4. THE `recalcAll()` function SHALL be updated to include calls to `calcRoAS()`, `calcInvoice()`, and `calcABTest()`.
@@ -493,3 +493,18 @@ The eight modules are:
 1. THE `faq.html`, `privacy.html`, and `terms.html` files SHALL have their header navigation link lists (or tool dropdown menus, if present) updated to include links or references to all 13 tools, including the 3 new tools (RoAS Planner, Invoice Tracker, A/B Test Engine).
 2. THE 6 accessibility color contrast tweaks defined in Requirement 18 SHALL also be applied to `faq.html`, `privacy.html`, and `terms.html` wherever the same CSS class patterns appear.
 3. THE PWA manifest link in `faq.html`, `privacy.html`, and `terms.html` SHALL use the absolute path `/manifest.json` (not the relative `manifest.json`) consistent with Requirement 19.1.
+
+---
+
+### Requirement 28: Existing Implementation Preservation
+
+**User Story:** As the project owner, I want all already-implemented features to continue working correctly as new tools are added.
+
+#### Acceptance Criteria
+
+1. THE App SHALL preserve the existing `gatherToolData()`, `exportToolToPDF()`, `exportToolToCSV()`, `exportToolToXLSX()` export functions and their wiring to the three-button export groups already present on all 10 existing tools.
+2. THE existing jsPDF CDN tag (`https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js`) and SheetJS CDN tag (`https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js`) already present in `index.html` SHALL be preserved.
+3. THE existing TOOL_LABELS map SHALL be extended with three new entries: `roas`, `invoice`, and `abtest` mapped to their display names.
+4. THE three new tools' `downloadPDF`, `downloadCSV`, and `downloadXLSX` dispatcher calls SHALL use the same `gatherToolData()` pattern already established for the 10 existing tools.
+5. THE existing GTM `window.addEventListener('load', ...)` wrapper already present in `index.html` SHALL be preserved.
+6. THE existing accessibility contrast fixes already applied to `index.html` (`text-slate-50` on body, `bg-slate-950/80` on system info strip, `text-slate-300` on installHint) SHALL be preserved.

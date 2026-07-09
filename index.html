@@ -5,14 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
 <title>FinCalcHub Marketing - Financial Calculator Suite | fincalchub.xyz</title>
 
-  <!-- Google tag (gtag.js) - Defer Optimized Tracker -->
-<script src="https://www.googletagmanager.com/gtag/js?id=G-4LEKFYK37L" defer></script>
+  <!-- Google tag (gtag.js) - Lazy 1.5s non-blocking load -->
 <script>
-  window.addEventListener('load', function() {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4LEKFYK37L');
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4LEKFYK37L';
+      s.async = true;
+      document.head.appendChild(s);
+      s.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-4LEKFYK37L');
+      };
+    }, 1500);
   });
 </script>
   
@@ -80,14 +88,14 @@
         </button>
         <div id="curMenu" class="hidden absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-xl bg-slate-900 border border-slate-700/60 shadow-2xl overflow-hidden">
           <div class="py-1.5 max-h-72 overflow-y-auto custom-scrollbar">
-            <button onclick="setCurrency('USD','$')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>US <b class="text-slate-400">USD</b></span><span class="text-slate-500">$</span></button>
-            <button onclick="setCurrency('EUR','€')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>EU <b class="text-slate-400">EUR</b></span><span class="text-slate-500">€</span></button>
-            <button onclick="setCurrency('GBP','£')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>UK <b class="text-slate-400">GBP</b></span><span class="text-slate-500">£</span></button>
-            <button onclick="setCurrency('PKR','Rs')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>PK <b class="text-slate-400">PKR</b></span><span class="text-slate-500">Rs</span></button>
-            <button onclick="setCurrency('INR','₹')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>IN <b class="text-slate-400">INR</b></span><span class="text-slate-500">₹</span></button>
-            <button onclick="setCurrency('AED','د.إ')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>AE <b class="text-slate-400">AED</b></span><span class="text-slate-500">د.إ</span></button>
-            <button onclick="setCurrency('CAD','$')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>CA <b class="text-slate-400">CAD</b></span><span class="text-slate-500">$</span></button>
-            <button onclick="setCurrency('AUD','$')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>AU <b class="text-slate-400">AUD</b></span><span class="text-slate-500">$</span></button>
+            <button onclick="setCurrency('USD','$')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>US <b class="text-slate-400">USD</b></span><span class="text-slate-300">$</span></button>
+            <button onclick="setCurrency('EUR','€')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>EU <b class="text-slate-400">EUR</b></span><span class="text-slate-300">€</span></button>
+            <button onclick="setCurrency('GBP','£')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>UK <b class="text-slate-400">GBP</b></span><span class="text-slate-300">£</span></button>
+            <button onclick="setCurrency('PKR','Rs')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>PK <b class="text-slate-400">PKR</b></span><span class="text-slate-300">Rs</span></button>
+            <button onclick="setCurrency('INR','₹')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>IN <b class="text-slate-400">INR</b></span><span class="text-slate-300">₹</span></button>
+            <button onclick="setCurrency('AED','د.إ')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>AE <b class="text-slate-400">AED</b></span><span class="text-slate-300">د.إ</span></button>
+            <button onclick="setCurrency('CAD','$')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>CA <b class="text-slate-400">CAD</b></span><span class="text-slate-300">$</span></button>
+            <button onclick="setCurrency('AUD','$')" class="w-full flex justify-between px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white text-left"><span>AU <b class="text-slate-400">AUD</b></span><span class="text-slate-300">$</span></button>
           </div>
         </div>
       </div>
@@ -98,7 +106,7 @@
 <!-- ADSENSE BANNER PLACEHOLDER - Below Header -->
 <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
     <div class="w-full overflow-x-hidden select-none py-1">
-        <div class="placeholder-box rounded-xl p-6 text-center text-slate-500 text-sm w-full bg-slate-800/40 border border-slate-700/30 flex flex-col items-center justify-center min-h-[90px]">
+        <div class="placeholder-box rounded-xl p-6 text-center text-slate-300 text-sm w-full bg-slate-800/40 border border-slate-700/30 flex flex-col items-center justify-center min-h-[90px]">
             <svg class="w-8 h-8 mx-auto mb-2 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
@@ -113,6 +121,9 @@
   <div class="tabs-scroll">
     <div class="flex gap-1.5 p-1.5 bg-slate-800/60 rounded-2xl border border-slate-700/30 min-w-max">
       <button onclick="switchTab('crypto')" id="tab-crypto" class="tab-btn tab-active flex-shrink-0 min-w-[95px] px-3 py-2.5 rounded-xl font-semibold transition text-xs sm:text-sm flex items-center justify-center gap-1.5"><span class="text-base">₿</span><span>Crypto</span></button>
+      <button onclick="switchTab('roas')" id="tab-roas" class="tab-btn flex-shrink-0 min-w-[95px] px-3 py-2.5 rounded-xl font-semibold transition text-xs sm:text-sm text-slate-400 hover:text-white flex items-center justify-center gap-1.5"><span>📊</span><span>RoAS</span></button>
+      <button onclick="switchTab('invoice')" id="tab-invoice" class="tab-btn flex-shrink-0 min-w-[95px] px-3 py-2.5 rounded-xl font-semibold transition text-xs sm:text-sm text-slate-400 hover:text-white flex items-center justify-center gap-1.5"><span>📝</span><span>Invoice</span></button>
+      <button onclick="switchTab('abtest')" id="tab-abtest" class="tab-btn flex-shrink-0 min-w-[95px] px-3 py-2.5 rounded-xl font-semibold transition text-xs sm:text-sm text-slate-400 hover:text-white flex items-center justify-center gap-1.5"><span>💥</span><span>A/B Test</span></button>
       <button onclick="switchTab('compound')" id="tab-compound" class="tab-btn flex-shrink-0 min-w-[95px] px-3 py-2.5 rounded-xl font-semibold transition text-xs sm:text-sm text-slate-400 hover:text-white flex items-center justify-center gap-1.5"><span>📈</span><span>Compound</span></button>
       <button onclick="switchTab('sip')" id="tab-sip" class="tab-btn flex-shrink-0 min-w-[95px] px-3 py-2.5 rounded-xl font-semibold transition text-xs sm:text-sm text-slate-400 hover:text-white flex items-center justify-center gap-1.5"><span>💰</span><span>SIP</span></button>
       <button onclick="switchTab('tax')" id="tab-tax" class="tab-btn flex-shrink-0 min-w-[95px] px-3 py-2.5 rounded-xl font-semibold transition text-xs sm:text-sm text-slate-400 hover:text-white flex items-center justify-center gap-1.5"><span>🏛️</span><span>Income Tax</span></button>
@@ -137,7 +148,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
       <div class="min-w-0">
         <h2 class="text-lg sm:text-2xl font-bold text-white break-words">Real-Time Crypto & Fiat Converter</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-1">Live market rates via CoinGecko API</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1">Live market rates via CoinGecko API</p>
       </div>
       <div class="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full text-xs text-emerald-400 self-start sm:self-auto flex-shrink-0">
         <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
@@ -205,14 +216,14 @@
     <!-- Inputs -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
       <div>
-        <label for="cryptoIn" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">You Send (Crypto)</label>
+        <label for="cryptoIn" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">You Send (Crypto)</label>
         <div class="relative">
           <input type="number" id="cryptoIn" value="1" min="0" step="0.00000001" inputmode="decimal" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white pr-16" oninput="cryptoFromCrypto()">
           <span id="cryptoInLabel" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm">BTC</span>
         </div>
       </div>
       <div>
-        <label for="fiatOut" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">You Receive (<span id="fiatLabel">USD</span>)</label>
+        <label for="fiatOut" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">You Receive (<span id="fiatLabel">USD</span>)</label>
         <div class="relative">
           <input type="number" id="fiatOut" inputmode="decimal" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white pr-16" oninput="cryptoFromFiat()">
           <span id="fiatOutLabel" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-sm">$</span>
@@ -225,7 +236,7 @@
       <p class="text-slate-400 text-xs sm:text-sm mb-2">Live Equivalent Conversion</p>
       <p class="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-400 glow-emerald num-break" id="cryptoResult">—</p>
       <p class="text-slate-400 mt-2 text-xs sm:text-sm break-words" id="cryptoRate">—</p>
-      <p class="text-slate-500 text-[10px] mt-1" id="cryptoUpdated">—</p>
+      <p class="text-slate-300 text-[10px] mt-1" id="cryptoUpdated">—</p>
     </div>
 
     <!-- Live table -->
@@ -258,9 +269,8 @@
     </div>
   </div>
 
-  <!-- Description -->
   <div class="tool-desc rounded-xl p-4 mt-3">
-    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed"><b class="text-white">💡 What this tool does:</b> Converts cryptocurrency amounts (Bitcoin, Ethereum, Solana) to 8 fiat currencies using <b class="text-indigo-300">live CoinGecko API rates</b>. Prices update every 30 seconds. 24h change indicators show market direction. Works fully offline with fallback rates if the API is unavailable.</p>
+    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed"><b class="text-white">💡 What this tool does:</b> Converts cryptocurrency amounts (Bitcoin, Ethereum, Solana) to 8 fiat currencies using <b class="text-indigo-300">live CoinGecko API rates</b>. Convert live digital asset prices against global fiat currency benchmarks seamlessly. Prices update every 30 seconds. Works fully offline with fallback rates if the API is unavailable.</p>
   </div>
   <div class="flex gap-2 mt-3">
     <button onclick="downloadPDF('crypto')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 transition cursor-pointer">📄 PDF</button>
@@ -269,22 +279,136 @@
   </div>
 </div>
 
-<!-- ===== 2. COMPOUND INTEREST ===== -->
+<!-- ===== 2. DAILY MEDIA BUYER ROAS PLANNER ===== -->
+<div id="roas" class="tab-content w-full">
+  <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
+    <h2 class="text-lg sm:text-2xl font-bold text-white">📊 Daily Media Buyer RoAS Planner</h2>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Calculate real-time Return on Ad Spend (RoAS), track break-even margins, and monitor daily campaign spending vs revenue fluctuations</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <div><label for="roas-rev" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Total Revenue (<span class="cur">$</span>)</label><input type="number" id="roas-rev" value="50000" min="0" step="100" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcRoAS()"></div>
+      <div><label for="roas-spend" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Total Ad Spend (<span class="cur">$</span>)</label><input type="number" id="roas-spend" value="10000" min="0" step="100" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcRoAS()"></div>
+      <div><label for="roas-margin" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Gross Margin (%)</label><input type="number" id="roas-margin" value="40" min="1" max="100" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRoAS()"></div>
+      <div><label for="roas-days" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Campaign Duration (Days)</label><input type="number" id="roas-days" value="30" min="1" max="365" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRoAS()"></div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">Active RoAS</p><p class="text-xl sm:text-3xl font-bold text-emerald-400 glow-emerald" id="roas-active">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">Break-Even RoAS</p><p class="text-xl sm:text-3xl font-bold text-amber-400" id="roas-breakeven">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">Net Profit</p><p class="text-xl sm:text-3xl font-bold num-break" id="roas-profit">—</p></div>
+    </div>
+    <div class="grid grid-cols-2 gap-3 mb-4">
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Daily Ad Spend</p><p class="text-lg sm:text-2xl font-bold text-indigo-400 num-break" id="roas-dailyspend">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Daily Revenue</p><p class="text-lg sm:text-2xl font-bold text-purple-400 num-break" id="roas-dailyrev">—</p></div>
+    </div>
+    <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-700/50">
+      <p class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">RoAS Status Indicator</p>
+      <div id="roas-status-card" class="rounded-xl p-4 text-center font-bold text-lg">—</div>
+    </div>
+  </div>
+  <div class="tool-desc rounded-xl p-4 mt-3"><p class="text-xs sm:text-sm text-slate-300 leading-relaxed"><b class="text-white">💡 What this tool does:</b> Calculates your active RoAS (Revenue ÷ Ad Spend), break-even RoAS (1 ÷ Gross Margin %), and net profit. Use it daily to track if campaigns are profitable, at break-even, or burning cash.</p></div>
+  <div class="flex gap-2 mt-3">
+    <button onclick="downloadPDF('roas')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 transition cursor-pointer">📄 PDF</button>
+    <button onclick="downloadCSV('roas')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition cursor-pointer">📊 CSV</button>
+    <button onclick="downloadXLSX('roas')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 transition cursor-pointer">📗 XLSX</button>
+  </div>
+</div>
+
+<!-- ===== 3. CLIENT INVOICE HOURS & BENCH TRACKER ===== -->
+<div id="invoice" class="tab-content w-full">
+  <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
+    <h2 class="text-lg sm:text-2xl font-bold text-white">📝 Client Invoice Hours & Bench Tracker</h2>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Log daily billable hours, project upcoming invoice totals, and track month-to-date freelance earnings cuts cleanly</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <div><label for="inv-rate" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Hourly Rate (<span class="cur">$</span>)</label><input type="number" id="inv-rate" value="50" min="0" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcInvoice()"></div>
+      <div><label for="inv-hours" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Hours Logged</label><input type="number" id="inv-hours" value="80" min="0" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcInvoice()"></div>
+      <div><label for="inv-fee" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Platform Fee (%)</label><input type="number" id="inv-fee" value="20" min="0" max="50" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcInvoice()"></div>
+      <div><label for="inv-tax" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Tax / Withholding (%)</label><input type="number" id="inv-tax" value="5" min="0" max="50" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcInvoice()"></div>
+    </div>
+    <div class="result-card rounded-xl p-5 mb-4"><p class="text-slate-300 text-xs sm:text-sm mb-2">Net Earnings</p><p class="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-400 glow-emerald num-break" id="inv-net">—</p></div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+      <div class="bg-slate-700/30 rounded-xl p-4 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-1">Gross Invoice</p><p class="text-lg sm:text-2xl font-bold text-white num-break" id="inv-gross">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-1">Platform Cut</p><p class="text-lg sm:text-2xl font-bold text-rose-400 num-break" id="inv-platformcut">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-1">Tax Withheld</p><p class="text-lg sm:text-2xl font-bold text-amber-400 num-break" id="inv-taxcut">—</p></div>
+    </div>
+    <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-700/50">
+      <p class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Earnings Breakdown</p>
+      <div class="relative h-6 bg-slate-600/50 rounded-full overflow-hidden flex">
+        <div id="inv-bar1" class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all" style="width:75%"></div>
+        <div id="inv-bar2" class="h-full bg-gradient-to-r from-rose-500 to-rose-400 transition-all" style="width:15%"></div>
+        <div id="inv-bar3" class="h-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all" style="width:10%"></div>
+      </div>
+      <div class="flex flex-wrap justify-between mt-3 text-xs gap-2">
+        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span><span class="text-slate-300">Net <b class="text-white" id="inv-p1">0%</b></span></div>
+        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-rose-500 rounded-full"></span><span class="text-slate-300">Platform <b class="text-white" id="inv-p2">0%</b></span></div>
+        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span><span class="text-slate-300">Tax <b class="text-white" id="inv-p3">0%</b></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="tool-desc rounded-xl p-4 mt-3"><p class="text-xs sm:text-sm text-slate-300 leading-relaxed"><b class="text-white">💡 What this tool does:</b> Calculates Gross Invoice (Rate × Hours), deducts platform fees (Upwork, Fiverr, etc.) and tax withholding to reveal your true net earnings. Use it before sending any invoice to know exactly what lands in your account.</p></div>
+  <div class="flex gap-2 mt-3">
+    <button onclick="downloadPDF('invoice')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 transition cursor-pointer">📄 PDF</button>
+    <button onclick="downloadCSV('invoice')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition cursor-pointer">📊 CSV</button>
+    <button onclick="downloadXLSX('invoice')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 transition cursor-pointer">📗 XLSX</button>
+  </div>
+</div>
+
+<!-- ===== 4. A/B SPLIT-TEST SIGNIFICANCE ENGINE ===== -->
+<div id="abtest" class="tab-content w-full">
+  <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
+    <h2 class="text-lg sm:text-2xl font-bold text-white">💥 A/B Split-Test Significance Engine</h2>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Compare data variations across performance funnels to calculate statistical confidence and verify metric changes</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+      <div class="bg-slate-900/60 rounded-xl p-4 border border-indigo-500/30">
+        <p class="text-indigo-300 font-bold text-sm mb-3">Version A (Control)</p>
+        <div class="space-y-3">
+          <div><label for="ab-va" class="block text-xs font-medium text-slate-300 mb-1">Visitors</label><input type="number" id="ab-va" value="5000" min="1" step="1" class="input-field w-full px-3 py-2.5 rounded-xl text-base font-bold text-white" oninput="calcAB()"></div>
+          <div><label for="ab-ca" class="block text-xs font-medium text-slate-300 mb-1">Conversions</label><input type="number" id="ab-ca" value="200" min="0" step="1" class="input-field w-full px-3 py-2.5 rounded-xl text-base font-bold text-white" oninput="calcAB()"></div>
+          <div class="bg-slate-800/60 rounded-lg p-3"><p class="text-xs text-slate-300">Conv. Rate: <span class="text-indigo-300 font-bold" id="ab-ratea">—</span></p></div>
+        </div>
+      </div>
+      <div class="bg-slate-900/60 rounded-xl p-4 border border-purple-500/30">
+        <p class="text-purple-300 font-bold text-sm mb-3">Version B (Variant)</p>
+        <div class="space-y-3">
+          <div><label for="ab-vb" class="block text-xs font-medium text-slate-300 mb-1">Visitors</label><input type="number" id="ab-vb" value="5000" min="1" step="1" class="input-field w-full px-3 py-2.5 rounded-xl text-base font-bold text-white" oninput="calcAB()"></div>
+          <div><label for="ab-cb" class="block text-xs font-medium text-slate-300 mb-1">Conversions</label><input type="number" id="ab-cb" value="250" min="0" step="1" class="input-field w-full px-3 py-2.5 rounded-xl text-base font-bold text-white" oninput="calcAB()"></div>
+          <div class="bg-slate-800/60 rounded-lg p-3"><p class="text-xs text-slate-300">Conv. Rate: <span class="text-purple-300 font-bold" id="ab-rateb">—</span></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="result-card rounded-xl p-5 mb-4 text-center">
+      <p class="text-slate-300 text-xs sm:text-sm mb-2">Statistical Confidence Score</p>
+      <p class="text-3xl sm:text-5xl font-bold text-emerald-400 glow-emerald" id="ab-confidence">—</p>
+      <p class="text-slate-300 text-xs mt-2" id="ab-zscore">Z-Score: —</p>
+    </div>
+    <div id="ab-verdict" class="rounded-2xl p-5 mb-4 text-center font-bold text-lg border">—</div>
+    <div class="grid grid-cols-2 gap-3">
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Relative Uplift</p><p class="text-lg sm:text-2xl font-bold text-emerald-400" id="ab-uplift">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Sample Adequacy</p><p class="text-lg sm:text-2xl font-bold text-indigo-400" id="ab-sample">—</p></div>
+    </div>
+  </div>
+  <div class="tool-desc rounded-xl p-4 mt-3"><p class="text-xs sm:text-sm text-slate-300 leading-relaxed"><b class="text-white">💡 What this tool does:</b> Uses a Z-score statistical algorithm to determine if the difference between two conversion rates is statistically significant. A confidence ≥ 95% means the result is not due to chance. Below 95% = keep testing.</p></div>
+  <div class="flex gap-2 mt-3">
+    <button onclick="downloadPDF('abtest')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 transition cursor-pointer">📄 PDF</button>
+    <button onclick="downloadCSV('abtest')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition cursor-pointer">📊 CSV</button>
+    <button onclick="downloadXLSX('abtest')" class="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 transition cursor-pointer">📗 XLSX</button>
+  </div>
+</div>
+
+<!-- ===== 5. COMPOUND INTEREST ===== -->
 <div id="compound" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">Compound Interest Calculator</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">See how your money grows with the power of compounding</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">See how your money grows with the power of compounding</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-      <div><label for="ci-p" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Principal (<span class="cur">Rs</span>)</label><input type="number" id="ci-p" value="100000" min="0" step="1000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcCI()"></div>
-      <div><label for="ci-r" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Annual Rate (%)</label><input type="number" id="ci-r" value="10" min="0" step="0.1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcCI()"></div>
-      <div><label for="ci-t" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Time (Years)</label><input type="number" id="ci-t" value="10" min="1" max="60" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcCI()"></div>
-      <div><label for="ci-n" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Compounding</label><select id="ci-n" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white cursor-pointer" onchange="calcCI()"><option value="1">Annually</option><option value="2">Semi-Annually</option><option value="4">Quarterly</option><option value="12" selected>Monthly</option><option value="365">Daily</option></select></div>
+      <div><label for="ci-p" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Principal (<span class="cur">Rs</span>)</label><input type="number" id="ci-p" value="100000" min="0" step="1000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcCI()"></div>
+      <div><label for="ci-r" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Annual Rate (%)</label><input type="number" id="ci-r" value="10" min="0" step="0.1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcCI()"></div>
+      <div><label for="ci-t" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Time (Years)</label><input type="number" id="ci-t" value="10" min="1" max="60" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcCI()"></div>
+      <div><label for="ci-n" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Compounding</label><select id="ci-n" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white cursor-pointer" onchange="calcCI()"><option value="1">Annually</option><option value="2">Semi-Annually</option><option value="4">Quarterly</option><option value="12" selected>Monthly</option><option value="365">Daily</option></select></div>
     </div>
-    <div class="mb-5"><label for="ci-m" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Monthly Contribution (<span class="cur">Rs</span>)</label><input type="number" id="ci-m" value="5000" min="0" step="500" class="input-field w-full sm:w-1/2 px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcCI()"></div>
-    <div class="result-card rounded-xl p-5 mb-4"><p class="text-slate-400 text-xs sm:text-sm mb-2">Future Value</p><p class="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-400 glow-emerald num-break" id="ci-fv">—</p><p class="text-slate-400 mt-2 text-xs sm:text-sm" id="ci-total">Total Invested: —</p></div>
+    <div class="mb-5"><label for="ci-m" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Monthly Contribution (<span class="cur">Rs</span>)</label><input type="number" id="ci-m" value="5000" min="0" step="500" class="input-field w-full sm:w-1/2 px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcCI()"></div>
+    <div class="result-card rounded-xl p-5 mb-4"><p class="text-slate-300 text-xs sm:text-sm mb-2">Future Value</p><p class="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-400 glow-emerald num-break" id="ci-fv">—</p><p class="text-slate-300 mt-2 text-xs sm:text-sm" id="ci-total">Total Invested: —</p></div>
     <div class="grid grid-cols-2 gap-3 mb-4">
-      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-400 text-xs sm:text-sm mb-1">Interest Earned</p><p class="text-lg sm:text-2xl font-bold text-amber-400 num-break" id="ci-int">—</p></div>
-      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-400 text-xs sm:text-sm mb-1">Effective Growth</p><p class="text-lg sm:text-2xl font-bold text-indigo-400" id="ci-grow">0%</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Interest Earned</p><p class="text-lg sm:text-2xl font-bold text-amber-400 num-break" id="ci-int">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Effective Growth</p><p class="text-lg sm:text-2xl font-bold text-indigo-400" id="ci-grow">0%</p></div>
     </div>
     <div class="bg-slate-700/30 rounded-xl p-5">
       <p class="text-xs font-medium text-slate-400 mb-3">Breakdown</p>
@@ -308,15 +432,15 @@
   </div>
 </div>
 
-<!-- ===== 3. SIP PLANNER ===== -->
+<!-- ===== 6. SIP PLANNER ===== -->
 <div id="sip" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">SIP Investment Planner</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">Plan monthly investments for wealth creation</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Plan monthly investments for wealth creation</p>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
-      <div><label for="sip-m" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Monthly SIP (<span class="cur">Rs</span>)</label><input type="number" id="sip-m" value="10000" min="500" step="500" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSIP()"></div>
-      <div><label for="sip-r" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Expected Return (%)</label><input type="number" id="sip-r" value="12" min="1" max="30" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSIP()"></div>
-      <div><label for="sip-y" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Period (Years)</label><input type="number" id="sip-y" value="10" min="1" max="40" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSIP()"></div>
+      <div><label for="sip-m" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Monthly SIP (<span class="cur">Rs</span>)</label><input type="number" id="sip-m" value="10000" min="500" step="500" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSIP()"></div>
+      <div><label for="sip-r" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Expected Return (%)</label><input type="number" id="sip-r" value="12" min="1" max="30" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSIP()"></div>
+      <div><label for="sip-y" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Period (Years)</label><input type="number" id="sip-y" value="10" min="1" max="40" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSIP()"></div>
     </div>
     <div class="result-card rounded-xl p-5 mb-4"><p class="text-slate-400 text-xs sm:text-sm mb-2">Maturity Value</p><p class="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-400 glow-emerald num-break" id="sip-mat">—</p></div>
     <div class="grid grid-cols-2 gap-3 mb-4">
@@ -340,14 +464,14 @@
   </div>
 </div>
 
-<!-- ===== 4. INCOME TAX ===== -->
+<!-- ===== 7. INCOME TAX ===== -->
 <div id="tax" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">Income Tax Calculator</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">Calculate your income tax liability based on progressive tax slabs</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Calculate your income tax liability based on progressive tax slabs</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-      <div><label for="tax-m" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Monthly Income (<span class="cur">Rs</span>)</label><input type="number" id="tax-m" value="150000" min="0" step="5000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcTax()"></div>
-      <div><label for="tax-t" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Category</label><select id="tax-t" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white cursor-pointer" onchange="calcTax()"><option value="s">Salaried Individual</option><option value="b">Business / Self-Employed</option></select></div>
+      <div><label for="tax-m" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Monthly Income (<span class="cur">Rs</span>)</label><input type="number" id="tax-m" value="150000" min="0" step="5000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcTax()"></div>
+      <div><label for="tax-t" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Category</label><select id="tax-t" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white cursor-pointer" onchange="calcTax()"><option value="s">Salaried Individual</option><option value="b">Business / Self-Employed</option></select></div>
     </div>
     <div class="result-card rounded-xl p-5 mb-4"><p class="text-slate-400 text-xs sm:text-sm mb-2">Annual Tax Liability</p><p class="text-2xl sm:text-4xl md:text-5xl font-bold text-rose-400 num-break" id="tax-ann">—</p><p class="text-slate-400 mt-2 text-xs sm:text-sm" id="tax-mo">Monthly Deduction: —</p></div>
     <div class="grid grid-cols-2 gap-3 mb-4">
@@ -365,17 +489,17 @@
   </div>
 </div>
 
-<!-- ===== 5. SAVINGS GOAL ===== -->
+<!-- ===== 8. SAVINGS GOAL ===== -->
 <div id="savings" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">Savings Goal Calculator</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">How much to save monthly to reach your goal</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">How much to save monthly to reach your goal</p>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
-      <div><label for="sg-g" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Goal (<span class="cur">Rs</span>)</label><input type="number" id="sg-g" value="1000000" min="1000" step="10000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSG()"></div>
-      <div><label for="sg-y" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Time (Years)</label><input type="number" id="sg-y" value="5" min="1" max="40" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSG()"></div>
-      <div><label for="sg-r" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Return (%)</label><input type="number" id="sg-r" value="8" min="0" max="30" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSG()"></div>
+      <div><label for="sg-g" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Goal (<span class="cur">Rs</span>)</label><input type="number" id="sg-g" value="1000000" min="1000" step="10000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSG()"></div>
+      <div><label for="sg-y" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Time (Years)</label><input type="number" id="sg-y" value="5" min="1" max="40" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSG()"></div>
+      <div><label for="sg-r" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Return (%)</label><input type="number" id="sg-r" value="8" min="0" max="30" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSG()"></div>
     </div>
-    <div class="mb-5"><label for="sg-c" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Current Savings (<span class="cur">Rs</span>)</label><input type="number" id="sg-c" value="0" min="0" step="5000" class="input-field w-full sm:w-1/2 px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSG()"></div>
+    <div class="mb-5"><label for="sg-c" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Current Savings (<span class="cur">Rs</span>)</label><input type="number" id="sg-c" value="0" min="0" step="5000" class="input-field w-full sm:w-1/2 px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSG()"></div>
     <div class="result-card rounded-xl p-5 mb-4"><p class="text-slate-400 text-xs sm:text-sm mb-2">Monthly Savings Needed</p><p class="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-400 glow-emerald num-break" id="sg-mo">—</p></div>
     <div class="grid grid-cols-2 gap-3">
       <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-400 text-xs sm:text-sm mb-1">Total You'll Save</p><p class="text-lg sm:text-2xl font-bold text-indigo-400 num-break" id="sg-ts">—</p></div>
@@ -390,18 +514,18 @@
   </div>
 </div>
 
-<!-- ===== 6. RETIREMENT ===== -->
+<!-- ===== 9. RETIREMENT ===== -->
 <div id="retirement" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">Retirement Planning Calculator</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">Plan your retirement corpus with inflation-adjusted projections</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Plan your retirement corpus with inflation-adjusted projections</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-      <div><label for="rt-a" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Current Age</label><input type="number" id="rt-a" value="30" min="18" max="70" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
-      <div><label for="rt-ra" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Retirement Age</label><input type="number" id="rt-ra" value="60" min="40" max="80" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
-      <div><label for="rt-e" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Monthly Expenses (<span class="cur">Rs</span>)</label><input type="number" id="rt-e" value="80000" min="5000" step="5000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcRT()"></div>
-      <div><label for="rt-l" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Life After Retirement (Yrs)</label><input type="number" id="rt-l" value="25" min="5" max="40" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
-      <div><label for="rt-i" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Inflation (%)</label><input type="number" id="rt-i" value="7" min="0" max="20" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
-      <div><label for="rt-r" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Expected Return (%)</label><input type="number" id="rt-r" value="10" min="0" max="25" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
+      <div><label for="rt-a" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Current Age</label><input type="number" id="rt-a" value="30" min="18" max="70" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
+      <div><label for="rt-ra" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Retirement Age</label><input type="number" id="rt-ra" value="60" min="40" max="80" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
+      <div><label for="rt-e" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Monthly Expenses (<span class="cur">Rs</span>)</label><input type="number" id="rt-e" value="80000" min="5000" step="5000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcRT()"></div>
+      <div><label for="rt-l" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Life After Retirement (Yrs)</label><input type="number" id="rt-l" value="25" min="5" max="40" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
+      <div><label for="rt-i" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Inflation (%)</label><input type="number" id="rt-i" value="7" min="0" max="20" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
+      <div><label for="rt-r" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Expected Return (%)</label><input type="number" id="rt-r" value="10" min="0" max="25" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcRT()"></div>
     </div>
     <div class="result-card rounded-xl p-5 mb-4"><p class="text-slate-400 text-xs sm:text-sm mb-2">Retirement Corpus Needed</p><p class="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-400 glow-emerald num-break" id="rt-corpus">—</p><p class="text-slate-400 mt-2 text-xs sm:text-sm" id="rt-mexp">Monthly expenses at retirement: —</p></div>
     <div class="grid grid-cols-2 gap-3">
@@ -417,14 +541,14 @@
   </div>
 </div>
 
-<!-- ===== 7. PROFIT MARGIN ===== -->
+<!-- ===== 10. PROFIT MARGIN ===== -->
 <div id="profit" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">Profit Margin Calculator</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">Calculate margin, markup, and profit for any product or service</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Calculate margin, markup, and profit for any product or service</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-      <div><label for="pm-c" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Cost Price (<span class="cur">Rs</span>)</label><input type="number" id="pm-c" value="1000" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcPM()"></div>
-      <div><label for="pm-s" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Selling Price (<span class="cur">Rs</span>)</label><input type="number" id="pm-s" value="1500" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcPM()"></div>
+      <div><label for="pm-c" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Cost Price (<span class="cur">Rs</span>)</label><input type="number" id="pm-c" value="1000" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcPM()"></div>
+      <div><label for="pm-s" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Selling Price (<span class="cur">Rs</span>)</label><input type="number" id="pm-s" value="1500" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcPM()"></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
       <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">Profit</p><p class="text-xl sm:text-3xl font-bold text-emerald-400 num-break" id="pm-p">—</p></div>
@@ -448,18 +572,18 @@
   </div>
 </div>
 
-<!-- ===== 8. FREELANCER HOURLY RATE ===== -->
+<!-- ===== 11. FREELANCER HOURLY RATE ===== -->
 <div id="freelancer" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">💼 Freelancer Hourly Rate Calculator</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">Calculate the ideal hourly rate for your freelance business</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Calculate the ideal hourly rate for your freelance business</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-      <div><label for="fl-inc" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Desired Monthly Income (<span class="cur">Rs</span>)</label><input type="number" id="fl-inc" value="200000" min="10000" step="5000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcFL()"></div>
-      <div><label for="fl-exp" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Monthly Business Expenses (<span class="cur">Rs</span>)</label><input type="number" id="fl-exp" value="30000" min="0" step="1000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcFL()"></div>
-      <div><label for="fl-hrs" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Billable Hours / Month</label><input type="number" id="fl-hrs" value="120" min="10" max="300" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
-      <div><label for="fl-tax" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Tax Rate (%)</label><input type="number" id="fl-tax" value="5" min="0" max="50" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
-      <div><label for="fl-vac" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Paid Vacation Days / Year</label><input type="number" id="fl-vac" value="15" min="0" max="60" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
-      <div><label for="fl-margin" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Profit Margin Target (%)</label><input type="number" id="fl-margin" value="20" min="0" max="80" step="5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
+      <div><label for="fl-inc" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Desired Monthly Income (<span class="cur">Rs</span>)</label><input type="number" id="fl-inc" value="200000" min="10000" step="5000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcFL()"></div>
+      <div><label for="fl-exp" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Monthly Business Expenses (<span class="cur">Rs</span>)</label><input type="number" id="fl-exp" value="30000" min="0" step="1000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcFL()"></div>
+      <div><label for="fl-hrs" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Billable Hours / Month</label><input type="number" id="fl-hrs" value="120" min="10" max="300" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
+      <div><label for="fl-tax" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Tax Rate (%)</label><input type="number" id="fl-tax" value="5" min="0" max="50" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
+      <div><label for="fl-vac" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Paid Vacation Days / Year</label><input type="number" id="fl-vac" value="15" min="0" max="60" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
+      <div><label for="fl-margin" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Profit Margin Target (%)</label><input type="number" id="fl-margin" value="20" min="0" max="80" step="5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcFL()"></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
       <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">Hourly Rate</p><p class="text-xl sm:text-3xl font-bold text-emerald-400 glow-emerald num-break" id="fl-hr">—</p></div>
@@ -479,30 +603,30 @@
   </div>
 </div>
 
-<!-- ===== 9. SAAS CAC & LTV ===== -->
+<!-- ===== 12. SAAS CAC & LTV ===== -->
 <div id="saas" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">🚀 SaaS CAC & LTV ROI Engine</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">Customer Acquisition Cost, Lifetime Value & ROI for SaaS businesses</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Customer Acquisition Cost, Lifetime Value & ROI for SaaS businesses</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-      <div><label for="saas-spend" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Total Marketing Spend (<span class="cur">Rs</span>)</label><input type="number" id="saas-spend" value="500000" min="0" step="10000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSaaS()"></div>
-      <div><label for="saas-cust" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">New Customers Acquired</label><input type="number" id="saas-cust" value="100" min="1" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSaaS()"></div>
-      <div><label for="saas-mrr" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Monthly Revenue / Customer (<span class="cur">Rs</span>)</label><input type="number" id="saas-mrr" value="5000" min="0" step="100" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSaaS()"></div>
-      <div><label for="saas-life" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Avg Customer Lifespan (Months)</label><input type="number" id="saas-life" value="24" min="1" max="120" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSaaS()"></div>
-      <div><label for="saas-opex" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Operating Cost / Customer / Month (<span class="cur">Rs</span>)</label><input type="number" id="saas-opex" value="500" min="0" step="50" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSaaS()"></div>
-      <div><label for="saas-churn" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Churn Rate (%)</label><input type="number" id="saas-churn" value="5" min="0" max="50" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSaaS()"></div>
+      <div><label for="saas-spend" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Total Marketing Spend (<span class="cur">Rs</span>)</label><input type="number" id="saas-spend" value="500000" min="0" step="10000" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSaaS()"></div>
+      <div><label for="saas-cust" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">New Customers Acquired</label><input type="number" id="saas-cust" value="100" min="1" step="1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSaaS()"></div>
+      <div><label for="saas-mrr" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Monthly Revenue / Customer (<span class="cur">Rs</span>)</label><input type="number" id="saas-mrr" value="5000" min="0" step="100" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSaaS()"></div>
+      <div><label for="saas-life" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Avg Customer Lifespan (Months)</label><input type="number" id="saas-life" value="24" min="1" max="120" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSaaS()"></div>
+      <div><label for="saas-opex" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Operating Cost / Customer / Month (<span class="cur">Rs</span>)</label><input type="number" id="saas-opex" value="500" min="0" step="50" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcSaaS()"></div>
+      <div><label for="saas-churn" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Churn Rate (%)</label><input type="number" id="saas-churn" value="5" min="0" max="50" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcSaaS()"></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">CAC</p><p class="text-xl sm:text-3xl font-bold text-rose-400 num-break" id="saas-cac">—</p></div>
-      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">LTV</p><p class="text-xl sm:text-3xl font-bold text-emerald-400 glow-emerald num-break" id="saas-ltv">—</p></div>
-      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">LTV : CAC</p><p class="text-xl sm:text-3xl font-bold text-indigo-400" id="saas-ratio">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">CAC</p><p class="text-xl sm:text-3xl font-bold text-rose-400 num-break" id="saas-cac">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">LTV</p><p class="text-xl sm:text-3xl font-bold text-emerald-400 glow-emerald num-break" id="saas-ltv">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">LTV : CAC</p><p class="text-xl sm:text-3xl font-bold text-indigo-400" id="saas-ratio">—</p></div>
     </div>
     <div class="grid grid-cols-2 gap-3 mb-4">
-      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-400 text-xs sm:text-sm mb-1">ROI</p><p class="text-lg sm:text-2xl font-bold text-amber-400" id="saas-roi">—</p></div>
-      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-400 text-xs sm:text-sm mb-1">Payback Period</p><p class="text-lg sm:text-2xl font-bold text-purple-400" id="saas-pay">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">ROI</p><p class="text-lg sm:text-2xl font-bold text-amber-400" id="saas-roi">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Payback Period</p><p class="text-lg sm:text-2xl font-bold text-purple-400" id="saas-pay">—</p></div>
     </div>
     <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-700/50">
-      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Key Metrics</p>
+      <p class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Key Metrics</p>
       <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm">
         <p class="text-slate-300">Net Revenue / Cust / Mo: <span class="text-white font-bold" id="saas-nr">—</span></p>
         <p class="text-slate-300">Gross Margin: <span class="text-emerald-400 font-bold" id="saas-gm">—</span></p>
@@ -519,36 +643,36 @@
   </div>
 </div>
 
-<!-- ===== 10. E-COMMERCE NET PROFIT ===== -->
+<!-- ===== 13. E-COMMERCE NET PROFIT ===== -->
 <div id="ecom" class="tab-content w-full">
   <div class="bg-slate-800/50 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-700/50">
     <h2 class="text-lg sm:text-2xl font-bold text-white">🛒 E-Commerce Net Profit & Markup Suite</h2>
-    <p class="text-slate-400 text-xs sm:text-sm mt-1 mb-5">Calculate true profit after all hidden costs (fees, shipping, ads)</p>
+    <p class="text-slate-300 text-xs sm:text-sm mt-1 mb-5">Calculate true profit after all hidden costs (fees, shipping, ads)</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-      <div><label for="ec-cost" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Product Cost (<span class="cur">Rs</span>)</label><input type="number" id="ec-cost" value="500" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
-      <div><label for="ec-price" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Selling Price (<span class="cur">Rs</span>)</label><input type="number" id="ec-price" value="1500" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
-      <div><label for="ec-ship" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Shipping Cost (<span class="cur">Rs</span>)</label><input type="number" id="ec-ship" value="150" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
-      <div><label for="ec-plat" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Platform Fee (%)</label><input type="number" id="ec-plat" value="5" min="0" max="30" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcEC()"></div>
-      <div><label for="ec-pg" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Payment Gateway Fee (%)</label><input type="number" id="ec-pg" value="3" min="0" max="10" step="0.1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcEC()"></div>
-      <div><label for="ec-ad" class="block text-xs sm:text-sm font-medium text-slate-400 mb-2">Ad Spend / Unit (<span class="cur">Rs</span>)</label><input type="number" id="ec-ad" value="200" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
+      <div><label for="ec-cost" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Product Cost (<span class="cur">Rs</span>)</label><input type="number" id="ec-cost" value="500" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
+      <div><label for="ec-price" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Selling Price (<span class="cur">Rs</span>)</label><input type="number" id="ec-price" value="1500" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
+      <div><label for="ec-ship" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Shipping Cost (<span class="cur">Rs</span>)</label><input type="number" id="ec-ship" value="150" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
+      <div><label for="ec-plat" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Platform Fee (%)</label><input type="number" id="ec-plat" value="5" min="0" max="30" step="0.5" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcEC()"></div>
+      <div><label for="ec-pg" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Payment Gateway Fee (%)</label><input type="number" id="ec-pg" value="3" min="0" max="10" step="0.1" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white" oninput="calcEC()"></div>
+      <div><label for="ec-ad" class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">Ad Spend / Unit (<span class="cur">Rs</span>)</label><input type="number" id="ec-ad" value="200" min="0" step="10" class="input-field w-full px-4 py-3 rounded-xl text-lg font-bold text-white money-in" oninput="calcEC()"></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">Net Profit / Unit</p><p class="text-xl sm:text-3xl font-bold text-emerald-400 glow-emerald num-break" id="ec-np">—</p></div>
-      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">Net Margin</p><p class="text-xl sm:text-3xl font-bold text-indigo-400" id="ec-nm">—</p></div>
-      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-400 text-xs sm:text-sm mb-2">True Markup</p><p class="text-xl sm:text-3xl font-bold text-amber-400" id="ec-tm">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">Net Profit / Unit</p><p class="text-xl sm:text-3xl font-bold text-emerald-400 glow-emerald num-break" id="ec-np">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">Net Margin</p><p class="text-xl sm:text-3xl font-bold text-indigo-400" id="ec-nm">—</p></div>
+      <div class="result-card rounded-xl p-5 text-center"><p class="text-slate-300 text-xs sm:text-sm mb-2">True Markup</p><p class="text-xl sm:text-3xl font-bold text-amber-400" id="ec-tm">—</p></div>
     </div>
     <div class="grid grid-cols-2 gap-3 mb-4">
-      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-400 text-xs sm:text-sm mb-1">Total Costs / Unit</p><p class="text-lg sm:text-2xl font-bold text-rose-400 num-break" id="ec-tc">—</p></div>
-      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-400 text-xs sm:text-sm mb-1">Break-Even Units</p><p class="text-lg sm:text-2xl font-bold text-purple-400" id="ec-be">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Total Costs / Unit</p><p class="text-lg sm:text-2xl font-bold text-rose-400 num-break" id="ec-tc">—</p></div>
+      <div class="bg-slate-700/30 rounded-xl p-4"><p class="text-slate-300 text-xs sm:text-sm mb-1">Break-Even Units</p><p class="text-lg sm:text-2xl font-bold text-purple-400" id="ec-be">—</p></div>
     </div>
     <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-700/50">
-      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Cost Breakdown Per Unit</p>
+      <p class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Cost Breakdown Per Unit</p>
       <div class="space-y-1.5 text-xs sm:text-sm">
-        <div class="flex justify-between"><span class="text-slate-400">Product Cost</span><span class="text-white font-medium" id="ec-d1">—</span></div>
-        <div class="flex justify-between"><span class="text-slate-400">Shipping</span><span class="text-white font-medium" id="ec-d2">—</span></div>
-        <div class="flex justify-between"><span class="text-slate-400">Platform Fee</span><span class="text-white font-medium" id="ec-d3">—</span></div>
-        <div class="flex justify-between"><span class="text-slate-400">Payment Gateway</span><span class="text-white font-medium" id="ec-d4">—</span></div>
-        <div class="flex justify-between"><span class="text-slate-400">Ad Spend</span><span class="text-white font-medium" id="ec-d5">—</span></div>
+        <div class="flex justify-between"><span class="text-slate-300">Product Cost</span><span class="text-white font-medium" id="ec-d1">—</span></div>
+        <div class="flex justify-between"><span class="text-slate-300">Shipping</span><span class="text-white font-medium" id="ec-d2">—</span></div>
+        <div class="flex justify-between"><span class="text-slate-300">Platform Fee</span><span class="text-white font-medium" id="ec-d3">—</span></div>
+        <div class="flex justify-between"><span class="text-slate-300">Payment Gateway</span><span class="text-white font-medium" id="ec-d4">—</span></div>
+        <div class="flex justify-between"><span class="text-slate-300">Ad Spend</span><span class="text-white font-medium" id="ec-d5">—</span></div>
         <div class="flex justify-between border-t border-slate-700/50 pt-1.5 mt-1.5"><span class="text-slate-300 font-semibold">Net Profit</span><span class="text-emerald-400 font-bold" id="ec-d6">—</span></div>
       </div>
     </div>
@@ -580,7 +704,7 @@
         <p class="text-[11px] text-slate-300"><b class="text-white">100% Client-Side:</b> All data stays in your browser. Nothing is sent to any server.</p>
       </div>
     </div>
-    <div class="px-4 py-2 bg-slate-950/80"><p class="text-[10px] text-slate-400">All calculations update in real-time as you type</p></div>
+    <div class="px-4 py-2 bg-slate-950/80"><p class="text-[10px] text-slate-300">All calculations update in real-time as you type</p></div>
   </div>
 
   <div class="bg-slate-800/50 rounded-2xl p-5 border border-slate-700/50" id="tipsBox">
@@ -664,7 +788,7 @@ function setCurrency(c,s){
   if(fiatLabel)fiatLabel.textContent=fu;
   const fiatOutLabel=document.getElementById('fiatOutLabel');
   if(fiatOutLabel)fiatOutLabel.textContent=fsym;
-  ['calcCI','calcSIP','calcTax','calcSG','calcRT','calcPM','calcFL','calcSaaS','calcEC'].forEach(f=>{if(typeof window[f]==='function')window[f]();});
+  ['calcCI','calcSIP','calcTax','calcSG','calcRT','calcPM','calcFL','calcSaaS','calcEC','calcRoAS','calcInvoice','calcAB'].forEach(f=>{if(typeof window[f]==='function')window[f]();});
   if(Object.keys(prices).length>0){renderCrypto();}
   const hasData=Object.keys(prices).length>0;
   const isStale=!lastUpdate||(new Date()-lastUpdate)>30000;
@@ -672,7 +796,7 @@ function setCurrency(c,s){
 }
 
 function recalcAll(){
-  ['calcCI','calcSIP','calcTax','calcSG','calcRT','calcPM','calcFL','calcSaaS','calcEC'].forEach(f=>{if(typeof window[f]==='function')window[f]();});
+  ['calcCI','calcSIP','calcTax','calcSG','calcRT','calcPM','calcFL','calcSaaS','calcEC','calcRoAS','calcInvoice','calcAB'].forEach(f=>{if(typeof window[f]==='function')window[f]();});
   cryptoFromCrypto();
 }
 
@@ -686,11 +810,15 @@ function switchTab(n){
   document.getElementById(n).classList.add('active');
   const btn=document.getElementById('tab-'+n);btn.classList.add('tab-active');btn.classList.remove('text-slate-400');
   updateTips(n);
+  saveSessionTab(n);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 const TIPS={
   crypto:['💡 Bitcoin has historically returned ~100%+ CAGR over long periods.','💡 Always verify rates from multiple sources before trading.','💡 CoinGecko provides free, reliable crypto data.'],
+  roas:['💡 A RoAS of 3x+ is typically considered profitable for most businesses.','💡 Break-Even RoAS = 1 ÷ Gross Margin. If margin is 40%, break-even = 2.5x.','💡 Scale campaigns only when active RoAS exceeds break-even by 50%+.'],
+  invoice:['💡 Always factor platform fees BEFORE negotiating your rate with clients.','💡 On Upwork, 20% fee applies until $500 lifetime with a client.','💡 Net earnings = what actually hits your bank — always calculate this first.'],
+  abtest:['💡 95%+ confidence is the industry standard before declaring a winner.','💡 Run tests for at least 1-2 full business cycles to avoid timing bias.','💡 Segment your test by traffic source for cleaner data.'],
   compound:['💡 Rule of 72: divide 72 by your rate to see doubling years.','💡 Monthly compounding earns more than annual.','💡 Even 1% more rate makes a huge difference over decades.'],
   sip:['💡 SIP investing builds discipline — automate it.','💡 A 10% annual step-up can double your corpus.','💡 Equity SIPs historically beat inflation over 7+ years.'],
   tax:['💡 Pakistan tax-free for salaried: up to Rs 600K/year.','💡 File on time via FBR Iris to avoid penalties.','💡 Tax credits available for retirement fund investments.'],
@@ -974,7 +1102,7 @@ function calcTax(){
   document.getElementById('tax-ai').innerHTML=cs()+fmt(ai);
   document.getElementById('tax-er').textContent=er.toFixed(1)+'%';
   document.getElementById('tax-th').innerHTML=cs()+fmt(th);
-  document.getElementById('tax-slabs').innerHTML='<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Slab Breakdown</p>'+slabs.map(s=>`<div class="flex justify-between items-center py-2 px-3 bg-slate-800/60 rounded-lg"><span class="text-slate-300 text-xs">${s.s}</span><div class="text-right"><span class="text-[10px] text-slate-500">${s.r}</span><span class="text-white font-bold ml-2 text-xs">${cs()}${fmt(s.a)}</span></div></div>`).join('');
+  document.getElementById('tax-slabs').innerHTML='<p class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Slab Breakdown</p>'+slabs.map(s=>`<div class="flex justify-between items-center py-2 px-3 bg-slate-800/60 rounded-lg"><span class="text-slate-300 text-xs">${s.s}</span><div class="text-right"><span class="text-[10px] text-slate-300">${s.r}</span><span class="text-white font-bold ml-2 text-xs">${cs()}${fmt(s.a)}</span></div></div>`).join('');
 }
 
 // ============ SAVINGS GOAL ============
@@ -1116,8 +1244,182 @@ function calcEC(){
 
 // ============ PWA INSTALL ============
 let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;const b=document.getElementById('installBtn');if(b){b.classList.remove('hidden');}const h=document.getElementById('installHint');if(h)h.textContent='Tap below to install →';});
-function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(r=>{if(r.outcome==='accepted'){document.getElementById('installBtn').classList.add('hidden');}deferredPrompt=null;});}}
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  window.deferredPrompt=e;
+  const b=document.getElementById('installBtn');
+  if(b)b.classList.remove('hidden');
+  const h=document.getElementById('installHint');
+  if(h)h.textContent='Tap below to install →';
+});
+function installApp(){
+  if(window.deferredPrompt){
+    window.deferredPrompt.prompt();
+    window.deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted'){
+        const b=document.getElementById('installBtn');
+        if(b)b.classList.add('hidden');
+        const h=document.getElementById('installHint');
+        if(h)h.textContent='App installed successfully!';
+      }
+      window.deferredPrompt=null;
+      deferredPrompt=null;
+    });
+  }
+}
+window.addEventListener('appinstalled',()=>{
+  const b=document.getElementById('installBtn');
+  if(b)b.classList.add('hidden');
+  const h=document.getElementById('installHint');
+  if(h)h.textContent='App installed!';
+  window.deferredPrompt=null;deferredPrompt=null;
+});
+
+// ============ ROAS PLANNER ============
+function calcRoAS(){
+  const rev=parseFloat(document.getElementById('roas-rev').value)||0;
+  const spend=parseFloat(document.getElementById('roas-spend').value)||0;
+  const margin=(parseFloat(document.getElementById('roas-margin').value)||40)/100;
+  const days=parseFloat(document.getElementById('roas-days').value)||30;
+  const activeRoas=spend>0?rev/spend:0;
+  const beRoas=margin>0?1/margin:0;
+  const netProfit=rev-spend;
+  const dailySpend=spend/days;
+  const dailyRev=rev/days;
+  document.getElementById('roas-active').textContent=activeRoas.toFixed(2)+'x';
+  document.getElementById('roas-breakeven').textContent=beRoas.toFixed(2)+'x';
+  const profitEl=document.getElementById('roas-profit');
+  profitEl.innerHTML=cs()+fmt(netProfit,2);
+  profitEl.className='text-xl sm:text-3xl font-bold num-break '+(netProfit>=0?'text-emerald-400':'text-rose-400');
+  document.getElementById('roas-dailyspend').innerHTML=cs()+fmt(dailySpend,2);
+  document.getElementById('roas-dailyrev').innerHTML=cs()+fmt(dailyRev,2);
+  const sc=document.getElementById('roas-status-card');
+  if(activeRoas>=beRoas*1.5){sc.className='rounded-xl p-4 text-center font-bold text-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300';sc.textContent='🚀 SCALING TERRITORY — RoAS significantly above break-even';}
+  else if(activeRoas>=beRoas){sc.className='rounded-xl p-4 text-center font-bold text-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400';sc.textContent='✅ PROFITABLE — RoAS above break-even';}
+  else if(activeRoas>=beRoas*0.8){sc.className='rounded-xl p-4 text-center font-bold text-lg bg-amber-500/20 border border-amber-500/40 text-amber-300';sc.textContent='⚠️ NEAR BREAK-EVEN — Optimize immediately';}
+  else{sc.className='rounded-xl p-4 text-center font-bold text-lg bg-rose-500/20 border border-rose-500/40 text-rose-300';sc.textContent='🔴 LOSS MAKING — Ad spend exceeds profitable threshold';}
+  saveSessionInput('roas-rev');saveSessionInput('roas-spend');saveSessionInput('roas-margin');saveSessionInput('roas-days');
+}
+
+// ============ INVOICE TRACKER ============
+function calcInvoice(){
+  const rate=parseFloat(document.getElementById('inv-rate').value)||0;
+  const hours=parseFloat(document.getElementById('inv-hours').value)||0;
+  const fee=(parseFloat(document.getElementById('inv-fee').value)||0)/100;
+  const tax=(parseFloat(document.getElementById('inv-tax').value)||0)/100;
+  const gross=rate*hours;
+  const platCut=gross*fee;
+  const afterPlat=gross-platCut;
+  const taxCut=afterPlat*tax;
+  const net=afterPlat-taxCut;
+  document.getElementById('inv-gross').innerHTML=cs()+fmt(gross,2);
+  document.getElementById('inv-net').innerHTML=cs()+fmt(net,2);
+  document.getElementById('inv-platformcut').innerHTML=cs()+fmt(platCut,2);
+  document.getElementById('inv-taxcut').innerHTML=cs()+fmt(taxCut,2);
+  const p1=gross>0?(net/gross*100):0;
+  const p2=gross>0?(platCut/gross*100):0;
+  const p3=gross>0?(taxCut/gross*100):0;
+  document.getElementById('inv-bar1').style.width=Math.max(0,p1)+'%';
+  document.getElementById('inv-bar2').style.width=Math.max(0,p2)+'%';
+  document.getElementById('inv-bar3').style.width=Math.max(0,p3)+'%';
+  document.getElementById('inv-p1').textContent=Math.round(p1)+'%';
+  document.getElementById('inv-p2').textContent=Math.round(p2)+'%';
+  document.getElementById('inv-p3').textContent=Math.round(p3)+'%';
+  saveSessionInput('inv-rate');saveSessionInput('inv-hours');saveSessionInput('inv-fee');saveSessionInput('inv-tax');
+}
+
+// ============ A/B SPLIT TEST ============
+function calcAB(){
+  const va=parseFloat(document.getElementById('ab-va').value)||1;
+  const ca=parseFloat(document.getElementById('ab-ca').value)||0;
+  const vb=parseFloat(document.getElementById('ab-vb').value)||1;
+  const cb=parseFloat(document.getElementById('ab-cb').value)||0;
+  const pa=ca/va,pb=cb/vb;
+  document.getElementById('ab-ratea').textContent=(pa*100).toFixed(3)+'%';
+  document.getElementById('ab-rateb').textContent=(pb*100).toFixed(3)+'%';
+  const pooledP=(ca+cb)/(va+vb);
+  const se=Math.sqrt(pooledP*(1-pooledP)*(1/va+1/vb));
+  const z=se>0?Math.abs(pb-pa)/se:0;
+  // Two-tailed confidence from Z using error function approximation
+  function normCDF(x){const t=1/(1+.2316419*Math.abs(x));const poly=t*(.319381530+t*(-.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));const val=1-0.3989422804*Math.exp(-x*x/2)*poly;return x>=0?val:1-val;}
+  const conf=(2*normCDF(z)-1)*100;
+  document.getElementById('ab-confidence').textContent=conf.toFixed(2)+'%';
+  document.getElementById('ab-zscore').textContent='Z-Score: '+z.toFixed(4);
+  const uplift=pa>0?((pb-pa)/pa*100):0;
+  document.getElementById('ab-uplift').textContent=(uplift>=0?'+':'')+uplift.toFixed(2)+'%';
+  const minSample=Math.ceil(16*pooledP*(1-pooledP)/Math.pow(Math.abs(pb-pa)||0.001,2));
+  const adequate=Math.min(va,vb)>=minSample;
+  document.getElementById('ab-sample').textContent=adequate?'Adequate ✅':'Too small ⚠️';
+  const verdict=document.getElementById('ab-verdict');
+  if(conf>=99){verdict.className='rounded-2xl p-5 mb-4 text-center font-bold text-lg border bg-emerald-500/20 border-emerald-500/40 text-emerald-300';verdict.innerHTML='🏆 WINNER: Version B — 99%+ confidence. Safe to ship!';}
+  else if(conf>=95){verdict.className='rounded-2xl p-5 mb-4 text-center font-bold text-lg border bg-emerald-500/10 border-emerald-500/30 text-emerald-400';verdict.innerHTML='✅ SIGNIFICANT — Version B wins at 95%+ confidence. Recommended.';}
+  else if(conf>=80){verdict.className='rounded-2xl p-5 mb-4 text-center font-bold text-lg border bg-amber-500/20 border-amber-500/40 text-amber-300';verdict.innerHTML='⚠️ TRENDING — Not yet significant. Collect more data.';}
+  else{verdict.className='rounded-2xl p-5 mb-4 text-center font-bold text-lg border bg-slate-700/30 border-slate-600 text-slate-300';verdict.innerHTML='❌ INCONCLUSIVE — No significant difference detected. Keep testing.';}
+  saveSessionInput('ab-va');saveSessionInput('ab-ca');saveSessionInput('ab-vb');saveSessionInput('ab-cb');
+}
+
+// ============ SESSION STORAGE PERSISTENCE ============
+function saveSessionInput(id){
+  const el=document.getElementById(id);
+  if(el)sessionStorage.setItem('fincalc_input_'+id,el.value);
+}
+
+function saveSessionTab(tabId){
+  sessionStorage.setItem('fincalc_active_tab',tabId);
+}
+
+function restoreSession(){
+  const allInputIds=[
+    'roas-rev','roas-spend','roas-margin','roas-days',
+    'inv-rate','inv-hours','inv-fee','inv-tax',
+    'ab-va','ab-ca','ab-vb','ab-cb',
+    'ci-p','ci-r','ci-t','ci-n','ci-m',
+    'sip-m','sip-r','sip-y',
+    'tax-m','tax-t',
+    'sg-g','sg-y','sg-r','sg-c',
+    'rt-a','rt-ra','rt-e','rt-l','rt-i','rt-r',
+    'pm-c','pm-s',
+    'fl-inc','fl-exp','fl-hrs','fl-tax','fl-vac','fl-margin',
+    'saas-spend','saas-cust','saas-mrr','saas-life','saas-opex','saas-churn',
+    'ec-cost','ec-price','ec-ship','ec-plat','ec-pg','ec-ad',
+    'cryptoIn','fiatSelect'
+  ];
+  allInputIds.forEach(id=>{
+    const val=sessionStorage.getItem('fincalc_input_'+id);
+    if(val!==null){
+      const el=document.getElementById(id);
+      if(el)el.value=val;
+    }
+  });
+  const savedTab=sessionStorage.getItem('fincalc_active_tab');
+  if(savedTab&&document.getElementById(savedTab))switchTab(savedTab);
+}
+
+function triggerAllActiveCalculators(){
+  if(typeof calcRoAS==='function')calcRoAS();
+  if(typeof calcInvoice==='function')calcInvoice();
+  if(typeof calcAB==='function')calcAB();
+  if(typeof calcCI==='function')calcCI();
+  if(typeof calcSIP==='function')calcSIP();
+  if(typeof calcTax==='function')calcTax();
+  if(typeof calcSG==='function')calcSG();
+  if(typeof calcRT==='function')calcRT();
+  if(typeof calcPM==='function')calcPM();
+  if(typeof calcFL==='function')calcFL();
+  if(typeof calcSaaS==='function')calcSaaS();
+  if(typeof calcEC==='function')calcEC();
+}
+
+// Bind live sessionStorage saving to all inputs and selects
+function bindSessionListeners(){
+  document.querySelectorAll('input[type="number"],input[type="text"],select').forEach(el=>{
+    if(el.id){
+      el.addEventListener('input',()=>sessionStorage.setItem('fincalc_input_'+el.id,el.value));
+      el.addEventListener('change',()=>sessionStorage.setItem('fincalc_input_'+el.id,el.value));
+    }
+  });
+}
 
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded',()=>{
@@ -1135,10 +1437,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   const fu=FIAT_UPPER[curFiat]||'USD';
   document.getElementById('fiatLabel').textContent=fu;
   document.getElementById('fiatOutLabel').textContent=fsym;
-  calcCI();calcSIP();calcTax();calcSG();calcRT();calcPM();calcFL();calcSaaS();calcEC();
+
+  // Restore session before calculations
+  restoreSession();
+
+  // Run all calculators with restored values
+  triggerAllActiveCalculators();
   renderCrypto();
-  fetchCrypto();
+  fetchCrypto().catch(()=>{});
   startAutoRefresh();
+
+  // Bind session listeners after DOM ready
+  bindSessionListeners();
 });
 
 // Close menus on outside click
@@ -1212,7 +1522,7 @@ function exportToolToXLSX(toolName, inputs, outputs) {
   XLSX.writeFile(wb, toolName.replace(/\s+/g,'-').toLowerCase() + '-data.xlsx');
 }
 
-const TOOL_LABELS = { crypto:'Crypto Converter', compound:'Compound Interest', sip:'SIP Planner', tax:'Income Tax', savings:'Savings Goal', retirement:'Retirement', profit:'Profit Margin', freelancer:'Freelancer Rate', saas:'SaaS Metrics', ecom:'E-Commerce Profit' };
+const TOOL_LABELS = { crypto:'Crypto Converter', roas:'RoAS Planner', invoice:'Invoice Tracker', abtest:'A/B Split Test', compound:'Compound Interest', sip:'SIP Planner', tax:'Income Tax', savings:'Savings Goal', retirement:'Retirement', profit:'Profit Margin', freelancer:'Freelancer Rate', saas:'SaaS Metrics', ecom:'E-Commerce Profit' };
 
 function downloadPDF(toolId) { const { inputs, outputs } = gatherToolData(toolId); exportToolToPDF(TOOL_LABELS[toolId] || toolId, inputs, outputs); }
 function downloadCSV(toolId) { const { inputs, outputs } = gatherToolData(toolId); exportToolToCSV(TOOL_LABELS[toolId] || toolId, inputs, outputs); }

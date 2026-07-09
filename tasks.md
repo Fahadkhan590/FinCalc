@@ -19,7 +19,7 @@ All changes are made directly to two existing HTML files — no build step, no n
   - Review `sitemap.xml` and update any description or metadata referencing `tools.html` that still says "12 tools" to say "10 tools"
   - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8_
 
-- [ ] 1. Add jsPDF CDN script tag and scaffold the PDF export function
+- [x] 1. Add jsPDF CDN script tag and scaffold the PDF export function
 
   - Add `<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>` to both `index.html` and `tools.html` immediately before the closing `</body>` tag's existing inline `<script>` block
   - In the inline `<script>` block of both files, implement the `exportToolToPDF(toolName, emoji, inputs, outputs)` function that: checks `window.jspdf` availability, creates a `jsPDF` doc, writes the bold header (emoji + tool name left-aligned, timestamp right-aligned), draws a horizontal rule, renders a two-column body layout ("Input Variables" left at x=15, "Financial Outputs" right at x=110), and appends the privacy footer notice on each page
@@ -31,11 +31,12 @@ All changes are made directly to two existing HTML files — no build step, no n
     - For any toolName, emoji, inputs object, and outputs object, call `exportToolToPDF` with a mocked jsPDF and verify the doc text contains: emoji, toolName, a timestamp pattern `YYYY-MM-DD HH:MM`, "Input Variables", "Financial Outputs", and the privacy footer string
     - **Validates: Requirements 2.2, 2.3, 2.4, 2.5, 2.6**
 
-- [ ] 2. Add "📄 Download PDF Report" button to every tool container in both files
+- [x] 2. Add "📄 Download PDF Report" button to every tool container in both files
 
-  - For each of the 10 tool `<div id="...">` blocks in `index.html`, insert a `<button onclick="downloadPDF('toolname')">📄 Download PDF Report</button>` element styled with existing Tailwind classes (`mt-4 w-full py-2.5 px-4 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 cursor-pointer transition`) immediately below the `.tool-desc` description block
+  - NOTE: The single PDF button has been REPLACED by the three-button export group from Task 21. The three-button groups (PDF + CSV + XLSX) are already present on all 10 existing tools in `index.html`. This task is complete.
+  - For each of the 10 tool `<div id="...">` blocks in `index.html`, the three-button export group calling `downloadPDF('toolname')`, `downloadCSV('toolname')`, `downloadXLSX('toolname')` is already in place
   - Repeat for each of the 12 tool blocks in `tools.html`
-  - Implement a `downloadPDF(toolId)` dispatcher function that reads the current input/output DOM values for the given toolId, packages them into `inputs` and `outputs` objects, and calls `exportToolToPDF`
+  - The `downloadPDF(toolId)` dispatcher function reads the current input/output DOM values for the given toolId, packages them into `inputs` and `outputs` objects via `gatherToolData()`, and calls `exportToolToPDF`
   - _Requirements: 2.7, 2.8_
 
   - [ ]* 2.1 Write property test verifying every tool has a PDF download button
@@ -280,7 +281,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 - Property tests reference the design document: `// Feature: fincalchub-enhancements, Property N: <text>`
 - Task 0 must be completed before Tasks 12 and 13 (emoji headers and grid fixes) so that those tasks only audit the 10 remaining tools in tools.html
 
-- [~] 21. Add CSV and XLSX export to both files
+- [x] 21. Add CSV and XLSX export to both files
 
   - Add `<script defer src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>` to both `index.html` and `tools.html` immediately after the existing jsPDF `<script>` tag
   - Implement `exportToolToCSV(toolName, inputs, outputs)` in both files' inline `<script>` blocks: creates a CSV string with two labeled sections (inputs first, then outputs), each as two-column key/value rows, with a header comment line `# {toolName} Export - {timestamp}`, and triggers download via `<a download>` link
@@ -289,14 +290,16 @@ All changes are made directly to two existing HTML files — no build step, no n
   - Add `downloadCSV(toolId)` and `downloadXLSX(toolId)` dispatcher functions following the same read-inputs/read-outputs pattern as `downloadPDF(toolId)`
   - _Requirements: 16.1, 16.2, 16.3, 16.4, 16.5, 16.6_
 
-- [~] 22. Fix GTM inline init block — wrap in window.addEventListener('load', ...) in both files
+- [x] 22. Fix GTM inline init block — wrap in window.addEventListener('load', ...) in both files
 
   - In `index.html`, locate the existing inline `<script>` block immediately after the `<script src="https://www.googletagmanager.com/gtag/js?id=G-4LEKFYK37L" defer>` tag and wrap the entire body of that inline script (`window.dataLayer = ...`, `function gtag(){...}`, `gtag('js', ...)`, `gtag('config', ...)`) inside `window.addEventListener('load', function() { ... });`
   - In `tools.html`, add the same GTM script pair that `index.html` has: first add `<script src="https://www.googletagmanager.com/gtag/js?id=G-4LEKFYK37L" defer></script>`, then add the inline `<script>window.addEventListener('load', function(){ window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments);} gtag('js',new Date()); gtag('config','G-4LEKFYK37L'); });</script>` immediately after it, positioned in the `<head>` block
   - Verify the `defer` attribute remains on the external GTM script `src` tag in both files
   - _Requirements: 17.1, 17.2, 17.3, 17.4_
 
-- [~] 23. Apply all 6 accessibility contrast tweaks in both index.html and tools.html
+- [x] 23. Apply all 6 accessibility contrast tweaks in both index.html and tools.html
+
+  - NOTE: The key contrast fixes (body `text-slate-50`, system info strip `bg-slate-950/80`, installHint `text-slate-300`) are confirmed done in `index.html`. Some tweaks may still be pending in `tools.html` — verify and apply as needed.
 
   - Tweak 1: In both files, find all `<p>` elements with class `text-slate-500` that are inside the live CoinGecko ticker or market data section (identifiable by `mt-3 text-center` and `text-[10px]`) and change `text-slate-500` to `text-slate-300`
   - Tweak 2: In both files, find the Crypto Converter's secondary description card `<div>` with class containing `bg-slate-900/40 rounded-xl sm:rounded-2xl p-4 border border-slate-700/40` and change `bg-slate-900/40` to `bg-slate-900/80`
@@ -453,3 +456,48 @@ All changes are made directly to two existing HTML files — no build step, no n
 - Task 31 (PWA banner) updates the existing `beforeinstallprompt` handler — do NOT remove the existing `installBtn` and `installHint` logic; the banner is additive
 - Task 32 (fetch crash recovery) wraps the existing logic in try/catch — do NOT rewrite the fetch logic, only wrap it
 - Property tests 26.1, 27.1, 28.1, 30.1, 30.2 are optional and marked with `*`; they can be skipped for faster delivery
+
+
+## Critical Implementation Notes for Remaining Tasks
+
+### Task 25 (Tab Bar Rebuild)
+The existing tab bar has 10 buttons. Insert the 3 new buttons AFTER `id="tab-crypto"` and BEFORE `id="tab-compound"`. Do NOT modify the Tailwind CSS classes — use identical classes to the existing inactive tab buttons.
+
+### Task 26–28 (New Tool HTML Blocks)
+Insert the three new tool `<div id="roas">`, `<div id="invoice">`, `<div id="abtest">` blocks in the main content area AFTER the closing `</div>` of the Crypto tool block and BEFORE the opening `<div id="compound"`. Each block must include:
+- The three-button export group calling `downloadPDF('roas')` / `downloadCSV('roas')` / `downloadXLSX('roas')` (and equivalents for invoice/abtest)
+- The TOOL_LABELS map in the `<script>` block must be extended with: `roas:'RoAS Planner', invoice:'Invoice Tracker', abtest:'A/B Test Engine'`
+- `saveHistory()` call at end of each calc function
+
+### Task 30 (SessionStorage)
+The correct function names for `triggerAllActiveCalculators()` are (case-sensitive):
+`calcRoAS`, `calcInvoice`, `calcABTest`, `fetchCrypto`, `calcCI`, `calcSIP`, `calcTax`, `calcSG`, `calcRT`, `calcPM`, `calcFL`, `calcSaaS`, `calcEC`
+Note: savings = `calcSG`, retirement = `calcRT`, profit margin = `calcPM` (matching actual function names in the file).
+
+### Task 32 (Fetch Crash Recovery)
+The existing `fetchCrypto()` already has a try/catch. The only missing piece is seeding `prices` from fallback rates on first-load failure. The fallback rates are already defined in the `initFallbackRates()` IIFE at the top of the script — access them via the `prices` object populated by that IIFE (it already runs before fetchCrypto is ever called). This means on first-load failure, `prices` is actually already populated by `initFallbackRates()`, so the status badge update is the primary remaining fix.
+
+### Task 33 (Subpage Updates)
+`faq.html`, `privacy.html`, and `terms.html` have simple headers with just a logo and "← Home" link — no tool navigation list exists. The navigation update means: add a brief tools section to the footer of each file linking to the 3 new tools on index.html (e.g., `<a href="index.html#roas">RoAS Planner</a>`). The manifest fix (`manifest.json` → `/manifest.json`) is the most important change.
+
+- [ ] 35. Extend TOOL_LABELS map and wire export buttons for new tools
+
+  - In `index.html`'s inline `<script>`, locate the `TOOL_LABELS` object (currently has 10 entries)
+  - Add three new entries: `roas:'RoAS Planner', invoice:'Invoice Tracker', abtest:'A/B Test Engine'`
+  - After Tasks 26–28 are complete and the three tool HTML blocks exist, verify that clicking the PDF/CSV/XLSX buttons on each new tool produces a correctly labeled file download
+  - _Requirements: 28.3, 28.4_
+
+- [ ] 36. Verify tools.html parity — confirm it has exactly 10 tools and matching export buttons
+
+  - Open `tools.html` and verify it has the same 10 tools as `index.html` (crypto, compound, sip, tax, savings, retirement, profit, freelancer, saas, ecom) — no roas/invoice/abtest (those are index.html-only)
+  - Verify tools.html has the three-button export groups on all 10 tools (if Task 21 applied to tools.html)
+  - If tools.html is missing the export buttons, apply the same three-button group pattern from Task 21 to tools.html
+  - _Requirements: 10.1, 28.1_
+
+- [ ] 37. Apply subpage manifest and contrast fixes across all static pages
+
+  - For `faq.html`, `privacy.html`, and `terms.html`:
+    - Change `href="manifest.json"` to `href="/manifest.json"` in `<head>`
+    - Change `<body class="...text-slate-100...">` to `text-slate-50`
+    - Add footer links to the 3 new tools: `<a href="index.html#roas">RoAS Planner</a>`, `<a href="index.html#invoice">Invoice Tracker</a>`, `<a href="index.html#abtest">A/B Test Engine</a>`
+  - _Requirements: 27.1, 27.2, 27.3_

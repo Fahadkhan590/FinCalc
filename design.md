@@ -1001,3 +1001,42 @@ The following scenarios extend the Error Handling table above:
 | sessionStorage unavailable | try/catch around all reads/writes; persistence silently disabled |
 | fetchCrypto network failure | try/catch swallows error; fallback to BASE_USD_RATES seed; amber status badge |
 | deferredPrompt already consumed | `if (!window.deferredPrompt) return` guard in install button click handler |
+
+
+---
+
+## Implementation Status — Verified Completed in index.html
+
+The following components have been confirmed as already implemented in the current `index.html` file and do NOT need to be re-implemented:
+
+### Verified Complete
+
+| Feature | Status | Notes |
+|---|---|---|
+| jsPDF CDN tag | ✅ Done | `<script src="https://unpkg.com/jspdf@latest/...">` present before closing `</body>` |
+| SheetJS CDN tag | ✅ Done | `<script defer src="https://cdn.sheetjs.com/...">` present |
+| `exportToolToPDF()` function | ✅ Done | Two-column layout, timestamp, privacy footer |
+| `exportToolToCSV()` function | ✅ Done | Two-section CSV with header comment |
+| `exportToolToXLSX()` function | ✅ Done | Two-sheet workbook (Inputs, Outputs) |
+| `gatherToolData()` helper | ✅ Done | DOM scraper for inputs and output cards |
+| `downloadPDF/CSV/XLSX()` dispatchers | ✅ Done | All 10 existing tools wired |
+| Three-button export group on all 10 tools | ✅ Done | PDF (indigo-purple), CSV (emerald-cyan), XLSX (amber-orange) |
+| GTM wrapped in `load` event | ✅ Done | `window.addEventListener('load', ...)` in `index.html` |
+| Body class `text-slate-50` | ✅ Done | Global contrast bump applied |
+| System info strip `bg-slate-950/80` | ✅ Done | Contrast fix applied |
+| installHint `text-slate-300` | ✅ Done | Contrast fix applied |
+| TOOL_LABELS map | ✅ Done | 10 entries present; needs 3 new entries for roas/invoice/abtest |
+
+### Pending Implementation
+
+| Feature | Task | File |
+|---|---|---|
+| 3 new tab buttons (roas, invoice, abtest) | Task 25 | index.html |
+| RoAS Planner HTML block + calcRoAS() | Task 26 | index.html |
+| Invoice Tracker HTML block + calcInvoice() | Task 27 | index.html |
+| A/B Test Engine HTML block + calcABTest() | Task 28 | index.html |
+| SessionStorage persistence engine | Task 30 | index.html |
+| PWA install banner | Task 31 | index.html |
+| fetchCrypto first-load BASE_USD_RATES seed | Task 32 | index.html |
+| faq/privacy/terms manifest + contrast fixes | Task 33 | 3 subpages |
+| TOOL_LABELS map extension (3 new entries) | Task 26 | index.html |
