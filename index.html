@@ -934,8 +934,6 @@ async function fetchCrypto(){
 function renderCrypto(){
   const f=curFiat,fsym=FIAT_SYM[f]||f;
   const updates=[];
-  const styleUpdates=[];
-  
   for(const coin of['bitcoin','ethereum','solana']){
     const m=COIN_MAP[coin],short=coin==='bitcoin'?'btc':coin==='ethereum'?'eth':'sol';
     const price=prices[coin]?.[f];
@@ -950,21 +948,13 @@ function renderCrypto(){
     if(chg&&changes[coin]){
       const c=changes[coin][f]||0;
       updates.push({el:chg,text:(c>=0?'▲':'▼')+` ${Math.abs(c).toFixed(2)}%`});
-      // ✅ BATCHED: Extracted style invalidations out of text mapping arrays
-      styleUpdates.push({el:chg, className:`text-[10px] ${c>=0?'text-emerald-400':'text-rose-400'}`});
+      chg.className=`text-[10px] ${c>=0?'text-emerald-400':'text-rose-400'}`;
     }
   }
-
-  // ✅ MANUAL REFLOW PATCH: Process text elements and batched classes inside a non-blocking browser frame layout queue
-  requestAnimationFrame(() => {
-    updates.forEach(u=>u.el.textContent=u.text);
-    styleUpdates.forEach(s=>s.el.className=s.className);
-    
-    const up=document.getElementById('cryptoUpdated');
-    if(up&&lastUpdate)up.textContent=`Last updated: ${lastUpdate.toLocaleTimeString()}`;
-  });
-
+  updates.forEach(u=>u.el.textContent=u.text);
   cryptoFromCrypto();
+  const up=document.getElementById('cryptoUpdated');
+  if(up&&lastUpdate)up.textContent=`Last updated: ${lastUpdate.toLocaleTimeString()}`;
 }
 
 function pickCrypto(coin){
@@ -984,18 +974,15 @@ function pickCrypto(coin){
   const btn=document.getElementById('btn-'+short);
   if(btn){
     btn.classList.add('active');
+    btn.classList.remove('bg-slate-700/50');
+    btn.style.borderColor='';
     
-    // ✅ FIXED: Pushes heavy gradient style applications to line up after layout paints, stopping thrashing reflows
-    requestAnimationFrame(() => {
-      btn.classList.remove('bg-slate-700/50');
-      btn.style.borderColor='';
-      if (bgMap[coin]) {
-          btn.classList.add(...bgMap[coin].split(' '));
-      }
-      if (colorMap[coin]) {
-          btn.classList.add(colorMap[coin]);
-      }
-    });
+    if (bgMap[coin]) {
+        btn.classList.add(...bgMap[coin].split(' '));
+    }
+    if (colorMap[coin]) {
+        btn.classList.add(colorMap[coin]);
+    }
   }
   
   document.getElementById('cryptoInLabel').textContent=COIN_MAP[coin].short;
@@ -1027,7 +1014,6 @@ function onFiatChange(){
   const acm=document.getElementById('activeCurMobile');
   if(acm)acm.textContent=CS;
   document.querySelectorAll('.cur').forEach(el=>el.textContent=CS);
-  
   if(Object.keys(prices).length>0){renderCrypto();}
   fetchCrypto();
 }
