@@ -14,7 +14,7 @@ The four modules are:
 
 ## Architecture
 
-The existing app uses a flat, tab-based single-page architecture: all 10 (index.html) or 12 (tools.html) tools live in hidden `<div class="tab-content">` panels, toggled visible via CSS class changes. All JavaScript is inlined in a single `<script>` block before `</body>`.
+The existing app uses a flat, tab-based single-page architecture: all 13 (index.html) or 13 (tools.html) tools live in hidden `<div class="tab-content">` panels, toggled visible via CSS class changes. All JavaScript is inlined in a single `<script>` block before `</body>`.
 
 New enhancements follow the same pattern:
 - HTML additions are inserted inline within the relevant tool `<div>` blocks
@@ -25,7 +25,7 @@ New enhancements follow the same pattern:
 
 ```
 Browser
-  ├── index.html (10 tools)
+  ├── index.html (13 tools)
   │     ├── <style> Tailwind v4 inlined
   │     ├── <script src="jsPDF CDN">
   │     ├── Tool HTML (with accordions, PDF buttons, history drawer)
@@ -1019,13 +1019,13 @@ The following components have been confirmed as already implemented in the curre
 | `exportToolToCSV()` function | ✅ Done | Two-section CSV with header comment |
 | `exportToolToXLSX()` function | ✅ Done | Two-sheet workbook (Inputs, Outputs) |
 | `gatherToolData()` helper | ✅ Done | DOM scraper for inputs and output cards |
-| `downloadPDF/CSV/XLSX()` dispatchers | ✅ Done | All 10 existing tools wired |
-| Three-button export group on all 10 tools | ✅ Done | PDF (indigo-purple), CSV (emerald-cyan), XLSX (amber-orange) |
+| `downloadPDF/CSV/XLSX()` dispatchers | ✅ Done | All 13 existing tools wired |
+| Three-button export group on all 13 tools | ✅ Done | PDF (indigo-purple), CSV (emerald-cyan), XLSX (amber-orange) |
 | GTM wrapped in `load` event | ✅ Done | `window.addEventListener('load', ...)` in `index.html` |
 | Body class `text-slate-50` | ✅ Done | Global contrast bump applied |
 | System info strip `bg-slate-950/80` | ✅ Done | Contrast fix applied |
 | installHint `text-slate-300` | ✅ Done | Contrast fix applied |
-| TOOL_LABELS map | ✅ Done | 10 entries present; needs 3 new entries for roas/invoice/abtest |
+| TOOL_LABELS map | ✅ Done | 13 entries present; done 3 new entries for roas/invoice/abtest |
 
 ### Pending Implementation
 
