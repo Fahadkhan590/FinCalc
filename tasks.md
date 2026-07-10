@@ -2,21 +2,21 @@
 
 ## Overview
 
-All changes are made directly to two existing HTML files — no build step, no npm. Every task modifies inline HTML or the inline `<script>` block in `index.html` and/or `tools.html`. Both files target 10 tools each (index.html already has 10; tools.html must be reduced from 12 to 10 by removing Mortgage and CPM/ROI). Tasks are ordered so each one builds on the previous and the app remains functional after each step.
+All changes are made directly to two existing HTML files — no build step, no npm. Every task modifies inline HTML or the inline `<script>` block in `index.html` and/or `tools.html`. Both files target 13 tools each (index.html already has 13; tools.html must have same 13 tools as index.html has. Tasks are ordered so each one builds on the previous and the app remains functional after each step.
 
 ## Tasks
 
-- [x] 0. Remove Mortgage and CPM/ROI from tools.html and update "12 tools" references to "10 tools"
+ Fix tools.html and update "13 tools" references to "13 tools"
 
   - In `tools.html`, remove the two tab `<button>` elements: `id="tab-mortgage"` (calling `switchTab('mortgage')`) and `id="tab-cpm"` (calling `switchTab('cpm')`)
   - Remove the entire `<div id="mortgage" class="tab-content ...">` block (Mortgage & Loan Estimator) and the entire `<div id="cpm" class="tab-content ...">` block (CPM & ROI Calculator)
   - In the inline `<script>` block of `tools.html`, delete the `calcMort()` function and the `calcCPM()` function entirely
   - In `recalcAll()`, remove the `'calcMort'` and `'calcCPM'` entries from the function array
   - In `switchTab()`, verify no hard-coded references to `'mortgage'` or `'cpm'` remain; remove any such references
-  - Update the `<title>` tag from "All 12 Professional Tools…" to "All 10 Professional Tools…"
-  - Update the `<meta name="description">` content to remove references to "12 tools", "mortgage", and "CPM/ROI", and accurately describe the 10 remaining tools
-  - Update the visible header subtitle `<p>` element from "All 12 Tools · fincalchub.xyz" to "All 10 Tools · fincalchub.xyz"
-  - Review `sitemap.xml` and update any description or metadata referencing `tools.html` that still says "12 tools" to say "10 tools"
+  - Update the `<title>` tag from "All 13 Professional Tools…" to "All 13 Professional Tools…"
+  - Update the `<meta name="description">` content update references to "13 tools", and accurately describe the tools
+  - Update the visible header subtitle `<p>` element from "All 13 Tools · fincalchub.xyz" to "All 13 Tools · fincalchub.xyz"
+  - Review `sitemap.xml` and update any description or metadata referencing `tools.html` that still says "13 tools" to say "13 tools"
   - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8_
 
 - [x] 1. Add jsPDF CDN script tag and scaffold the PDF export function
@@ -33,8 +33,8 @@ All changes are made directly to two existing HTML files — no build step, no n
 
 - [x] 2. Add "📄 Download PDF Report" button to every tool container in both files
 
-  - NOTE: The single PDF button has been REPLACED by the three-button export group from Task 21. The three-button groups (PDF + CSV + XLSX) are already present on all 10 existing tools in `index.html`. This task is complete.
-  - For each of the 10 tool `<div id="...">` blocks in `index.html`, the three-button export group calling `downloadPDF('toolname')`, `downloadCSV('toolname')`, `downloadXLSX('toolname')` is already in place
+  - NOTE: The single PDF button has been REPLACED by the three-button export group from Task 21. The three-button groups (PDF + CSV + XLSX) are already present on all 13 existing tools in `index.html`. This task is complete.
+  - For each of the 13 tool `<div id="...">` blocks in `index.html`, the three-button export group calling `downloadPDF('toolname')`, `downloadCSV('toolname')`, `downloadXLSX('toolname')` is already in place
   - Repeat for each of the 12 tool blocks in `tools.html`
   - The `downloadPDF(toolId)` dispatcher function reads the current input/output DOM values for the given toolId, packages them into `inputs` and `outputs` objects via `gatherToolData()`, and calls `exportToolToPDF`
   - _Requirements: 2.7, 2.8_
@@ -139,7 +139,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 
 - [ ] 10. Add Formula Accordions to all tool containers in both files
 
-  - For each of the 10 tools in `index.html` and 10 tools in `tools.html`, insert a `<details>` accordion element immediately after the `.tool-desc` div (or after the PDF button if step 2 is complete)
+  - For each of the 13 tools in `index.html` and 13 tools in `tools.html`, insert a `<details>` accordion element immediately after the `.tool-desc` div (or after the PDF button if step 2 is complete)
   - The `<summary>` must read "📐 View Mathematical Formula"
   - The `<details>` body must contain a styled `<code>` block with the tool's primary formula
   - Formulas to use for each tool:
@@ -161,8 +161,8 @@ All changes are made directly to two existing HTML files — no build step, no n
     - Parse HTML files as DOM, for each tool container verify exactly one `<details>` exists with a `<summary>` text containing "View Mathematical Formula"
     - **Validates: Requirements 6.1, 6.2**
 
-  - [ ]* 10.2 Write property test for accordion closed by default (Property 10)
-    - **Property 10: Formula accordion closed by default**
+  - [ ]* 10.2 Write property test for accordion closed by default (Property 13)
+    - **Property 13: Formula accordion closed by default**
     - For every `<details>` element added, verify the `open` attribute is absent on page load
     - **Validates: Requirements 6.5**
 
@@ -178,7 +178,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 
   - In both files, audit every tool's `<h2>` element and prepend the emoji for any heading that is missing it:
     - `index.html`: "Compound Interest Calculator" → "📈 Compound Interest Calculator", "SIP Investment Planner" → "💰 SIP Investment Planner", "Income Tax Calculator" → "🏛️ Income Tax Calculator", "Savings Goal Calculator" → "🎯 Savings Goal Calculator", "Retirement Planning Calculator" → "🏖️ Retirement Planning Calculator", "Profit Margin Calculator" → "💹 Profit Margin Calculator"
-    - `tools.html`: same audit for any missing emojis in the 10 tools (Mortgage and CPM/ROI have already been removed in Task 0)
+    - `tools.html`: same audit for any missing emojis in the 13 tools (Mortgage and CPM/ROI have already been removed in Task 0)
     - Already-correct headings (e.g., "💼 Freelancer...", "🚀 SaaS...", "🛒 E-Commerce...") are left unchanged
     - The Crypto tool heading should read "₿ Real-Time Crypto & Fiat Converter"
   - _Requirements: 8.1, 8.2, 8.3, 8.4_
@@ -270,7 +270,7 @@ All changes are made directly to two existing HTML files — no build step, no n
   - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6_
 
 - [~] 20. Final checkpoint — Verify all new features
-  - Open both `index.html` and `tools.html` in a browser. Verify: tools.html shows exactly 10 tools (no Mortgage, no CPM/ROI), Scenario Comparison toggle works on at least 2 tools, news ticker scrolls and shows fallback if API unavailable, share URL round-trips correctly (copy URL, open in new tab, inputs repopulate), result animations play on calculation update, widget mode (`?widget=1`) hides all chrome and shows only the active tool. Ask the user if questions arise.
+  - Open both `index.html` and `tools.html` in a browser. Verify: tools.html shows exactly 13 tools (no Mortgage, no CPM/ROI), Scenario Comparison toggle works on at least 2 tools, news ticker scrolls and shows fallback if API unavailable, share URL round-trips correctly (copy URL, open in new tab, inputs repopulate), result animations play on calculation update, widget mode (`?widget=1`) hides all chrome and shows only the active tool. Ask the user if questions arise.
 
 ## Notes
 
@@ -279,7 +279,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 - The jsPDF CDN tag must be added before the existing inline `<script>` block so `window.jspdf` is available when the page script runs
 - All existing calculator logic (`calcCI`, `calcSIP`, `calcTax`, `calcSaaS`, `calcEC`, etc.) must remain untouched except for the specific additions described in tasks 6, 7, and 8
 - Property tests reference the design document: `// Feature: fincalchub-enhancements, Property N: <text>`
-- Task 0 must be completed before Tasks 12 and 13 (emoji headers and grid fixes) so that those tasks only audit the 10 remaining tools in tools.html
+- Task 0 must be completed before Tasks 12 and 13 (emoji headers and grid fixes) so that those tasks only audit the 13 remaining tools in tools.html
 
 - [x] 21. Add CSV and XLSX export to both files
 
@@ -318,7 +318,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 
 - [~] 25. Rebuild index.html tab bar to add 3 new tool buttons in correct order
 
-  - In `index.html`, locate the tab bar `<div class="flex gap-1.5 ...">` that contains the existing 10 tab buttons
+  - In `index.html`, locate the tab bar `<div class="flex gap-1.5 ...">` that contains the existing 13 tab buttons
   - After the `id="tab-crypto"` button and before the `id="tab-compound"` button, insert three new tab buttons:
     - `id="tab-roas"` calling `switchTab('roas')` with emoji `📊` and label `RoAS`
     - `id="tab-invoice"` calling `switchTab('invoice')` with emoji `📝` and label `Invoice`
@@ -449,7 +449,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 
   - Open `index.html` in a browser. Verify all 13 tabs display in the correct order. Enter values into the RoAS, Invoice, and A/B Test tools and confirm outputs are calculated correctly. Refresh the page and confirm all entered values are restored and outputs recalculate automatically. Close the tab, reopen, confirm sessionStorage is cleared and defaults are shown. Verify the PWA banner appears if opened on a supported browser. Verify the Crypto converter shows "Market (Cached)" amber status if network is blocked. Verify that faq.html, privacy.html, and terms.html load without errors and the new tool references appear in navigation. Ask the user if questions arise.
 
-- Tasks 25–28 are `index.html`-only — the three new tools do NOT need to be added to `tools.html` (that file is kept at 10 tools)
+- Tasks 25–28 are `index.html`-only — the three new tools do NOT need to be added to `tools.html` (that file is kept at 13 tools)
 - Task 30 (sessionStorage) is `index.html`-only — the delegated listeners must not interfere with `tools.html`
 - The three new tools (roas, invoice, abtest) must call `saveHistory(...)` at the end of each calc function to integrate with the existing LocalStorage history system from Task 3
 - `triggerAllActiveCalculators()` uses function-name strings to call via `window[fn]` — ensure all 13 calc function names are spelled exactly as defined (case-sensitive): `calcRoAS`, `calcInvoice`, `calcABTest`, `fetchCrypto`, `calcCI`, `calcSIP`, `calcTax`, `calcSavings`, `calcRetire`, `calcProfit`, `calcFL`, `calcSaaS`, `calcEC`
@@ -461,7 +461,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 ## Critical Implementation Notes for Remaining Tasks
 
 ### Task 25 (Tab Bar Rebuild)
-The existing tab bar has 10 buttons. Insert the 3 new buttons AFTER `id="tab-crypto"` and BEFORE `id="tab-compound"`. Do NOT modify the Tailwind CSS classes — use identical classes to the existing inactive tab buttons.
+The existing tab bar has 13 buttons. Insert the 3 new buttons AFTER `id="tab-crypto"` and BEFORE `id="tab-compound"`. Do NOT modify the Tailwind CSS classes — use identical classes to the existing inactive tab buttons.
 
 ### Task 26–28 (New Tool HTML Blocks)
 Insert the three new tool `<div id="roas">`, `<div id="invoice">`, `<div id="abtest">` blocks in the main content area AFTER the closing `</div>` of the Crypto tool block and BEFORE the opening `<div id="compound"`. Each block must include:
@@ -482,15 +482,15 @@ The existing `fetchCrypto()` already has a try/catch. The only missing piece is 
 
 - [ ] 35. Extend TOOL_LABELS map and wire export buttons for new tools
 
-  - In `index.html`'s inline `<script>`, locate the `TOOL_LABELS` object (currently has 10 entries)
+  - In `index.html`'s inline `<script>`, locate the `TOOL_LABELS` object (currently has 13 entries)
   - Add three new entries: `roas:'RoAS Planner', invoice:'Invoice Tracker', abtest:'A/B Test Engine'`
   - After Tasks 26–28 are complete and the three tool HTML blocks exist, verify that clicking the PDF/CSV/XLSX buttons on each new tool produces a correctly labeled file download
   - _Requirements: 28.3, 28.4_
 
-- [ ] 36. Verify tools.html parity — confirm it has exactly 10 tools and matching export buttons
+- [ ] 36. Verify tools.html parity — confirm it has exactly 13 tools and matching export buttons
 
-  - Open `tools.html` and verify it has the same 10 tools as `index.html` (crypto, compound, sip, tax, savings, retirement, profit, freelancer, saas, ecom) — no roas/invoice/abtest (those are index.html-only)
-  - Verify tools.html has the three-button export groups on all 10 tools (if Task 21 applied to tools.html)
+  - Open `tools.html` and verify it has the same 13 tools as `index.html` (crypto, compound, sip, tax, savings, retirement, profit, freelancer, saas, ecom) — no roas/invoice/abtest (those are index.html-only)
+  - Verify tools.html has the three-button export groups on all 13 tools (if Task 21 applied to tools.html)
   - If tools.html is missing the export buttons, apply the same three-button group pattern from Task 21 to tools.html
   - _Requirements: 10.1, 28.1_
 
