@@ -104,19 +104,6 @@
 <link rel="stylesheet" href="https://googleapis.com" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://googleapis.com"></noscript>
 
-<!-- ✅ BALANCING ERROR INTERCEPTOR: Automatically silences internal third-party console exceptions -->
-<script>
-(function() {
-    const originalError = console.error;
-    console.error = function(...args) {
-        if (args && args[0] && typeof args[0] === 'string' && args[0].includes('googleapis.com')) {
-            return; 
-        }
-        originalError.apply(console, args);
-    };
-})();
-</script>
-
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"FinCalcHub Marketing","url":"https://fincalchub.xyz","description":"Professional financial calculator suite with live crypto conversion, investment, tax, and business tools.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
