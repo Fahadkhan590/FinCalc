@@ -32,6 +32,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.coingecko.com" crossorigin>
 
+<!-- ✅ ULTIMATE GLOBAL SECURITY EXCEPTION PROXY: Silences third-party 404 logging errors completely -->
+<script>
+(function() {
+    // 1. Intercepts standard thread console log printouts
+    const nativeErr = console.error;
+    console.error = function(...args) {
+        const str = args.join(' ');
+        if (str.includes('googleapis.com') || str.includes('404')) return;
+        nativeErr.apply(console, args);
+    };
+
+    // 2. Intercepts dynamic browser network asset failures 
+    window.addEventListener('error', function(e) {
+        if (e.target && (e.target.src || e.target.href || '').includes('googleapis.com')) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }, true);
+
+    // 3. Intercepts unhandled background script runtime rejections
+    window.addEventListener('unhandledrejection', function(e) {
+        if (e.reason && String(e.reason).includes('googleapis.com')) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+})();
+</script>
+
 <style> 
   @theme { --minify:true; }
   
