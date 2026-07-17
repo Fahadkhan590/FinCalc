@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "fincalchub.xyz"
+        }
+      ],
+      "destination": "https://fincalchub.xyz*",
+      "permanent": true
+    }
+  ],
   "builds": [
     {
       "src": "*.html",
