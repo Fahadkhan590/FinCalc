@@ -1,18 +1,19 @@
 # Robots.txt for FinCalcHub Marketing
-# https://fincalchub.xyz
+# Verified Production Target: https://fincalchub.xyz
 
 User-agent: *
 Allow: /
-Disallow: /manifest.json
-Disallow: /*.json$
+Allow: /manifest.json
+Allow: /*.json$
+Allow: /.well-known/
+Disallow: /_redirects
+Disallow: /vercel.json
 
-# Sitemap location
-Sitemap: https://fincalchub.xyz/sitemap.xml
+# Explicitly ensure Google Favicon Bot can access your icon assets
+User-agent: Google-Favicon
+Allow: /
 
-# Crawl-delay (optional, respectful crawling)
-Crawl-delay: 1
-
-# AI/LLM bots - welcome for discoverability
+# AI & Semantic Search Discoverability 
 User-agent: GPTBot
 Allow: /
 
@@ -31,8 +32,5 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Block sensitive paths (if any)
-User-agent: *
-Disallow: /.well-known/
-Disallow: /_redirects
-Disallow: /vercel.json
+# Sitemap Location
+Sitemap: https://fincalchub.xyz
