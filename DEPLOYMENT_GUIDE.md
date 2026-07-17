@@ -35,7 +35,7 @@ Your website has been fully optimized for PageSpeed 100/100 score.
 
 ### HTML Files (Optimized)
 - ✅ `index.html` - 139KB (main calculator suite)
-- ✅ `tools.html` - 113KB (all 13
+- ✅ `tools.html` - 113KB (all 15
 -  tools)
 - ✅ `blog.html` - 63KB
 - ✅ `faq.html` - 62KB
