@@ -1,22 +1,17 @@
-# FinCalcHub Marketing - Netlify Redirects
-# https://fincalchub.xyz
+# FinCalcHub Marketing — Netlify Fallback Redirects
+# Target Directory Matrix: https://www.fincalchub.xyz
 
-# Force HTTPS and www redirect
-https://fincalchub.xyz/*  https://fincalchub.xyz/:splat  301
+# Force strict global redirect from non-www to canonical www address
+https://fincalchub.xyz/*  https://www.fincalchub.xyz/:splat  301!
 
-# Clean URLs - remove .html extension
-/index  /  301
-/tools  /tools.html  200
-/blog   /blog.html   200
-/faq    /faq.html    200
+# Clean URLs rewrites mirroring our core vercel structure
+/tools    /tools.html    200
+/blog     /blog.html     200
+/faq      /faq.html      200
 /privacy  /privacy.html  200
 /terms    /terms.html    200
+/about    /about.html    200
 
-# Redirect old paths to new paths
-/calculator  /  301
+# Legacy Route Cleanups
+/calculator   /  301
 /calculators  /  301
-/convert  /  301
-/crypto  /  301
-
-# 404 - Not Found fallback
-/*  /index.html  404
