@@ -1,7 +1,7 @@
 {
   "name": "FinCalcHub Marketing - Financial Calculator Suite",
   "short_name": "FinCalcHub",
-  "description": "13 free financial calculators with live crypto conversion. 100% client-side, zero data collection, works offline.",
+  "description": "13 professional financial tools with live crypto conversion, tax, investment & business calculators, plus a built-in simple & scientific calculator. 100% client-side, zero data collection, works offline.",
   "start_url": "./index.html",
   "scope": "./",
   "id": "/",
@@ -24,7 +24,7 @@
   ],
   "shortcuts": [
     {"name":"Crypto Converter","url":"./index.html","description":"Live crypto to fiat converter"},
-    {"name":"All Tools","url":"./tools.html","description":"All 13 financial calculators"},
+    {"name":"All Tools","url":"./tools.html","description":"All 13 financial calculators+2 simple"},
     {"name":"Blog","url":"./blog.html","description":"Financial tips and guides"}
   ]
 }
