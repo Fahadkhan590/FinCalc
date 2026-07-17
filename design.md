@@ -14,7 +14,7 @@ The four modules are:
 
 ## Architecture
 
-The existing app uses a flat, tab-based single-page architecture: all 13 (index.html) or 13 (tools.html) tools live in hidden `<div class="tab-content">` panels, toggled visible via CSS class changes. All JavaScript is inlined in a single `<script>` block before `</body>`.
+The existing app uses a flat, tab-based single-page architecture: all 15 (index.html) or 15 (tools.html) tools live in hidden `<div class="tab-content">` panels, toggled visible via CSS class changes. All JavaScript is inlined in a single `<script>` block before `</body>`.
 
 New enhancements follow the same pattern:
 - HTML additions are inserted inline within the relevant tool `<div>` blocks
@@ -25,7 +25,7 @@ New enhancements follow the same pattern:
 
 ```
 Browser
-  ├── index.html (13 tools)
+  ├── index.html (15 tools)
   │     ├── <style> Tailwind v4 inlined
   │     ├── <script src="jsPDF CDN">
   │     ├── Tool HTML (with accordions, PDF buttons, history drawer)
@@ -553,7 +553,7 @@ PageSpeed / WCAG 2.1 AA requires a minimum contrast ratio of 4.5:1 for normal te
 
 ## Tab Bar Reconstruction — 13 Tools
 
-The existing 10-tool tab bar in `index.html` is extended to 13 by inserting three new tab buttons at positions 2, 3, and 4 (after Crypto, before Compound). The new tool IDs are `roas`, `invoice`, and `abtest`.
+The existing 10-tool tab bar in `index.html` is extended to 13 by inserting three new tab buttons at positions 2, 3, and 4 (after Crypto, before Compound). The new tool IDs are `roas`, `invoice`, and `abtest` & 2 simple/scientific.
 
 **Tab button HTML pattern for new tools (inserted after `id="tab-crypto"`):**
 ```html
