@@ -4,7 +4,7 @@
 
 ## About
 
-FinCalcHub Marketing (https://fincalchub.xyz) is a comprehensive web application providing 13 professional financial calculators. All calculations run 100% client-side in the browser — no data is sent to any server. Crypto prices update every 30 seconds via the CoinGecko public API.
+FinCalcHub Marketing (https://fincalchub.xyz) is a comprehensive web application providing 13 professional financial tools with live crypto conversion, tax, investment & business calculators, plus a built-in simple & scientific calculator. All calculations run 100% client-side in the browser — no data is sent to any server. Crypto prices update every 30 seconds via the CoinGecko public API.
 
 ## Tools Available
 
@@ -76,7 +76,7 @@ FinCalcHub Marketing (https://fincalchub.xyz) is a comprehensive web application
 ## Pages
 
 - [Home](https://fincalchub.xyz/) - Main calculator suite
-- [All 13 Tools](https://fincalchub.xyz/tools.html) - Tools overview
+- [All 15 Tools](https://fincalchub.xyz/tools.html) - Tools overview
 - [Blog](https://fincalchub.xyz/blog.html) - Financial articles and guides
 - [FAQ](https://fincalchub.xyz/faq.html) - Frequently asked questions
 - [Privacy Policy](https://fincalchub.xyz/privacy.html) - Privacy information
@@ -86,7 +86,7 @@ FinCalcHub Marketing (https://fincalchub.xyz) is a comprehensive web application
 
 ```
 fincalchub.xyz/
-├── index.html          # Main calculator suite (13 tools)
+├── index.html          # Main calculator suite (13 tools+built-in simple & scientific calculator)
 ├── tools.html          # Tools overview page
 ├── blog.html           # Blog page
 ├── faq.html            # FAQ page
