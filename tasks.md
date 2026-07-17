@@ -2,21 +2,21 @@
 
 ## Overview
 
-All changes are made directly to two existing HTML files — no build step, no npm. Every task modifies inline HTML or the inline `<script>` block in `index.html` and/or `tools.html`. Both files target 13 tools each (index.html already has 13; tools.html must have same 13 tools as index.html has. Tasks are ordered so each one builds on the previous and the app remains functional after each step.
+All changes are made directly to two existing HTML files — no build step, no npm. Every task modifies inline HTML or the inline `<script>` block in `index.html` and/or `tools.html`. Both files target 13 tools each+built-in simple & scientific calculator (index.html already has 13+built-in simple & scientific calculator; tools.html must have same 13 tools+built-in simple & scientific calculator as index.html has. Tasks are ordered so each one builds on the previous and the app remains functional after each step.
 
 ## Tasks
 
- Fix tools.html and update "13 tools" references to "13 tools"
+ Fix tools.html and update "15 tools" references to "15 tools"
 
   - In `tools.html`, remove the two tab `<button>` elements: `id="tab-mortgage"` (calling `switchTab('mortgage')`) and `id="tab-cpm"` (calling `switchTab('cpm')`)
   - Remove the entire `<div id="mortgage" class="tab-content ...">` block (Mortgage & Loan Estimator) and the entire `<div id="cpm" class="tab-content ...">` block (CPM & ROI Calculator)
   - In the inline `<script>` block of `tools.html`, delete the `calcMort()` function and the `calcCPM()` function entirely
   - In `recalcAll()`, remove the `'calcMort'` and `'calcCPM'` entries from the function array
   - In `switchTab()`, verify no hard-coded references to `'mortgage'` or `'cpm'` remain; remove any such references
-  - Update the `<title>` tag from "All 13 Professional Tools…" to "All 13 Professional Tools…"
-  - Update the `<meta name="description">` content update references to "13 tools", and accurately describe the tools
-  - Update the visible header subtitle `<p>` element from "All 13 Tools · fincalchub.xyz" to "All 13 Tools · fincalchub.xyz"
-  - Review `sitemap.xml` and update any description or metadata referencing `tools.html` that still says "13 tools" to say "13 tools"
+  - Update the `<title>` tag from "All 13 Professional Tools+built-in simple & scientific calculator…" to "All 13 Professional Tools+built-in simple & scientific calculator…"
+  - Update the `<meta name="description">` content update references to "13 tools+built-in simple & scientific calculator", and accurately describe the tools
+  - Update the visible header subtitle `<p>` element from "All 13 Tools+built-in simple & scientific calculator · fincalchub.xyz" to "All 13 Tools+built-in simple & scientific calculator · fincalchub.xyz"
+  - Review `sitemap.xml` and update any description or metadata referencing `tools.html` that still says "13 tools" to say "13 tools+built-in simple & scientific calculator"
   - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8_
 
 - [x] 1. Add jsPDF CDN script tag and scaffold the PDF export function
@@ -33,8 +33,8 @@ All changes are made directly to two existing HTML files — no build step, no n
 
 - [x] 2. Add "📄 Download PDF Report" button to every tool container in both files
 
-  - NOTE: The single PDF button has been REPLACED by the three-button export group from Task 21. The three-button groups (PDF + CSV + XLSX) are already present on all 13 existing tools in `index.html`. This task is complete.
-  - For each of the 13 tool `<div id="...">` blocks in `index.html`, the three-button export group calling `downloadPDF('toolname')`, `downloadCSV('toolname')`, `downloadXLSX('toolname')` is already in place
+  - NOTE: The single PDF button has been REPLACED by the three-button export group from Task 21. The three-button groups (PDF + CSV + XLSX) are already present on all 13 existing tools+built-in simple & scientific calculator in `index.html`. This task is complete.
+  - For each of the 13 tool+built-in simple & scientific calculator `<div id="...">` blocks in `index.html`, the three-button export group calling `downloadPDF('toolname')`, `downloadCSV('toolname')`, `downloadXLSX('toolname')` is already in place
   - Repeat for each of the 12 tool blocks in `tools.html`
   - The `downloadPDF(toolId)` dispatcher function reads the current input/output DOM values for the given toolId, packages them into `inputs` and `outputs` objects via `gatherToolData()`, and calls `exportToolToPDF`
   - _Requirements: 2.7, 2.8_
@@ -139,7 +139,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 
 - [ ] 10. Add Formula Accordions to all tool containers in both files
 
-  - For each of the 13 tools in `index.html` and 13 tools in `tools.html`, insert a `<details>` accordion element immediately after the `.tool-desc` div (or after the PDF button if step 2 is complete)
+  - For each of the 15 tools in `index.html` and 15 tools in `tools.html`, insert a `<details>` accordion element immediately after the `.tool-desc` div (or after the PDF button if step 2 is complete)
   - The `<summary>` must read "📐 View Mathematical Formula"
   - The `<details>` body must contain a styled `<code>` block with the tool's primary formula
   - Formulas to use for each tool:
@@ -270,7 +270,7 @@ All changes are made directly to two existing HTML files — no build step, no n
   - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6_
 
 - [~] 20. Final checkpoint — Verify all new features
-  - Open both `index.html` and `tools.html` in a browser. Verify: tools.html shows exactly 13 tools (no Mortgage, no CPM/ROI), Scenario Comparison toggle works on at least 2 tools, news ticker scrolls and shows fallback if API unavailable, share URL round-trips correctly (copy URL, open in new tab, inputs repopulate), result animations play on calculation update, widget mode (`?widget=1`) hides all chrome and shows only the active tool. Ask the user if questions arise.
+  - Open both `index.html` and `tools.html` in a browser. Verify: tools.html shows exactly 13 tools+simple & scientific calculator (no Mortgage, no CPM/ROI), Scenario Comparison toggle works on at least 2 tools, news ticker scrolls and shows fallback if API unavailable, share URL round-trips correctly (copy URL, open in new tab, inputs repopulate), result animations play on calculation update, widget mode (`?widget=1`) hides all chrome and shows only the active tool. Ask the user if questions arise.
 
 ## Notes
 
@@ -383,7 +383,7 @@ All changes are made directly to two existing HTML files — no build step, no n
 
 - [ ] 30. Implement SessionStorage Input Persistence Engine in index.html
 
-  - In the inline `<script>` block of `index.html`, implement `triggerAllActiveCalculators()` covering all 13 tools with `typeof` existence guards:
+  - In the inline `<script>` block of `index.html`, implement `triggerAllActiveCalculators()` covering all 15 tools with `typeof` existence guards:
     ```javascript
     function triggerAllActiveCalculators() {
       ['calcRoAS','calcInvoice','calcABTest','fetchCrypto','calcCI','calcSIP',
@@ -402,13 +402,13 @@ All changes are made directly to two existing HTML files — no build step, no n
   - _Requirements: 24.1, 24.2, 24.3, 24.4, 24.5, 24.6, 24.7, 24.8_
 
   - [ ]* 30.1 Write property test for sessionStorage round-trip (Property 16)
-    - **Property 16: SessionStorage round-trip for all 13 tools**
+    - **Property 16: SessionStorage round-trip for all 15 tools**
     - For any set of input element IDs with assigned values, verify that firing input events stores correct sessionStorage entries, and that a restore loop correctly re-applies those values to matching elements
     - **Validates: Requirements 24.2, 24.4**
 
   - [ ]* 30.2 Write property test for triggerAllActiveCalculators safety (Property 17)
     - **Property 17: triggerAllActiveCalculators existence-guard safety**
-    - For any arbitrary subset of calc functions being defined (0 to 13), verify that calling `triggerAllActiveCalculators()` does not throw regardless of which functions are absent
+    - For any arbitrary subset of calc functions being defined (0 to 15), verify that calling `triggerAllActiveCalculators()` does not throw regardless of which functions are absent
     - **Validates: Requirements 24.6**
 
 - [~] 31. Implement PWA Install Banner in index.html
@@ -445,14 +445,14 @@ All changes are made directly to two existing HTML files — no build step, no n
   - Apply only tweaks that are relevant to each file — skip any that don't match
   - _Requirements: 27.1, 27.2, 27.3_
 
-- [~] 34. Final checkpoint — Full 13-tool verification
+- [~] 34. Final checkpoint — Full 15-tool verification
 
   - Open `index.html` in a browser. Verify all 13 tabs display in the correct order. Enter values into the RoAS, Invoice, and A/B Test tools and confirm outputs are calculated correctly. Refresh the page and confirm all entered values are restored and outputs recalculate automatically. Close the tab, reopen, confirm sessionStorage is cleared and defaults are shown. Verify the PWA banner appears if opened on a supported browser. Verify the Crypto converter shows "Market (Cached)" amber status if network is blocked. Verify that faq.html, privacy.html, and terms.html load without errors and the new tool references appear in navigation. Ask the user if questions arise.
 
-- Tasks 25–28 are `index.html`-only — the three new tools do NOT need to be added to `tools.html` (that file is kept at 13 tools)
+- Tasks 25–28 are `index.html`-only — the three new tools do NOT need to be added to `tools.html` (that file is kept at 15 tools)
 - Task 30 (sessionStorage) is `index.html`-only — the delegated listeners must not interfere with `tools.html`
 - The three new tools (roas, invoice, abtest) must call `saveHistory(...)` at the end of each calc function to integrate with the existing LocalStorage history system from Task 3
-- `triggerAllActiveCalculators()` uses function-name strings to call via `window[fn]` — ensure all 13 calc function names are spelled exactly as defined (case-sensitive): `calcRoAS`, `calcInvoice`, `calcABTest`, `fetchCrypto`, `calcCI`, `calcSIP`, `calcTax`, `calcSavings`, `calcRetire`, `calcProfit`, `calcFL`, `calcSaaS`, `calcEC`
+- `triggerAllActiveCalculators()` uses function-name strings to call via `window[fn]` — ensure all 15 calc function names are spelled exactly as defined (case-sensitive): `calcRoAS`, `calcInvoice`, `calcABTest`, `fetchCrypto`, `calcCI`, `calcSIP`, `calcTax`, `calcSavings`, `calcRetire`, `calcProfit`, `calcFL`, `calcSaaS`, `calcEC`
 - Task 31 (PWA banner) updates the existing `beforeinstallprompt` handler — do NOT remove the existing `installBtn` and `installHint` logic; the banner is additive
 - Task 32 (fetch crash recovery) wraps the existing logic in try/catch — do NOT rewrite the fetch logic, only wrap it
 - Property tests 26.1, 27.1, 28.1, 30.1, 30.2 are optional and marked with `*`; they can be skipped for faster delivery
@@ -489,7 +489,7 @@ The existing `fetchCrypto()` already has a try/catch. The only missing piece is 
 
 - [ ] 36. Verify tools.html parity — confirm it has exactly 13 tools and matching export buttons
 
-  - Open `tools.html` and verify it has the same 13 tools as `index.html` (crypto, compound, sip, tax, savings, retirement, profit, freelancer, saas, ecom) — no roas/invoice/abtest (those are index.html-only)
+  - Open `tools.html` and verify it has the same 15 tools as `index.html` (crypto, compound, sip, tax, savings, retirement, profit, freelancer, saas, ecom simple & scientific calculator) — no roas/invoice/abtest (those are index.html-only)
   - Verify tools.html has the three-button export groups on all 13 tools (if Task 21 applied to tools.html)
   - If tools.html is missing the export buttons, apply the same three-button group pattern from Task 21 to tools.html
   - _Requirements: 10.1, 28.1_
