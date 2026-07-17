@@ -5,7 +5,8 @@ const files = [
   'index.html',
   'faq.html',
   'privacy.html',
-  'terms.html'
+  'terms.html',
+  'about.html'
 ];
 
 const dir = __dirname;
