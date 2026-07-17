@@ -72,10 +72,6 @@
       "dest": "/terms.html"
     },
     {
-      "src": "/readme",
-      "dest": "/readme.html"
-    },
-    {
       "handle": "filesystem"
     }
   ],
@@ -121,4 +117,3 @@
     "silent": true
   }
 }
-
