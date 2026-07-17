@@ -2,7 +2,7 @@
 
 ## Introduction
 
-FinCalcHub Enhancement Project adds multiple modules of improvements to the existing pure client-side, single-file HTML financial calculator suite (`index.html` with 13 tools (10 existing + 3 new: RoAS Planner, Invoice Tracker, A/B Test Engine), `tools.html` with 10 tools). All enhancements must work without any backend, npm, or build step. The stack is vanilla JavaScript, HTML5, and inlined Tailwind CSS v4, with external libraries loaded via CDN only.
+FinCalcHub Enhancement Project adds multiple modules of improvements to the existing pure client-side, single-file HTML financial calculator suite (`index.html` with 15 tools (10 existing + 3 new & built-in simple & scientific calculator: RoAS Planner, Invoice Tracker, A/B Test Engine), `tools.html` with 10 tools). All enhancements must work without any backend, npm, or build step. The stack is vanilla JavaScript, HTML5, and inlined Tailwind CSS v4, with external libraries loaded via CDN only.
 
 The eight modules are:
 1. **Client-Side Persistence & Universal PDF Engine** — localStorage history sidebar and jsPDF export for every tool
@@ -328,7 +328,7 @@ The eight modules are:
 
 ---
 
-### Requirement 20: Tab Bar & Tool Directory Reconstruction (13 Tools)
+### Requirement 20: Tab Bar & Tool Directory Reconstruction (15 Tools)
 
 **User Story:** As a user, I want all 13 tools to appear in the tab bar in a specific order so that I can navigate to any calculator quickly.
 
@@ -447,7 +447,7 @@ The eight modules are:
 3. THE input tracking listener SHALL be registered as a single delegated event listener on the document (or on a common ancestor), not as individual `oninput` attribute overrides, to avoid conflicts with existing `oninput` handlers.
 4. ON `DOMContentLoaded`, THE App SHALL loop through every `<input>` and `<select>` element in every Tool_Container; for each element with an `id`, if `sessionStorage.getItem(element.id)` returns a non-null value, THE App SHALL restore `element.value` to the cached value.
 5. AFTER all input values are restored on `DOMContentLoaded`, THE App SHALL call `triggerAllActiveCalculators()` once to recompute all tool outputs based on the restored values.
-6. THE `triggerAllActiveCalculators()` function SHALL call each tool's compute function inside an existence guard: `if (typeof calcRoAS === 'function') calcRoAS();` — one guard per tool, covering all 13 tools.
+6. THE `triggerAllActiveCalculators()` function SHALL call each tool's compute function inside an existence guard: `if (typeof calcRoAS === 'function') calcRoAS();` — one guard per tool, covering all 15 tools.
 7. IF `sessionStorage` is unavailable or throws a security exception, THE App SHALL silently skip persistence and continue operating normally (wrap all reads/writes in try/catch).
 8. THE active tab state SHALL also be persisted: on every `switchTab()` call, THE App SHALL store the active tool ID via `sessionStorage.setItem('fch_active_tab', toolId)`; on `DOMContentLoaded`, if a cached tab ID exists, THE App SHALL restore it by calling `switchTab(cachedTabId)` before `triggerAllActiveCalculators()`.
 
