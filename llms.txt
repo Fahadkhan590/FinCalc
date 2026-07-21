@@ -1,0 +1,42 @@
+# FinCalcHub Marketing
+
+> FinCalcHub Marketing is a browser-based suite of 15 professional financial, business, marketing, investment, tax, cryptocurrency, simple, and scientific calculators. The tools run primarily in the browser and provide practical calculation utilities for individuals, freelancers, marketers, businesses, investors, and students.
+
+## Website
+
+- [FinCalcHub Marketing](https://www.fincalchub.xyz/) — Main calculator suite and brand homepage.
+- [All Calculator Tools](https://www.fincalchub.xyz/tools.html) — Calculator directory and tool discovery page.
+- [About FinCalcHub Marketing](https://www.fincalchub.xyz/about.html) — Information about the website and its calculator tools.
+- [Frequently Asked Questions](https://www.fincalchub.xyz/faq.html) — Common questions about the calculators and website.
+- [FinCalcHub Blog](https://www.fincalchub.xyz/blog.html) — Financial, business, marketing, and calculator-related educational content.
+
+## Calculator Suite
+
+1. [Real-Time Cryptocurrency Converter](https://www.fincalchub.xyz/#crypto)
+2. [ROAS and Paid Media ROI Calculator](https://www.fincalchub.xyz/#roas)
+3. [Freelance Invoice and Hours Tracker](https://www.fincalchub.xyz/#invoice)
+4. [A/B Split-Test Calculator](https://www.fincalchub.xyz/#abtest)
+5. [Compound Interest Calculator](https://www.fincalchub.xyz/#compound)
+6. [SIP Investment Planner](https://www.fincalchub.xyz/#sip)
+7. [Income Tax Calculator](https://www.fincalchub.xyz/#tax)
+8. [Savings Goal Calculator](https://www.fincalchub.xyz/#savings)
+9. [Retirement Planning Calculator](https://www.fincalchub.xyz/#retirement)
+10. [Business Profit Margin Calculator](https://www.fincalchub.xyz/#profit)
+11. [Freelance Hourly Rate Calculator](https://www.fincalchub.xyz/#freelancer)
+12. [SaaS CAC and LTV Calculator](https://www.fincalchub.xyz/#saas)
+13. [E-Commerce Net Profit Calculator](https://www.fincalchub.xyz/#ecom)
+14. [Simple Calculator](https://www.fincalchub.xyz/#simple)
+15. [Scientific Calculator](https://www.fincalchub.xyz/#scientific)
+
+## Data and Attribution
+
+- [CoinGecko](https://www.coingecko.com/) — Live cryptocurrency market data source used by the crypto converter.
+
+## Policies
+
+- [Privacy Policy](https://www.fincalchub.xyz/privacy.html)
+- [Terms of Use](https://www.fincalchub.xyz/terms.html)
+
+## Crawling and Usage
+
+FinCalcHub Marketing provides calculator tools and educational information for general informational purposes. Calculations are estimates and should not replace professional financial, tax, legal, or investment advice.
