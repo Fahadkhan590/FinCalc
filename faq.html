@@ -181,25 +181,148 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
   .share-opt i { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; flex-shrink: 0; vertical-align: middle; }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"How do I calculate ROAS?","acceptedAnswer":{"@type":"Answer","text":"ROAS (Return on Ad Spend) is calculated by dividing total revenue by total ad spend. For example, if your campaign generated $50,000 in revenue with $10,000 in ad spend, your ROAS is 5x. Use the <a href='index.html#roas'>RoAS Planner</a> to calculate this along with your break-even ROAS based on gross margin."}},
-    {"@type":"Question","name":"What is a good ROAS for an advertising campaign?","acceptedAnswer":{"@type":"Answer","text":"A good ROAS depends on your profit margins. If your gross margin is 40%, your break-even ROAS is 2.5x (1 ÷ 0.40). Most successful campaigns aim for 3x–5x ROAS. Below your break-even point means you're losing money. Use our RoAS Planner to see your exact break-even threshold."}},
-    {"@type":"Question","name":"How is compound interest calculated?","acceptedAnswer":{"@type":"Answer","text":"Compound interest uses the formula A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding frequency per year, and t is years. Monthly contributions are added as an annuity. Our <a href='index.html#compound-interest'>Compound Interest Calculator</a> handles this automatically and displays an interactive growth chart."}},
-    {"@type":"Question","name":"How does a SIP calculator estimate investment growth?","acceptedAnswer":{"@type":"Answer","text":"A SIP (Systematic Investment Plan) calculator uses the future value of annuity formula: Maturity = PMT × [((1 + r)^n − 1) ÷ r] × (1 + r), where PMT is the monthly investment, r is the monthly rate, and n is total months. This projects how much a fixed monthly investment will grow over time with compound returns."}},
-    {"@type":"Question","name":"How is income tax calculated in Pakistan?","acceptedAnswer":{"@type":"Answer","text":"Pakistan uses progressive tax slabs — each portion of your income is taxed at a different rate. For salaried individuals in 2024-25: income up to Rs 600K is tax-free, 600K–1.2M at 5%, 1.2M–2.2M at 15%, and higher slabs up to 35%. Our <a href='index.html#income-tax'>Income Tax Calculator</a> handles both salaried and business categories with complete slab breakdowns."}},
-    {"@type":"Question","name":"How do I calculate profit margin?","acceptedAnswer":{"@type":"Answer","text":"Profit margin = (Profit ÷ Selling Price) × 100. This is different from markup, which is (Profit ÷ Cost Price) × 100. A 50% markup equals only 33.3% margin. Our <a href='index.html#profit-margin'>Profit Margin Calculator</a> shows all three values instantly."}},
-    {"@type":"Question","name":"Can I use FinCalcHub calculators on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. All 15 tools are fully responsive and tested on mobile screens down to 320px width. You can also install FinCalcHub as a Progressive Web App (PWA) on your home screen for instant access."}},
-    {"@type":"Question","name":"Are my calculator inputs stored?","acceptedAnswer":{"@type":"Answer","text":"When you use the 'Save' button on supported calculators, your inputs are stored in your browser's localStorage. This data never leaves your device. It persists across browser sessions but can be cleared at any time. Without clicking Save, inputs are only stored in session storage and cleared when you close the tab."}},
-    {"@type":"Question","name":"How does the crypto price conversion work?","acceptedAnswer":{"@type":"Answer","text":"The <a href='index.html#crypto'>Crypto Converter</a> fetches real-time prices from the CoinGecko public API every 30 seconds. It supports Bitcoin, Ethereum, and Solana, converted to 8 fiat currencies (USD, EUR, GBP, PKR, INR, AED, CAD, AUD). If the API is unavailable, cached or fallback rates are used."}},
-    {"@type":"Question","name":"How accurate are live cryptocurrency prices?","acceptedAnswer":{"@type":"Answer","text":"CoinGecko aggregates prices from multiple exchanges, providing a reliable market average. However, actual trading prices may vary by exchange and order size. Prices update every 30 seconds on our platform. Always verify critical trades against your exchange directly."}},
-    {"@type":"Question","name":"How do I share a calculator result?","acceptedAnswer":{"@type":"Answer","text":"Click the '🔗 Share' button on any supported calculator. This generates a URL encoding your current inputs (e.g., index.html#sip?m=10000&r=12&y=10). The link is copied to your clipboard. When someone opens it, the calculator restores your exact inputs and recalculates."}},
-    {"@type":"Question","name":"Can I save a calculation in my browser?","acceptedAnswer":{"@type":"Answer","text":"Yes. On Compound Interest, SIP, RoAS, and Income Tax calculators, click the '💾 Save' button. Your inputs are stored in localStorage and automatically restored when you revisit. Data stays on your device only — nothing is sent to any server."}},
-    {"@type":"Question","name":"What currencies are supported?","acceptedAnswer":{"@type":"Answer","text":"The global currency selector supports 8 currencies: USD ($), EUR (€), GBP (£), PKR (Rs), INR (₹), AED (د.إ), CAD ($), and AUD ($). Changing currency updates all compatible calculator labels and symbols instantly."}},
-    {"@type":"Question","name":"Is FinCalcHub free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. All 15 tools are completely free with no registration, no ads (currently), and no premium tiers. The platform is funded independently."}},
-    {"@type":"Question","name":"Does FinCalcHub work offline?","acceptedAnswer":{"@type":"Answer","text":"The PWA service worker caches core files for fast repeat visits. Calculator functionality works without internet (except the crypto converter which needs live API data). Saved calculations persist across sessions."}},
-    {"@type":"Question","name":"Does FinCalcHub include standard operational calculators?","acceptedAnswer":{"@type":"Answer","text":"Yes! Alongside our specialized marketing suites, we feature a standard client-side Simple Calculator and an advanced Scientific Calculator right on the main navigation toolbar."}},
-    {"@type":"Question","name":"Can I perform engineering or trigonometry math on this platform?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Our built-in Scientific Calculator supports complex equations including trigonometry, logarithms, square roots, and exponential powers processing completely locally in your browser."}}
-]
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate ROAS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ROAS (Return on Ad Spend) is calculated by dividing total revenue by total ad spend. For example, if your campaign generated $50,000 in revenue with $10,000 in ad spend, your ROAS is 5x. Use the <a href='index.html#roas'>RoAS Planner</a> to calculate this along with your break-even ROAS based on gross margin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good ROAS for an advertising campaign?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A good ROAS depends on your profit margins. If your gross margin is 40%, your break-even ROAS is 2.5x (1 ÷ 0.40). Most successful campaigns aim for 3x–5x ROAS. Below your break-even point means you're losing money. Use our RoAS Planner to see your exact break-even threshold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is compound interest calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compound interest uses the formula A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding frequency per year, and t is years. Monthly contributions are added as an annuity. Our <a href='index.html#compound-interest'>Compound Interest Calculator</a> handles this automatically and displays an interactive growth chart."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a SIP calculator estimate investment growth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A SIP (Systematic Investment Plan) calculator uses the future value of annuity formula: Maturity = PMT × [((1 + r)^n − 1) ÷ r] × (1 + r), where PMT is the monthly investment, r is the monthly rate, and n is total months. This projects how much a fixed monthly investment will grow over time with compound returns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is income tax calculated in Pakistan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pakistan uses progressive tax slabs — each portion of your income is taxed at a different rate. For salaried individuals in 2024-25: income up to Rs 600K is tax-free, 600K–1.2M at 5%, 1.2M–2.2M at 15%, and higher slabs up to 35%. Our <a href='index.html#income-tax'>Income Tax Calculator</a> handles both salaried and business categories with complete slab breakdowns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate profit margin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Profit margin = (Profit ÷ Selling Price) × 100. This is different from markup, which is (Profit ÷ Cost Price) × 100. A 50% markup equals only 33.3% margin. Our <a href='index.html#profit-margin'>Profit Margin Calculator</a> shows all three values instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use FinCalcHub calculators on mobile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All 15 tools are fully responsive and tested on mobile screens down to 320px width. You can also install FinCalcHub as a Progressive Web App (PWA) on your home screen for instant access."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my calculator inputs stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you use the 'Save' button on supported calculators, your inputs are stored in your browser's localStorage. This data never leaves your device. It persists across browser sessions but can be cleared at any time. Without clicking Save, inputs are only stored in session storage and cleared when you close the tab."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the crypto price conversion work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The <a href='index.html#crypto'>Crypto Converter</a> fetches real-time prices from the CoinGecko public API every 30 seconds. It supports Bitcoin, Ethereum, and Solana, converted to 8 fiat currencies (USD, EUR, GBP, PKR, INR, AED, CAD, AUD). If the API is unavailable, cached or fallback rates are used."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are live cryptocurrency prices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CoinGecko aggregates prices from multiple exchanges, providing a reliable market average. However, actual trading prices may vary by exchange and order size. Prices update every 30 seconds on our platform. Always verify critical trades against your exchange directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I share a calculator result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Click the '🔗 Share' button on any supported calculator. This generates a URL encoding your current inputs (e.g., index.html#sip?m=10000&r=12&y=10). The link is copied to your clipboard. When someone opens it, the calculator restores your exact inputs and recalculates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I save a calculation in my browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. On Compound Interest, SIP, RoAS, and Income Tax calculators, click the '💾 Save' button. Your inputs are stored in localStorage and automatically restored when you revisit. Data stays on your device only — nothing is sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What currencies are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The global currency selector supports 8 currencies: USD ($), EUR (€), GBP (£), PKR (Rs), INR (₹), AED (د.إ), CAD ($), and AUD ($). Changing currency updates all compatible calculator labels and symbols instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is FinCalcHub free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All 15 tools are completely free with no registration, no ads (currently), and no premium tiers. The platform is funded independently."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does FinCalcHub work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The PWA service worker caches core files for fast repeat visits. Calculator functionality works without internet (except the crypto converter which needs live API data). Saved calculations persist across sessions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does FinCalcHub include standard operational calculators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Alongside our specialized marketing suites, we feature a standard client-side Simple Calculator and an advanced Scientific Calculator right on the main navigation toolbar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I perform engineering or trigonometry math on this platform?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Our built-in Scientific Calculator supports complex equations including trigonometry, logarithms, square roots, and exponential powers processing completely locally in your browser."
+      }
+    }
+  ]
+}
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
