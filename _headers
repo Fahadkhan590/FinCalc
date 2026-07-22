@@ -1,20 +1,17 @@
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: no-referrer-when-downgrade
+  Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://googletagmanager.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.sheetjs.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://api.coingecko.com https://api.exchangerate-api.com https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; worker-src 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://googletagmanager.com https://unpkg.com https://cdn.sheetjs.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://api.coingecko.com https://api.exchangerate-api.com https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; worker-src 'self';
 
 /*.html
-  Content-Type: text/html; charset=utf-8
   Cache-Control: public, max-age=3600, must-revalidate
 
 /sw.js
-  Content-Type: application/javascript; charset=utf-8
   Cache-Control: no-cache, no-store, must-revalidate
   Service-Worker-Allowed: /
 
@@ -23,21 +20,16 @@
   X-Content-Type-Options: nosniff
 
 /*.json
-  Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=86400
 
 /*.js
-  Content-Type: application/javascript; charset=utf-8
   Cache-Control: public, max-age=86400
 
 /*.png
-  Content-Type: image/png
   Cache-Control: public, max-age=31536000, immutable
 
 /*.ico
-  Content-Type: image/x-icon
   Cache-Control: public, max-age=31536000, immutable
 
 /*.svg
-  Content-Type: image/svg+xml
   Cache-Control: public, max-age=31536000, immutable
