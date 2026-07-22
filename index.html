@@ -969,15 +969,10 @@
 
 <!-- ================== JAVASCRIPT ================== -->
 <script>
-// ============ SECURITY LAYER ============
-// Sanitize all number inputs — clamp to safe range, reject NaN/Infinity
-function safeNum(v,min,max){var n=parseFloat(v)||0;if(!isFinite(n))n=0;if(typeof min==='number')n=Math.max(n,min);if(typeof max==='number')n=Math.min(n,max);return n;}
-// Strip any HTML from strings (XSS protection for dynamic text)
-function escHTML(s){var d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML;}
-// Ensure no URL param injection — clean query strings
-(function(){if(window.location.search.length>200)window.history.replaceState(null,'',window.location.pathname);})();
-// Block console prototype poisoning
-try{Object.freeze(Object.prototype);}catch(e){}
+function safeNum(v,min,max){var n=parseFloat(v)||0;if(!isFinite(n))n=0;if(typeof min==='number')n=Math.max(n,min);if(typeof max==='number')n=Math.min(n,max);return n}
+function escHTML(s){var d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML}
+(function(){if(window.location.search.length>200)window.history.replaceState(null,'',window.location.pathname)})();
+try{Object.freeze(Object.prototype)}catch(e){}
 
 // ============ GLOBAL CURRENCY ============
 const CUR={USD:{s:'$',r:1},EUR:{s:'€',r:.92},GBP:{s:'£',r:.78},PKR:{s:'Rs',r:278.5},INR:{s:'₹',r:83.5},AED:{s:'د.إ',r:3.67},CAD:{s:'$',r:1.36},AUD:{s:'$',r:1.51}};
