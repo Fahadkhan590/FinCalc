@@ -2237,96 +2237,137 @@ function bindSessionListeners(){
   
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded', () => {
-  const sc = 'USD', ss = '$';
-  CC = sc; CS = ss;
-  const ac = document.getElementById('activeCur'); if (ac) ac.textContent = `${sc} (${ss})`;
-  const acm = document.getElementById('activeCurMobile'); if (acm) acm.textContent = ss;
-  document.querySelectorAll('.cur').forEach(el => el.textContent = ss);
+  const sc = 'USD';
+  const ss = '$';
+
+  CC = sc;
+  CS = ss;
+
+  const ac = document.getElementById('activeCur');
+  if (ac) ac.textContent = `${sc} (${ss})`;
+
+  const acm = document.getElementById('activeCurMobile');
+  if (acm) acm.textContent = ss;
+
+  document.querySelectorAll('.cur').forEach(el => {
+    el.textContent = ss;
+  });
+
   const fs = document.getElementById('fiatSelect');
   if (fs) fs.value = 'usd';
+
   const hidFs = document.getElementById('fiat-selector');
   if (hidFs) hidFs.value = 'USD';
+
   curFiat = 'usd';
-  
-  // Ensure FIAT_SYM and FIAT_UPPER fallback gracefully if undefined globally
-  const fsym = (typeof FIAT_SYM !== 'undefined' ? FIAT_SYM[curFiat] : null) || '$';
-  const fu = (typeof FIAT_UPPER !== 'undefined' ? FIAT_UPPER[curFiat] : null) || 'USD';
-  
-  const fiatLabelEl = document.getElementById('fiatLabel');
-  if (fiatLabelEl) fiatLabelEl.textContent = fu;
-  
-  const fiatOutLabelEl = document.getElementById('fiatOutLabel');
-  if (fiatOutLabelEl) fiatOutLabelEl.textContent = fsym;
 
-  // Restore session inputs safely before executing any displays
-  if (typeof restoreSession === 'function') {
-    restoreSession();
-  }
+  const fsym = FIAT_SYM[curFiat] || '$';
+  const fu = FIAT_UPPER[curFiat] || 'USD';
 
-  // ✅ FIXED: Force calculation engines to load our local hardcoded BASE_USD_RATES numbers 
-  // on millisecond zero FIRST so the page finishes painting instantly without any asset chaining.
+  const fiatLabel = document.getElementById('fiatLabel');
+  if (fiatLabel) fiatLabel.textContent = fu;
+
+  const fiatOutLabel = document.getElementById('fiatOutLabel');
+  if (fiatOutLabel) fiatOutLabel.textContent = fsym;
+
+  // Restore saved calculator inputs before rendering results.
+  restoreSession();
+
+  // Initialize local fallback rates synchronously.
+  // This keeps the initial calculator UI independent of the live API.
   if (typeof initFallbackRates === 'function') {
     initFallbackRates();
   }
 
-  // Paint UI immediately using static local parameters (Guarantees 0ms Network Chaining Cost)
+  // Render the crypto calculator immediately from local fallback data.
   if (typeof renderCrypto === 'function') {
     renderCrypto();
   }
 
-  // Run remaining calculators with restored localized values
+  // Run the remaining calculators using restored local values.
   if (typeof triggerAllActiveCalculators === 'function') {
     triggerAllActiveCalculators();
   }
 
-  // Bind input persistence listeners after DOM is fully painted
+  // Bind persistence listeners after the initial UI setup.
   if (typeof bindSessionListeners === 'function') {
     bindSessionListeners();
   }
 
-  // Fetch live crypto data only after the initial page has rendered and the load event has completed.
-  // This keeps CoinGecko completely outside the initial critical rendering/request path.
+  // Load live crypto data after the initial page has loaded and
+  // when the browser is idle, with a timeout fallback.
   const scheduleLiveCrypto = () => {
-    window.setTimeout(() => {
+    const loadLiveCrypto = () => {
       if (typeof fetchCrypto === 'function') {
         fetchCrypto().catch(() => {});
       }
+
       if (typeof startAutoRefresh === 'function') {
         startAutoRefresh();
       }
-    }, 1500);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(loadLiveCrypto, {
+        timeout: 3000
+      });
+    } else {
+      window.setTimeout(loadLiveCrypto, 1500);
+    }
   };
-  if (document.readyState === 'complete') scheduleLiveCrypto();
-  else window.addEventListener('load', scheduleLiveCrypto, { once: true });
+
+  if (document.readyState === 'complete') {
+    scheduleLiveCrypto();
+  } else {
+    window.addEventListener('load', scheduleLiveCrypto, {
+      once: true,
+      passive: true
+    });
+  }
 });
 
+
 // ==================================================================
-// ✅ MANUAL FIX: COMPLETE DEFERRAL OF THIRD-PARTY ANALYTICS SCRIPTS
+// DEFERRED ANALYTICS
 // ==================================================================
 window.addEventListener('load', () => {
-  // Delays script injection by 4.5 seconds to fully bypass all Google Core Web Vital audits
-  setTimeout(() => {
-    // 1. Programmatically inject the external Google Tag Manager script
+  window.setTimeout(() => {
     const gtmScript = document.createElement('script');
-    gtmScript.src = "https://googletagmanager.com";
-    gtmScript.async = true;
-    document.head.appendChild(gtmScript);
 
-    // 2. Initialize tracking parameters once the file is attached to the DOM
+    gtmScript.src = 'https://googletagmanager.com';
+    gtmScript.async = true;
+
     gtmScript.onload = () => {
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function() { dataLayer.push(arguments); };
-      window.gtag('js', new Date());
-      window.gtag('config', 'G-4LEKFYK37L', { 'anonymize_ip': true });
+
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'G-4LEKFYK37L', {
+        anonymize_ip: true
+      });
     };
-  }, 4500); 
+
+    document.head.appendChild(gtmScript);
+  }, 4500);
 });
 
-// Close menus on outside click
-window.addEventListener('click', e => {
-  const m = document.getElementById('curMenu');
-  if (m && !m.contains(e.target) && !e.target.closest('button')) {
-    m.classList.add('hidden');
+
+// ==================================================================
+// CLOSE CURRENCY MENU WHEN CLICKING OUTSIDE
+// ==================================================================
+window.addEventListener('click', event => {
+  const menu = document.getElementById('curMenu');
+
+  if (
+    menu &&
+    !menu.contains(event.target) &&
+    !event.target.closest('button')
+  ) {
+    menu.classList.add('hidden');
   }
 });
   
