@@ -1165,7 +1165,7 @@ async function fetchCrypto(){
     if(st)st.textContent='Connecting…';
   }else if(
     !lastUpdate ||
-    (new Date()-lastUpdate)>25000
+    (new Date()-lastUpdate)>20000
   ){
     if(st)st.textContent='Updating…';
   }
