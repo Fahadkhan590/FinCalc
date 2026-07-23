@@ -1185,7 +1185,7 @@ async function fetchCrypto(){
       headers:{
         'Accept':'application/json'
       },
-      signal:AbortSignal.timeout(8000)
+      signal:AbortSignal.timeout(6000)
     });
 
     if(!r.ok){
