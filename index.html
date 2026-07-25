@@ -2153,41 +2153,71 @@ const h=document.getElementById('installHint');
 if(h){h.textContent='Tap below to install →';h.style.cursor='pointer';}
 });
 
-function installApp(){
-if(window.deferredPrompt){
-window.deferredPrompt.prompt();
-window.deferredPrompt.userChoice.then(r=>{
-if(r.outcome==='accepted'){
-const b=document.getElementById('installBtn');
-if(b)b.classList.add('hidden');
-const h=document.getElementById('installHint');
-if(h){h.textContent='✅ App installed successfully!';h.style.cursor='default';}
-}
-window.deferredPrompt=null;
-deferredPrompt=null;
-}).catch(()=>{window.deferredPrompt=null;deferredPrompt=null;});
-} else {
+// Global variable setup
+window.deferredPrompt = window.deferredPrompt || null;
 
-const h=document.getElementById('installHint');
-if(h){
-const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
-const isSafari=/^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-if(isIOS||isSafari) h.textContent='Tap the Share button ↗ then "Add to Home Screen"';
-else h.textContent='Use your browser menu → "Install app" or "Add to Home Screen"';
-}
-}
+function installApp(event) {
+  // Prevent any default behavior from the event
+  if (event && typeof event.preventDefault === 'function') {
+    event.preventDefault();
+  }
+
+  if (window.deferredPrompt) {
+    // Reference the prompt strictly synchronously
+    const promptEvent = window.deferredPrompt;
+    
+    // Clear references immediately BEFORE triggering to prevent double-clicks
+    window.deferredPrompt = null;
+    if (typeof deferredPrompt !== 'undefined') {
+      deferredPrompt = null;
+    }
+
+    // Call prompt strictly on the initial user gesture thread
+    promptEvent.prompt();
+
+    // Handle the promise resolution asynchronously after the prompt is shown
+    promptEvent.userChoice.then(r => {
+      if (r.outcome === 'accepted') {
+        const b = document.getElementById('installBtn');
+        if (b) b.classList.add('hidden');
+        const h = document.getElementById('installHint');
+        if (h) {
+          h.textContent = '✅ App installed successfully!';
+          h.style.cursor = 'default';
+        }
+      }
+    }).catch(() => {
+      // Fallback reset if it fails
+      window.deferredPrompt = null;
+    });
+
+  } else {
+    const h = document.getElementById('installHint');
+    if (h) {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      if (isIOS || isSafari) {
+        h.textContent = 'Tap the Share button ↗ then "Add to Home Screen"';
+      } else {
+        h.textContent = 'Use your browser menu → "Install app" or "Add to Home Screen"';
+      }
+    }
+  }
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-const hint=document.getElementById('installHint');
-if(hint)hint.addEventListener('click',()=>installApp());
-const btn=document.getElementById('installBtn');
-if(btn)btn.addEventListener('click',()=>installApp());
+document.addEventListener('DOMContentLoaded', () => {
+  const hint = document.getElementById('installHint');
+  // FIX: Pass the function directly so the user click gesture is preserved
+  if (hint) hint.addEventListener('click', installApp);
 
-if(window.matchMedia('(display-mode: standalone)').matches||navigator.standalone){
-if(btn)btn.classList.add('hidden');
-if(hint)hint.textContent='✅ App is installed';
-}
+  const btn = document.getElementById('installBtn');
+  // FIX: Pass the function directly so the user click gesture is preserved
+  if (btn) btn.addEventListener('click', installApp);
+
+  if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
+    if (btn) btn.classList.add('hidden');
+    if (hint) hint.textContent = '✅ App is installed';
+  }
 });
 
 window.addEventListener('appinstalled',()=>{
