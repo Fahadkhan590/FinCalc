@@ -1108,13 +1108,7 @@
 
 <!-- ================== JAVASCRIPT ================== -->
 <script>
-function safeNum(v,min,max){
-  var n=parseFloat(v)||0;
-  if(!isFinite(n)) n=0;
-  if(typeof min==='number') n=Math.max(n,min);
-  if(typeof max==='number') n=Math.min(n,max);
-  return n;
-}
+function safeNum(v,min,max){var n=parseFloat(v)||0;isFinite(n)||(n=0);"number"==typeof min&&(n=Math.max(n,min));"number"==typeof max&&(n=Math.min(n,max));return n}
 
 function escHTML(s){
   var d=document.createElement('div');
