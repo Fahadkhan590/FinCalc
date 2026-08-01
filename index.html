@@ -1107,12 +1107,30 @@
 <!-- SheetJS loads asynchronously to keep the critical rendering path clear. -->
 
 <!-- ================== JAVASCRIPT ================== -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function safeNum(v,min,max){var n=parseFloat(v)||0;if(!isFinite(n))n=0;if(typeof min==='number')n=Math.max(n,min);if(typeof max==='number')n=Math.min(n,max);return n}
-function escHTML(s){var d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML}
-(function(){if(window.location.search.length>200)window.history.replaceState(null,'',window.location.pathname)})();
-try{Object.freeze(Object.prototype)}catch(e){}
+<script>
+function safeNum(v,min,max){
+  var n=parseFloat(v)||0;
+  if(!isFinite(n)) n=0;
+  if(typeof min==='number') n=Math.max(n,min);
+  if(typeof max==='number') n=Math.min(n,max);
+  return n;
+}
 
+function escHTML(s){
+  var d=document.createElement('div');
+  d.appendChild(document.createTextNode(s));
+  return d.innerHTML;
+}
+
+(function(){
+  if(window.location.search.length>200){
+    window.history.replaceState(null,'',window.location.pathname);
+  }
+})();
+
+try{
+  Object.freeze(Object.prototype);
+}catch(e){}
 
 const CUR={USD:{s:'$',r:1},EUR:{s:'€',r:.92},GBP:{s:'£',r:.78},PKR:{s:'Rs',r:278.5},INR:{s:'₹',r:83.5},AED:{s:'د.إ',r:3.67},CAD:{s:'$',r:1.36},AUD:{s:'$',r:1.51}};
 let CC='USD',CS='$';
@@ -3558,18 +3576,24 @@ el.dispatchEvent(new Event('change',{bubbles:true}));
   // Initial sync (online → no-op). Deferred to idle so it never blocks FCP.
   function boot(){
     if('requestIdleCallback' in window){
-      requestIdleCallback(function(){syncOfflineUi();});
+      requestIdleCallback(function(){
+        syncOfflineUi();
+      });
     }else{
       setTimeout(syncOfflineUi,0);
     }
   }
+
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',boot,{once:true,passive:true});
+    document.addEventListener('DOMContentLoaded', boot, {
+      once: true,
+      passive: true
+    });
   }else{
     boot();
   }
 })();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a247189ee920541f',t:'MTc4NTYxMDkzNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
