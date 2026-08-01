@@ -1,0 +1,23 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Service-Worker-Allowed: /
+
+/js/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+/cdn-cgi/*
+  Cache-Control: no-store
