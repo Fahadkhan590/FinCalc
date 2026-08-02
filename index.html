@@ -1158,20 +1158,30 @@
 <!-- SheetJS loads asynchronously to keep the critical rendering path clear. -->
 
 <!-- ================== JAVASCRIPT ================== -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function safeNum(v,min,max){var n=parseFloat(v)||0;isFinite(n)||(n=0);"number"==typeof min&&(n=Math.max(n,min));"number"==typeof max&&(n=Math.min(n,max));return n}
+<script>
+function safeNum(v,min,max){
+  var n=parseFloat(v)||0;
+  if(!isFinite(n)) n=0;
+  if(typeof min==="number") n=Math.max(n,min);
+  if(typeof max==="number") n=Math.min(n,max);
+  return n;
+}
 
 function escHTML(s){
-  var d=document.createElement('div');
+  var d=document.createElement("div");
   d.appendChild(document.createTextNode(s));
   return d.innerHTML;
 }
 
 (function(){
   if(window.location.search.length>200){
-    window.history.replaceState(null,'',window.location.pathname);
+    window.history.replaceState(null,"",window.location.pathname);
   }
 })();
+
+try{
+  Object.freeze(Object.prototype);
+}catch(e){}
 
 /* Object.prototype freeze REMOVED — it broke target="_blank" on mailto:/tel: links.
    Frozen Object.prototype prevents the browser from creating new window/tab contexts
