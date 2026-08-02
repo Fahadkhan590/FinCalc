@@ -38,7 +38,7 @@
 'use strict';
 
 /** Bump this when shell asset URLs change so old caches are purged. */
-const CACHE_VERSION = 'fch-shell-v2';
+const CACHE_VERSION = 'fch-shell-v3';
 const SHELL_CACHE = `fch-shell-${CACHE_VERSION}`;
 
 /**
@@ -241,31 +241,47 @@ self.addEventListener('fetch', function (event) {
     return;
   }
 
-  // 4) Same-origin odds and ends (e.g. future static files): network-only.
-  //    Do NOT write these into the shell cache — keeps the SW lean.
-  if (url.origin === self.location.origin) {
-    event.respondWith(
-      fetch(request).catch(function () {
-        // If a same-origin navigation somehow missed the checks above, fall back to shell.
-        if (request.mode === 'navigate') {
-          return caches.match('./index.html').then(function (cached) {
-            return (
-              cached ||
-              new Response(OFFLINE_INFO_HTML, {
-                status: 503,
-                headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }
-              })
-            );
-          });
-        }
-        return new Response('', { status: 503, statusText: 'Offline' });
-      })
-    );
-    return;
-  }
-
-  // 5) Any other cross-origin request — pass through, never cache.
+ // 4) Never intercept or cache Cloudflare resources.
+if (
+  url.origin === self.location.origin &&
+  url.pathname.startsWith('/cdn-cgi/')
+) {
   event.respondWith(fetch(request));
+  return;
+}
+
+// 5) Same-origin odds and ends (e.g. future static files): network-only.
+//    Do NOT write these into the shell cache — keeps the SW lean.
+if (url.origin === self.location.origin) {
+  event.respondWith(
+    fetch(request).catch(function () {
+      // If a same-origin navigation somehow missed the checks above, fall back to shell.
+      if (request.mode === 'navigate') {
+        return caches.match('./index.html').then(function (cached) {
+          return (
+            cached ||
+            new Response(OFFLINE_INFO_HTML, {
+              status: 503,
+              headers: {
+                'Content-Type': 'text/html; charset=utf-8',
+                'Cache-Control': 'no-store'
+              }
+            })
+          );
+        });
+      }
+
+      return new Response('', {
+        status: 503,
+        statusText: 'Offline'
+      });
+    })
+  );
+  return;
+}
+
+// 6) Any other cross-origin request — pass through, never cache.
+event.respondWith(fetch(request));
 });
 
 /**
