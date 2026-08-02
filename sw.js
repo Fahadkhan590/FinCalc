@@ -38,7 +38,7 @@
 'use strict';
 
 /** Bump this when shell asset URLs change so old caches are purged. */
-const CACHE_VERSION = 'fch-shell-v3';
+const CACHE_VERSION = 'fch-shell-v4';
 const SHELL_CACHE = `fch-shell-${CACHE_VERSION}`;
 
 /**
