@@ -38,7 +38,7 @@
 'use strict';
 
 /** Bump this when shell asset URLs change so old caches are purged. */
-const CACHE_VERSION = 'fch-shell-v4';
+const CACHE_VERSION = 'fch-shell-v5';
 const SHELL_CACHE = `fch-shell-${CACHE_VERSION}`;
 
 /**
@@ -50,11 +50,10 @@ const SHELL_ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './favicon.ico',
   './favicon-16.png',
   './favicon-32.png',
   './icon-192.png',
-  './icon.svg',
+  './icon-512.png',
   './apple-touch-icon.png'
 ];
 
