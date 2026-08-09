@@ -318,7 +318,6 @@ upgrade-insecure-requests;
       "description": "FinCalcHub is a privacy-first, browser-based platform offering free online financial, business, marketing, investment, tax, cryptocurrency, simple, and scientific calculators.",
       "email": "mailto:believerbk4@gmail.com"
     },
-
     {
       "@type": "WebSite",
       "@id": "https://fincalchub.xyz/#website",
@@ -330,7 +329,6 @@ upgrade-insecure-requests;
       },
       "inLanguage": "en"
     },
-
     {
       "@type": "WebPage",
       "@id": "https://fincalchub.xyz/#webpage",
@@ -343,6 +341,9 @@ upgrade-insecure-requests;
       "about": {
         "@id": "https://fincalchub.xyz/#organization"
       },
+      "mainEntity": {
+        "@id": "https://fincalchub.xyz/#application"
+      },
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://fincalchub.xyz/icon-512.png",
@@ -351,7 +352,6 @@ upgrade-insecure-requests;
       },
       "inLanguage": "en"
     },
-
     {
       "@type": "WebApplication",
       "@id": "https://fincalchub.xyz/#application",
@@ -362,6 +362,9 @@ upgrade-insecure-requests;
       "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
       "description": "A free browser-based suite of financial, business, marketing, investment, tax, cryptocurrency, simple, and scientific calculators.",
       "image": "https://fincalchub.xyz/icon-512.png",
+      "mainEntityOfPage": {
+        "@id": "https://fincalchub.xyz/#webpage"
+      },
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -371,13 +374,13 @@ upgrade-insecure-requests;
         "@id": "https://fincalchub.xyz/#organization"
       }
     },
-
     {
       "@type": "ItemList",
       "@id": "https://fincalchub.xyz/#calculator-list",
       "name": "FinCalcHub Calculator Suite",
       "description": "Free online calculators for finance, business, marketing, investing, taxation, cryptocurrency, and everyday calculations.",
       "numberOfItems": 15,
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -468,19 +471,6 @@ upgrade-insecure-requests;
           "position": 15,
           "name": "Scientific Calculator",
           "url": "https://fincalchub.xyz/#scientific"
-        }
-      ]
-    },
-
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://fincalchub.xyz/#breadcrumbs",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "FinCalcHub",
-          "item": "https://fincalchub.xyz/"
         }
       ]
     }
