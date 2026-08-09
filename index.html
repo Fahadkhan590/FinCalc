@@ -299,29 +299,190 @@ upgrade-insecure-requests;
   @media(max-width:359px){.qcalc{width:290px}.qcalc-val{font-size:22px}.qcalc-key{padding:11px 0;font-size:13px}}
 </style>
 
-<!-- ✅ NON-BLOCKING ASYNC EXCHANGE: Pushes font file downloads outside the critical mobile rendering loop -->
-
+<!-- FinCalcHub structured data: Organization + WebSite + WebPage + WebApplication + ItemList -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "FinancialService",
-      "@id": "https://fincalchub.xyz/#financial-service",
+      "@type": "Organization",
+      "@id": "https://fincalchub.xyz/#organization",
       "name": "FinCalcHub",
       "url": "https://fincalchub.xyz/",
-      "priceRange": "$0",
-      "areaServed": "Global",
-      "description": "Free client-side financial and marketing metric calculators with privacy-first browser processing."
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://fincalchub.xyz/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "FinCalcHub is a privacy-first, browser-based platform offering free online financial, business, marketing, investment, tax, cryptocurrency, simple, and scientific calculators.",
+      "email": "mailto:believerbk4@gmail.com"
     },
+
     {
       "@type": "WebSite",
       "@id": "https://fincalchub.xyz/#website",
       "url": "https://fincalchub.xyz/",
       "name": "FinCalcHub",
+      "description": "Free online financial and business calculators for individuals, students, freelancers, marketers, investors, and businesses.",
       "publisher": {
-        "@id": "https://fincalchub.xyz/#financial-service"
+        "@id": "https://fincalchub.xyz/#organization"
+      },
+      "inLanguage": "en"
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://fincalchub.xyz/#webpage",
+      "url": "https://fincalchub.xyz/",
+      "name": "FinCalcHub — Free Online Financial & Business Calculators",
+      "description": "Free online financial, business, marketing, investment, tax, cryptocurrency, simple, and scientific calculators. Calculate quickly in your browser.",
+      "isPartOf": {
+        "@id": "https://fincalchub.xyz/#website"
+      },
+      "about": {
+        "@id": "https://fincalchub.xyz/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://fincalchub.xyz/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "inLanguage": "en"
+    },
+
+    {
+      "@type": "WebApplication",
+      "@id": "https://fincalchub.xyz/#application",
+      "name": "FinCalcHub Online Calculator Suite",
+      "url": "https://fincalchub.xyz/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+      "description": "A free browser-based suite of financial, business, marketing, investment, tax, cryptocurrency, simple, and scientific calculators.",
+      "image": "https://fincalchub.xyz/icon-512.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@id": "https://fincalchub.xyz/#organization"
       }
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://fincalchub.xyz/#calculator-list",
+      "name": "FinCalcHub Calculator Suite",
+      "description": "Free online calculators for finance, business, marketing, investing, taxation, cryptocurrency, and everyday calculations.",
+      "numberOfItems": 15,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Real-Time Cryptocurrency Converter",
+          "url": "https://fincalchub.xyz/#crypto"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ROAS & Marketing ROI Calculator",
+          "url": "https://fincalchub.xyz/#roas"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Freelance Invoice Calculator",
+          "url": "https://fincalchub.xyz/#invoice"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "A/B Split Test Calculator",
+          "url": "https://fincalchub.xyz/#abtest"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Compound Interest Calculator",
+          "url": "https://fincalchub.xyz/#compound"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "SIP Investment Calculator",
+          "url": "https://fincalchub.xyz/#sip"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Income Tax Calculator",
+          "url": "https://fincalchub.xyz/#tax"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Savings Goal Calculator",
+          "url": "https://fincalchub.xyz/#savings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Retirement Planning Calculator",
+          "url": "https://fincalchub.xyz/#retirement"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "Business Profit Margin Calculator",
+          "url": "https://fincalchub.xyz/#profit"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "Freelance Hourly Rate Calculator",
+          "url": "https://fincalchub.xyz/#freelancer"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "SaaS CAC & LTV Calculator",
+          "url": "https://fincalchub.xyz/#saas"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "E-Commerce Net Profit Calculator",
+          "url": "https://fincalchub.xyz/#ecom"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "Simple Calculator",
+          "url": "https://fincalchub.xyz/#simple"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "Scientific Calculator",
+          "url": "https://fincalchub.xyz/#scientific"
+        }
+      ]
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://fincalchub.xyz/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "FinCalcHub",
+          "item": "https://fincalchub.xyz/"
+        }
+      ]
     }
   ]
 }
