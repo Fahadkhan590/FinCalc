@@ -1244,127 +1244,23 @@ upgrade-insecure-requests;
 
 <!-- ================== JAVASCRIPT ================== -->
 <script>
-function safeNum(v,min,max){
-  var n=parseFloat(v)||0;
-  if(!isFinite(n)) n=0;
-  if(typeof min==="number") n=Math.max(n,min);
-  if(typeof max==="number") n=Math.min(n,max);
-  return n;
-}
+function safeNum(v,min,max){var n=parseFloat(v)||0;if(!isFinite(n))n=0;if(typeof min==="number")n=Math.max(n,min);if(typeof max==="number")n=Math.min(n,max);return n}function escHTML(s){var d=document.createElement("div");d.appendChild(document.createTextNode(s));return d.innerHTML}(function(){if(window.location.search.length>200)window.history.replaceState(null,"",window.location.pathname)})();try{Object.freeze(Object.prototype)}catch(e){}
 
-function escHTML(s){
-  var d=document.createElement("div");
-  d.appendChild(document.createTextNode(s));
-  return d.innerHTML;
-}
+const CUR={USD:{s:"$",r:1},EUR:{s:"€",r:.92},GBP:{s:"£",r:.78},PKR:{s:"Rs",r:278.5},INR:{s:"₹",r:83.5},AED:{s:"د.إ",r:3.67},CAD:{s:"$",r:1.36},AUD:{s:"$",r:1.51}};let CC="USD",CS="$";
 
-(function(){
-  if(window.location.search.length>200){
-    window.history.replaceState(null,"",window.location.pathname);
-  }
-})();
+function setCurrency(c,s){const prev=CC;CC=c;CS=s;try{localStorage.setItem("cc",c);localStorage.setItem("cs",s)}catch(e){}const activeCurEl=document.getElementById("activeCur");if(activeCurEl)activeCurEl.textContent=`${c} (${s})`;const activeCurMobileEl=document.getElementById("activeCurMobile");if(activeCurMobileEl)activeCurMobileEl.textContent=s;document.querySelectorAll(".cur").forEach(el=>el.textContent=s);document.getElementById("curMenu").classList.add("hidden");const fr=CUR[prev]?.r||1,tr=CUR[c]?.r||1;document.querySelectorAll(".money-in").forEach(el=>{if(el.value){const v=parseFloat(el.value)||0,nv=v/fr*tr;el.value=nv>100?Math.round(nv):nv.toFixed(2)}});const cryptoFiatCode=c.toLowerCase();curFiat=cryptoFiatCode;const visSel=document.getElementById("fiatSelect"),hidSel=document.getElementById("fiat-selector");if(visSel)visSel.value=cryptoFiatCode;if(hidSel)hidSel.value=c;const fsym=FIAT_SYM[cryptoFiatCode]||s,fu=FIAT_UPPER[cryptoFiatCode]||c,fiatLabel=document.getElementById("fiatLabel");if(fiatLabel)fiatLabel.textContent=fu;const fiatOutLabel=document.getElementById("fiatOutLabel");if(fiatOutLabel)fiatOutLabel.textContent=fsym;if(lastUpdate)updateApiBadge();["calcCI","calcSIP","calcTax","calcSG","calcRT","calcPM","calcFL","calcSaaS","calcEC","calcRoAS","calcInvoice","calcAB"].forEach(f=>{if(typeof window[f]==="function")window[f]()});if(Object.keys(prices).length>0)renderCrypto();const hasData=Object.keys(prices).length>0,isStale=!lastUpdate||new Date-lastUpdate>3e4;if(!hasData||isStale)if(typeof loadCryptoPrices==="function"&&!loadCryptoPrices._started){if(typeof scheduleCryptoPricesLoad==="function")scheduleCryptoPricesLoad()}else requestAnimationFrame(()=>{fetchCrypto().catch(()=>{})})}
 
-try{
-  Object.freeze(Object.prototype);
-}catch(e){}
+function recalcAll(){["calcCI","calcSIP","calcTax","calcSG","calcRT","calcPM","calcFL","calcSaaS","calcEC","calcRoAS","calcInvoice","calcAB"].forEach(f=>{if(typeof window[f]==="function")window[f]()});cryptoFromCrypto()}
 
-/* Object.prototype freeze REMOVED — it broke target="_blank" on mailto:/tel: links.
-   Frozen Object.prototype prevents the browser from creating new window/tab contexts
-   for non-HTTP protocols, causing mailto clicks to silently redirect to the homepage
-   instead of opening the email client. Prototype-pollution protection is already
-   provided by the CSP headers and standard coding practices. */
+function fmt(n,d=0){return(n||0).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d})}function cs(){return`<span class="cur">${CS}</span>`}
 
-const CUR={USD:{s:'$',r:1},EUR:{s:'€',r:.92},GBP:{s:'£',r:.78},PKR:{s:'Rs',r:278.5},INR:{s:'₹',r:83.5},AED:{s:'د.إ',r:3.67},CAD:{s:'$',r:1.36},AUD:{s:'$',r:1.51}};
-let CC='USD',CS='$';
+const PRIMARY_CALCULATOR_IDS=Object.freeze(["crypto","roas","invoice","abtest","compound","sip","tax","savings","retirement","profit","freelancer","saas","ecom"]);
 
-function setCurrency(c,s){
-const prev=CC;CC=c;CS=s;
-try{localStorage.setItem('cc',c);localStorage.setItem('cs',s);}catch(e){}
-const activeCurEl=document.getElementById('activeCur');
-if(activeCurEl)activeCurEl.textContent=`${c} (${s})`;
-const activeCurMobileEl=document.getElementById('activeCurMobile');
-if(activeCurMobileEl)activeCurMobileEl.textContent=s;
-document.querySelectorAll('.cur').forEach(el=>el.textContent=s);
-document.getElementById('curMenu').classList.add('hidden');
-const fr=CUR[prev]?.r||1,tr=CUR[c]?.r||1;
-document.querySelectorAll('.money-in').forEach(el=>{
-if(el.value){const v=parseFloat(el.value)||0;const nv=v/fr*tr;el.value=nv>100?Math.round(nv):nv.toFixed(2);}
-});
-const cryptoFiatCode=c.toLowerCase();
-curFiat=cryptoFiatCode;
-const visSel=document.getElementById('fiatSelect');
-const hidSel=document.getElementById('fiat-selector');
-if(visSel)visSel.value=cryptoFiatCode;
-if(hidSel)hidSel.value=c;
-const fsym=FIAT_SYM[cryptoFiatCode]||s;
-const fu=FIAT_UPPER[cryptoFiatCode]||c;
-const fiatLabel=document.getElementById('fiatLabel');
-if(fiatLabel)fiatLabel.textContent=fu;
-const fiatOutLabel=document.getElementById('fiatOutLabel');
-if(fiatOutLabel)fiatOutLabel.textContent=fsym;
-if(lastUpdate)updateApiBadge();
-['calcCI','calcSIP','calcTax','calcSG','calcRT','calcPM','calcFL','calcSaaS','calcEC','calcRoAS','calcInvoice','calcAB'].forEach(f=>{if(typeof window[f]==='function')window[f]();});
-if(Object.keys(prices).length>0){renderCrypto();}
-// OPTIMIZATION: User-driven currency change may refresh prices, but only AFTER the
-// deferred bootstrap has already taken CoinGecko off the critical path. Before
-// loadCryptoPrices has run, schedule it (idle/load) instead of an immediate fetch
-// so Lighthouse NDT never chains api.coingecko.com from initial navigation.
-const hasData=Object.keys(prices).length>0;
-const isStale=!lastUpdate||(new Date()-lastUpdate)>30000;
-if(!hasData||isStale){
-if(typeof loadCryptoPrices==='function'&&!loadCryptoPrices._started){
-if(typeof scheduleCryptoPricesLoad==='function')scheduleCryptoPricesLoad();
-}else{
-requestAnimationFrame(()=>{fetchCrypto().catch(()=>{});});
-}
-}
-}
+function getHashCalculator(){const hash=window.location.hash.slice(1).trim().toLowerCase();return PRIMARY_CALCULATOR_IDS.includes(hash)?hash:null}
 
-function recalcAll(){
-['calcCI','calcSIP','calcTax','calcSG','calcRT','calcPM','calcFL','calcSaaS','calcEC','calcRoAS','calcInvoice','calcAB'].forEach(f=>{if(typeof window[f]==='function')window[f]();});
-cryptoFromCrypto();
-}
+function switchTab(n,options={}){if(!PRIMARY_CALCULATOR_IDS.includes(n)||!document.getElementById(n))return;if(typeof window.fchIsOnline==="function"&&!window.fchIsOnline()){if(typeof window.fchShowOffline==="function")window.fchShowOffline("This calculator needs an internet connection. The Quick Calculator (Simple & Scientific) still works offline.");return}document.querySelectorAll(".tab-content").forEach(t=>t.classList.remove("active"));document.querySelectorAll(".tab-btn").forEach(b=>{b.classList.remove("tab-active");b.classList.add("text-slate-400")});document.getElementById(n).classList.add("active");const btn=document.getElementById("tab-"+n);if(btn){btn.classList.add("tab-active");btn.classList.remove("text-slate-400")}updateTips(n);saveSessionTab(n);if(options.updateHash!==false)history.replaceState(null,"","#"+n);window.scrollTo({top:0,behavior:"auto"});requestAnimationFrame(()=>window.scrollTo({top:0,behavior:"auto"}));if(typeof window.fchSyncOfflineUi==="function")window.fchSyncOfflineUi()}
 
-function fmt(n,d=0){return(n||0).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
-function cs(){return `<span class="cur">${CS}</span>`;}
-
-
-const PRIMARY_CALCULATOR_IDS=Object.freeze(['crypto','roas','invoice','abtest','compound','sip','tax','savings','retirement','profit','freelancer','saas','ecom']);
-
-function getHashCalculator(){
-const hash=window.location.hash.slice(1).trim().toLowerCase();
-return PRIMARY_CALCULATOR_IDS.includes(hash)?hash:null;
-}
-
-function switchTab(n,options={}){
-if(!PRIMARY_CALCULATOR_IDS.includes(n)||!document.getElementById(n))return;
-// PWA offline gate: all primary calculators (crypto, RoAS, tax, …) need connectivity.
-// Simple/Scientific Quick Calculator stays available offline via toggleQCalc().
-// When offline, show the professional overlay instead of a half-broken panel.
-if(typeof window.fchIsOnline==='function'&&!window.fchIsOnline()){
-if(typeof window.fchShowOffline==='function'){
-window.fchShowOffline('This calculator needs an internet connection. The Quick Calculator (Simple & Scientific) still works offline.');
-}
-return;
-}
-document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('tab-active');b.classList.add('text-slate-400');});
-document.getElementById(n).classList.add('active');
-const btn=document.getElementById('tab-'+n);
-if(btn){btn.classList.add('tab-active');btn.classList.remove('text-slate-400');}
-updateTips(n);
-saveSessionTab(n);
-if(options.updateHash!==false)history.replaceState(null,'','#'+n);
-window.scrollTo({top:0,behavior:'auto'});
-requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'auto'}));
-// Keep offline overlay state in sync if connectivity flipped mid-session.
-if(typeof window.fchSyncOfflineUi==='function')window.fchSyncOfflineUi();
-}
-
-window.addEventListener('hashchange',()=>{
-const calculator=getHashCalculator();
-if(calculator)switchTab(calculator,{updateHash:false});
-});
+window.addEventListener("hashchange",()=>{const calculator=getHashCalculator();if(calculator)switchTab(calculator,{updateHash:false})});
 
 const TIPS={
 crypto:['💡 Bitcoin has historically returned ~100%+ CAGR over long periods.','💡 Always verify rates from multiple sources before trading.','💡 CoinGecko provides free, reliable crypto data.'],
