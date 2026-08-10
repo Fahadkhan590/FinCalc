@@ -1,17 +1,15 @@
 # FinCalcHub Marketing — robots.txt
-# Production: https://fincalchub.xyz
 
 User-agent: *
 Allow: /
 Allow: /manifest.json
 Allow: /.well-known/
+
 Disallow: /_redirects
 Disallow: /vercel.json
 
-# Sitemap
 Sitemap: https://fincalchub.xyz/sitemap.xml
 
-# Google favicon crawler
 User-agent: Google-Favicon
 Allow: /
 Allow: /favicon.ico
@@ -21,11 +19,9 @@ Allow: /apple-touch-icon.png
 Allow: /icon-192.png
 Allow: /icon-512.png
 
-# Image crawler
 User-agent: Googlebot-Image
 Allow: /
 
-# AI Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -43,6 +39,3 @@ Allow: /
 
 User-agent: anthropic-ai
 Allow: /
-
-# LLM Documentation
-# https://fincalchub.xyz/llms.txt
