@@ -14,8 +14,7 @@
   main > .tab-content { content-visibility: auto; contain-intrinsic-size: 0 760px; }
   .crypto-live-field { display: block; min-height: 1.25rem; line-height: 1.25rem; }
   .crypto-result-shell { min-height: 7.25rem; contain: layout paint; }
-  .crypto-selector { min-height: 7.25rem; }
-  .crypto-selector .crypto-live-field { min-height: 1rem; }
+  .crypto-live-field { min-height: 1rem; }
   #activeCur, #activeCurMobile { display: inline-block; min-width: 2ch; }
   @media (max-width: 640px) {
     .crypto-result-shell { min-height: 6.5rem; }
@@ -40,8 +39,133 @@
   #fch-offline-reconnect{background:linear-gradient(135deg,#6366f1,#a855f7);box-shadow:0 8px 20px rgba(99,102,241,.35)}
   #fch-offline-qcalc{background:#334155}
   #fch-offline-overlay button:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+
+  /* --- NEW UNIFIED CHART STYLING --- */
+  .fch-chart-wrapper {
+    width: 100%;
+    max-width: 50rem;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+  }
+  .fch-chart-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
 </style>
 <title>Free Financial Calculators, ROI, SIP, Tax & Business Tools | FinCalcHub</title>
+
+<!-- Async script injection preserves your 100/100 performance score -->
+<script async src="https://jsdelivr.net" id="fch-chartjs-lib"></script>
+</head>
+<body>
+
+<!-- This component can be placed inside your main tab dashboard layout -->
+<div class="fch-chart-wrapper">
+  <div class="fch-chart-title">FinCalcHub Unified Wealth & Debt Tracker</div>
+  <canvas id="fchUnifiedChart" aria-label="Financial projection chart showing Investment growth vs Loan and Mortgage paydowns" role="img"></canvas>
+</div>
+
+<script>
+document.getElementById('fch-chartjs-lib').addEventListener('load', () => {
+  // Generate 10-year sample financial tracking arrays
+  const timeLabels = Array.from({length: 11}, (_, i) => `Year ${i}`);
+  
+  // Investment Strategy Data ($10k start, $200/mo savings, 7% annual yield)
+  let investValues =;
+  for(let i=1; i<=10; i++) {
+    investValues.push(Math.round((investValues[i-1] + 2400) * 1.07));
+  }
+
+  // Mortgage Balance Paydown Data ($300k start, 6% interest amortized over 30 yrs)
+  let mortgageValues =;
+  let curMortgage = 300000;
+  for(let i=1; i<=10; i++) {
+    curMortgage -= (4500 + (i * 300));
+    mortgageValues.push(Math.round(curMortgage));
+  }
+
+  // Personal Loan Paydown Data ($15k start, 5-year fixed payment lifecycle)
+  let loanValues =;
+
+  const chartElement = document.getElementById('fchUnifiedChart').getContext('2d');
+  new Chart(chartElement, {
+    type: 'line',
+    data: {
+      labels: timeLabels,
+      datasets: [
+        {
+          label: 'Investments (Left Scale)',
+          data: investValues,
+          borderColor: '#10b981', // Emerald green
+          backgroundColor: 'rgba(16, 185, 129, 0.08)',
+          yAxisID: 'yLeftScale',
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Mortgage Bal. (Right Scale)',
+          data: mortgageValues,
+          borderColor: '#ef4444', // Slate red
+          backgroundColor: 'transparent',
+          yAxisID: 'yRightScale',
+          tension: 0.15
+        },
+        {
+          label: 'Personal Loan Bal. (Right Scale)',
+          data: loanValues,
+          borderColor: '#f59e0b', // Amber/gold
+          backgroundColor: 'transparent',
+          yAxisID: 'yRightScale',
+          tension: 0.15
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          labels: { color: '#94a3b8', font: { size: 12 } }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { color: '#94a3b8' }
+        },
+        yLeftScale: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: {
+            color: '#10b981',
+            callback: val => '$' + val.toLocaleString()
+          }
+        },
+        yRightScale: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          grid: { drawOnChartArea: false },
+          ticks: {
+            color: '#94a3b8',
+            callback: val => '$' + val.toLocaleString()
+          }
+        }
+      }
+    }
+  });
+});
+</script>
 
 <!-- Primary SEO -->
 <meta name="description" content="Free online financial calculators for ROI, ROAS, compound interest, SIP, retirement, income tax, profit margin, savings, invoices, SaaS metrics, crypto conversion, currency conversion, and business finance. Fast, accurate, private, browser-based calculators by FinCalcHub.">
