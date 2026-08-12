@@ -307,7 +307,7 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
           "name": "Are my calculator inputs stored?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "When supported calculators use browser storage, saved inputs are stored locally in the user's browser. The stored calculator data is not sent to FinCalcHub servers."
+            "text": "Calculator inputs are stored in sessionStorage in the user's browser for the current tab. The selected currency and short-lived cryptocurrency cache use localStorage. Calculator inputs are not sent to FinCalcHub servers."
           }
         },
         {
@@ -331,7 +331,7 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
           "name": "How do I share a calculator result?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Supported FinCalcHub calculators can generate shareable links containing calculator inputs so another user can open the link and restore the calculation."
+            "text": "The site-wide share control shares the current page URL. Calculator results can also be exported as PDF, CSV, or XLSX. Share links do not encode or restore calculator input values."
           }
         },
         {
@@ -339,7 +339,7 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
           "name": "Can I save a calculation in my browser?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Supported calculators can save inputs in the browser so they can be restored during a later visit."
+            "text": "There is no separate permanent Save button. Inputs are retained in sessionStorage for the current browser tab, and results can be exported as PDF, CSV, or XLSX."
           }
         },
         {
@@ -347,7 +347,7 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
           "name": "What currencies are supported?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "FinCalcHub supports multiple major fiat currencies and updates compatible calculator labels and currency symbols when the selected currency changes."
+            "text": "FinCalcHub supports 30 major fiat currencies and updates compatible calculator labels, values, and currency symbols when the selected currency changes."
           }
         },
         {
@@ -363,7 +363,7 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
           "name": "Does FinCalcHub work offline?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "FinCalcHub's Progressive Web App caches core application assets for repeat visits and offline functionality. Features requiring live data still require an internet connection."
+            "text": "FinCalcHub caches its core application shell for repeat visits. While offline, the Simple and Scientific calculators remain available; the primary financial calculators, live data, and informational pages require an internet connection."
           }
         },
         {
