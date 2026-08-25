@@ -90,29 +90,29 @@
 <!-- Security -->
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-     
+
 <meta http-equiv="Content-Security-Policy" content="
-default-src 'self';
-script-src 'self' 'unsafe-inline' 'unsafe-eval'
-  https://www.googletagmanager.com
-  https://cdnjs.cloudflare.com;
-style-src 'self' 'unsafe-inline'
-  https://fonts.googleapis.com;
-font-src 'self'
-  https://fonts.gstatic.com;
-img-src 'self' data: blob: https://api.producthunt.com;
-connect-src 'self'
-  https://api.coingecko.com
-  https://api.exchangerate-api.com
-  https://analytics.google.com
-  https://www.google.com
-  https://www.google-analytics.com
-  https://stats.g.doubleclick.net
-  https://www.googletagmanager.com;
-worker-src 'self';
-base-uri 'self';
-form-action 'self';
-upgrade-insecure-requests;
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval'
+    https://www.googletagmanager.com
+    https://cdnjs.cloudflare.com;
+  style-src 'self' 'unsafe-inline'
+    https://fonts.googleapis.com;
+  font-src 'self'
+    https://fonts.gstatic.com;
+  img-src 'self' data: blob: https://api.producthunt.com;
+  connect-src 'self'
+    https://api.coingecko.com
+    https://api.exchangerate-api.com
+    https://analytics.google.com
+    https://www.google.com
+    https://www.google-analytics.com
+    https://stats.g.doubleclick.net
+    https://www.googletagmanager.com;
+  worker-src 'self';
+  base-uri 'self';
+  form-action 'self';
+  upgrade-insecure-requests;
 ">
      
 <!-- Direct client-side PDF export dependencies -->
@@ -1436,40 +1436,122 @@ upgrade-insecure-requests;
 <!-- ================== FOOTER ================== -->
 <footer class="mt-8 border-t border-slate-700/50 bg-slate-800/30 pb-36 sm:pb-28 md:pb-24">
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- Footer top -->
     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2"><div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 10v1m0-13a9 9 0 110 18 9 9 0 010-18z"/></svg></div><span class="font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">FinCalcHub Marketing</span></div>
-      <p class="text-slate-400 text-[11px] text-center md:text-right max-w-xl"><b>Disclaimer:</b> All calculations are estimates for informational purposes only, computed with standard financial formulas. Market rates and tax slabs are indicative and may change. Consult a qualified professional before making financial decisions.</p>
+
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center" aria-hidden="true">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 10v1m0-13a9 9 0 110 18 9 9 0 010-18z"/>
+          </svg>
+        </div>
+
+        <span class="font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          FinCalcHub Marketing
+        </span>
+      </div>
+
+      <p class="text-slate-400 text-[11px] text-center md:text-right max-w-xl">
+        <b>Disclaimer:</b> All calculations are estimates for informational purposes only,
+        computed with standard financial formulas. Market rates and tax slabs are indicative
+        and may change. Consult a qualified professional before making financial decisions.
+      </p>
     </div>
+
+    <!-- Product Hunt -->
     <div class="mt-4 pt-4 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="https://www.producthunt.com/products/fincalchub-marketing?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-fincalchub-marketing" target="_blank" rel="noopener noreferrer">
-        <img alt="FinCalcHub Marketing - Free financial calculators for ROI, SIP, tax &#38; more | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1229120&theme=light&t=1787395228362" />
+      <a
+        href="https://www.producthunt.com/products/fincalchub-marketing?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-fincalchub-marketing"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="FinCalcHub Marketing on Product Hunt"
+      >
+        <img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1229120&theme=light&t=1787395228362"
+          alt="FinCalcHub Marketing - Free financial calculators for ROI, SIP, tax and more | Product Hunt"
+          width="250"
+          height="54"
+          loading="lazy"
+          decoding="async"
+        >
       </a>
     </div>
+
+    <!-- Footer navigation -->
     <div class="mt-4 pt-4 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px]">
+
       <p class="text-slate-400 text-center sm:text-left">
-  © 2026 FinCalcHub. All rights reserved. Built by FinCalcHub Marketing. Free online financial calculators and business tools.
-</p>
-      <nav class="flex items-center justify-center gap-3 flex-wrap" aria-label="Footer navigation">
-        <a href="blog.html" title="Read Financial Calculator Guides" class="fnav-btn fnav-blog" aria-label="Financial Calculator Guides">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0z"/></svg>
+        © 2026 FinCalcHub. All rights reserved.
+        Built by FinCalcHub Marketing. Free online financial calculators and business tools.
+      </p>
+
+      <nav
+        class="flex items-center justify-center gap-3 flex-wrap"
+        aria-label="Footer navigation"
+      >
+
+        <a
+          href="blog.html"
+          title="Read Financial Calculator Guides"
+          class="fnav-btn fnav-blog"
+          aria-label="Financial Calculator Guides"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
+            <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0z"/>
+          </svg>
           <span class="fnav-tip">Financial Calculator Guides</span>
         </a>
-        <a href="faq.html" title="Frequently Asked Questions" class="fnav-btn fnav-faq" aria-label="Financial FAQs">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>
+
+        <a
+          href="faq.html"
+          title="Frequently Asked Questions"
+          class="fnav-btn fnav-faq"
+          aria-label="Financial FAQs"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" aria-hidden="true">
+            <path d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/>
+          </svg>
           <span class="fnav-tip">Financial FAQs</span>
         </a>
-        <a href="privacy.html" title="Privacy Policy" class="fnav-btn fnav-privacy" aria-label="Privacy Policy">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z"/></svg>
+
+        <a
+          href="privacy.html"
+          title="Privacy Policy"
+          class="fnav-btn fnav-privacy"
+          aria-label="Privacy Policy"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
+            <path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z"/>
+          </svg>
           <span class="fnav-tip">Privacy Policy</span>
         </a>
-        <a href="terms.html" title="Terms of Service" class="fnav-btn fnav-terms" aria-label="Terms of Service">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+
+        <a
+          href="terms.html"
+          title="Terms of Service"
+          class="fnav-btn fnav-terms"
+          aria-label="Terms of Service"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" aria-hidden="true">
+            <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
+          </svg>
           <span class="fnav-tip">Terms of Service</span>
         </a>
-        <a href="about.html" title="About FinCalcHub" class="fnav-btn fnav-about" aria-label="About FinCalcHub">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+
+        <a
+          href="about.html"
+          title="About FinCalcHub"
+          class="fnav-btn fnav-about"
+          aria-label="About FinCalcHub"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 14.3 24 32v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-24-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+          </svg>
           <span class="fnav-tip">About FinCalcHub</span>
         </a>
+
       </nav>
     </div>
   </div>
