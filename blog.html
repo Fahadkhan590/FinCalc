@@ -462,32 +462,6 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
 
 // Share Menu Logic
 document.addEventListener("DOMContentLoaded", function() {
-  const shareTrigger = document.querySelector(".main-share-trigger-btn");
-  const shareWrapper = document.querySelector(".share-menu-wrapper");
-  const shareOptions = document.getElementById("share-dropdown-options");
-
-  function setShareOpen(open) {
-    if (!shareTrigger || !shareWrapper) return;
-    shareWrapper.classList.toggle("open", open);
-    shareTrigger.setAttribute("aria-expanded", String(open));
-  }
-
-  if (shareTrigger) {
-    shareTrigger.addEventListener("click", function() {
-      setShareOpen(shareTrigger.getAttribute("aria-expanded") !== "true");
-    });
-    shareTrigger.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") {
-        setShareOpen(false);
-        shareTrigger.focus();
-      }
-    });
-  }
-
-  document.addEventListener("click", function(e) {
-    if (shareWrapper && !shareWrapper.contains(e.target)) setShareOpen(false);
-  });
-
   const currentUrl = encodeURIComponent(window.location.href);
   const shareText = encodeURIComponent("Check out FinCalcHub Marketing's professional utility tools running privately in your browser!");
 
@@ -506,10 +480,10 @@ document.addEventListener("DOMContentLoaded", function() {
       navigator.clipboard.writeText(window.location.href).then(() => {
         const originalText = copyBtn.innerText;
         copyBtn.innerText = "✅ Link Copied!";
-        copyBtn.style.color = "#86efac";
+        copyBtn.style.color = "#34d399";
         setTimeout(() => {
           copyBtn.innerText = originalText;
-          copyBtn.style.color = "#e2e8f0";
+          copyBtn.style.color = "#e0e7ff";
         }, 2000);
       }).catch(err => console.error(err));
     });
@@ -518,15 +492,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
-<div class="share-menu-wrapper fch-share-wrap">
-  <button class="main-share-trigger-btn" type="button" aria-label="Share FinCalcHub" aria-expanded="false" aria-controls="share-dropdown-options">
-    <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+<div class="share-menu-wrapper">
+  <button class="main-share-trigger-btn" title="Share FinCalcHub">
+    <i class="fa-solid fa-share-nodes"></i><span>Share</span>
   </button>
-  <div class="share-dropdown-options" id="share-dropdown-options" role="menu" aria-label="Share options">
-    <a href="#" class="share-opt" role="menuitem" id="shareCopyLink"><i aria-hidden="true" class="fa-regular fa-copy" style="margin-right: 10px; color: #c7d2fe;"></i> Copy Page Link</a>
-    <a href="#" class="share-opt" role="menuitem" id="shareWA" target="_blank" rel="noopener"><i aria-hidden="true" class="fa-brands fa-whatsapp" style="margin-right:10px"></i> Share on WhatsApp</a>
-    <a href="#" class="share-opt" role="menuitem" id="shareFB" target="_blank" rel="noopener"><i aria-hidden="true" class="fa-brands fa-facebook" style="margin-right:10px"></i> Share on Facebook</a>
-    <a href="#" class="share-opt" role="menuitem" id="shareX" target="_blank" rel="noopener"><i aria-hidden="true" class="fa-brands fa-x-twitter" style="margin-right:10px"></i> Share on X (Twitter)</a>
+  <div class="share-dropdown-options">
+    <a href="#" class="share-opt" id="shareCopyLink"><i class="fa-regular fa-copy" style="margin-right: 10px; color: #a5b4fc;"></i> Copy Page Link</a>
+    <a href="#" class="share-opt" id="shareWA" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="margin-right: 10px; color: #25D366;"></i> Share on WhatsApp</a>
+    <a href="#" class="share-opt" id="shareFB" target="_blank" rel="noopener"><i class="fa-brands fa-facebook" style="margin-right: 10px; color: #1877F2;"></i> Share on Facebook</a>
+    <a href="#" class="share-opt" id="shareX" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" style="margin-right: 10px; color: #ffffff;"></i> Share on X (Twitter)</a>
   </div>
 </div>
 
