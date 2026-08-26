@@ -181,18 +181,14 @@ details .answer{padding:0 18px 16px;font-size:.9rem;color:#94a3b8;line-height:1.
 
 
   /* Share Menu Wrapper */
-  .share-menu-wrapper { position: fixed; bottom: 24px; left: 24px; z-index: 9999; display: inline-block; }
-  .main-share-trigger-btn { width: 48px; height: 48px; background: #4f46e5; border: none; border-radius: 50%; color: white; font-size: 1.25rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; }
+  .share-menu-wrapper { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: inline-block; }
+  .main-share-trigger-btn { height: 44px; padding: 0 16px 0 14px; background: #4f46e5; border: none; border-radius: 999px; color: white; font-size: .85rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s ease; }
   .main-share-trigger-btn:hover { transform: scale(1.05); background: #4338ca; }
-  .share-dropdown-options { display: none; position: absolute; bottom: 56px; left: 0; background: #1e1b4b; border: 1px solid #3730a3; border-radius: 12px; min-width: 190px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); padding: 8px 0; flex-direction: column; }
+  .share-dropdown-options { display: none; position: absolute; bottom: 56px; right: 0; background: #1e1b4b; border: 1px solid #3730a3; border-radius: 12px; min-width: 190px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); padding: 8px 0; flex-direction: column; }
   .share-menu-wrapper:hover .share-dropdown-options { display: flex; }
   .share-opt { color: #e0e7ff; padding: 10px 16px; text-decoration: none; font-size: 0.85rem; font-weight: 500; display: inline-flex; align-items: center; transition: background 0.15s ease; }
   .share-opt:hover { background: #312e81; color: #ffffff; }
   .share-opt i { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; flex-shrink: 0; vertical-align: middle; }
-
-.info-card-section{background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.18);border-radius:14px;padding:22px}
-.contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-@media(max-width:600px){.contact-actions .btn{width:100%;justify-content:center}}
 </style>
 <!-- FinCalcHub About page structured data -->
 <script type="application/ld+json">
