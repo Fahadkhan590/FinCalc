@@ -1,4 +1,4 @@
-# FinCalcHub
+# FinCalcHub Marketing
 
 ## Free Financial, Business, Marketing, and Productivity Calculators
 
