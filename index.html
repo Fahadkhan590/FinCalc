@@ -140,7 +140,7 @@ upgrade-insecure-requests;
   window.loadSheetJS = loadSheetJS;
   // Background preload is intentionally delayed exactly 25 seconds so the initial
   // mobile audit remains clear while export interactions still load immediately.
-  setTimeout(function(){ loadSheetJS().catch(function(){}); }, 25000);
+  setTimeout(function(){ loadSheetJS().catch(function(){}); }, 20000);
   function primeExport(e){
     var target = e.target && e.target.closest ? e.target.closest('button, a') : null;
     if (!target) return;
