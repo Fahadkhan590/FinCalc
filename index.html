@@ -2130,7 +2130,7 @@ el.dispatchEvent(new Event('change',{bubbles:true}));
         try{location.reload();}catch(e){}
       }else{
         btnReconnect.textContent='Still offline — try again';
-        setTimeout(function(){btnReconnect.textContent='Reconnect to continue';},1600);
+        setTimeout(function(){btnReconnect.textContent='Reconnect to continue';},1000);
       }
     });
   }
