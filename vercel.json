@@ -1,0 +1,168 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://www.fincalchub.xyz"
+        },
+        {
+          "key": "Vary",
+          "value": "Origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://googletagmanager.com 'sha256-JpN/QIN5jBuPzApwPjnQ/v/Ug/AFsCRQJx1YXb0S5yM=' 'sha256-4UR+YOKh+cH9iUrwPm3jxwVVoBr/hYZGyOyomJUC82Y=' 'sha256-20bPNbige6OhT5w3H7VqJCcUEduIBfUhgM7EcCciRz8=' 'sha256-HO+kRo5OhvelZgS+ckxgu19I0NQ1OOIWdgbfklyLUko=' 'sha256-SDcvfJL9zAt7YSVnA4biwFtQIS6gpnQVZgpzUq4NeAU=' 'sha256-3iJV8gJCQ2g6CnGH/sEIrIX3neQvI3ClNZ0wZygJxOw=' 'sha256-PvcMOkrKl+z+/v+9sKMrVJlFTziZvPSJTK3AMFHc+MQ=' 'sha256-zz8vlw96wQFJMf3762Bt5yNLzP9B5wG04xBgAFeblI8=' 'sha256-KhJUxz5L8XZq2K98qGCvO7QI7pfIGzgdXF97symgmWo='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://api.producthunt.com https://fazier.com https://www.justsimple.tools https://www.directree.io; connect-src 'self' https://api.exchangerate-api.com https://analytics.google.com https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://stats.g.doubleclick.net https://api.producthunt.com https://fazier.com; frame-ancestors 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; worker-src 'self';"
+        }
+      ]
+    },
+    {
+      "source": "/((?!api/).*)\\.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/api/crypto-prices",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/xlsx.mini.min.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
