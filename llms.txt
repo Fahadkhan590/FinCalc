@@ -1,0 +1,90 @@
+# FinCalcHub Marketing
+
+> FinCalcHub Marketing (short name: FinCalcHub) is a free browser-based suite of 15 calculators for business metrics, personal-finance estimates, tax, cryptocurrency-to-fiat pricing, and everyday mathematics. Most calculator formulas run locally in the browser; no account is required. See the Privacy Policy for analytics, crypto-price requests, browser storage, and share-link details.
+
+## Main Pages
+
+- [FinCalcHub Marketing](https://www.fincalchub.xyz/) — Homepage and calculator suite.
+- [All Calculators & Tools](https://www.fincalchub.xyz/tools.html) — Directory of all 15 tools, with inputs, outputs, and assumptions.
+- [About FinCalcHub Marketing](https://www.fincalchub.xyz/about.html) — Overview of the suite and how it works.
+- [Blog and Guides](https://www.fincalchub.xyz/blog.html) — Articles about business metrics, investing formulas, tax brackets, crypto conversion, and calculator methods.
+- [FAQ](https://www.fincalchub.xyz/faq.html) — Answers about the 15-tool suite, calculations, privacy, and exports.
+- [Privacy Policy](https://www.fincalchub.xyz/privacy.html) — Information about browser storage, analytics, CoinGecko requests, share URLs, and exports.
+- [Terms of Service](https://www.fincalchub.xyz/terms.html) — Terms, disclaimers, and calculator limitations.
+
+## Calculator Suite
+
+The site has 15 calculators:
+
+- ROAS Planner.
+- A/B Split-Test Calculator.
+- SaaS CAC & LTV Calculator.
+- E-Commerce Per-Unit Profit Calculator.
+- Profit Margin Calculator.
+- Invoice Calculator.
+- Freelancer Hourly Rate Calculator.
+- Compound Interest Calculator.
+- SIP Investment Planner.
+- Income Tax Calculator.
+- Savings Goal Calculator.
+- Retirement Planning Calculator.
+- Cryptocurrency-to-fiat converter for Bitcoin, Ethereum, and Solana.
+- Simple Calculator.
+- Scientific Calculator.
+
+## Dedicated Calculator Pages
+
+Each main calculator also has its own page with a formula, a worked example and FAQs. The homepage hash links (for example `/#roas`) still open the matching tab on the homepage.
+
+- [ROAS Calculator](https://www.fincalchub.xyz/roas-calculator.html) — ROAS and break-even ROAS from ad revenue, ad spend and gross margin.
+- [A/B Test Calculator](https://www.fincalchub.xyz/ab-test-significance-calculator.html) — Conversion rates, uplift, z-score, confidence and a sample-size check for two page versions.
+- [CAC & LTV Calculator](https://www.fincalchub.xyz/saas-cac-ltv-calculator.html) — Customer acquisition cost, lifetime value, LTV:CAC ratio, ROI and payback period.
+- [Freelance Hourly Rate](https://www.fincalchub.xyz/freelance-hourly-rate-calculator.html) — Hourly and daily rate from an income goal, expenses, tax rate, billable hours and time off.
+- [Ecommerce Profit](https://www.fincalchub.xyz/ecommerce-profit-calculator.html) — Net profit per unit, net margin and markup after product, shipping, fee and ad costs.
+- [Profit Margin](https://www.fincalchub.xyz/profit-margin-calculator.html) — Profit, profit margin and markup from cost and selling price.
+- [Compound Interest](https://www.fincalchub.xyz/compound-interest-calculator.html) — Future value with a chosen compounding frequency and monthly contributions.
+- [SIP Calculator](https://www.fincalchub.xyz/sip-calculator.html) — Maturity value, total invested and gain for a monthly SIP at an assumed constant return.
+- [Retirement Calculator](https://www.fincalchub.xyz/retirement-calculator.html) — Retirement corpus and monthly saving needed from age, expenses, inflation and return.
+- [Savings Goal Calculator](https://www.fincalchub.xyz/savings-goal-calculator.html) — Monthly amount needed to reach a savings goal by a deadline.
+- [Freelance Earnings](https://www.fincalchub.xyz/freelance-earnings-calculator.html) — Gross invoice, platform fee, tax withheld and take-home pay for freelance work.
+- [Crypto to Fiat Converter](https://www.fincalchub.xyz/crypto-to-fiat-converter.html) — Bitcoin, Ethereum and Solana converted to 30 fiat currencies using CoinGecko reference prices.
+
+## Important Calculation Assumptions
+
+- **Currency selector:** The site-wide selector uses preset conversion factors to change displayed calculator currencies. It is not a live foreign-exchange feed. Crypto-price quotes are a separate feature.
+- **Crypto prices:** The converter requests CoinGecko reference prices for BTC, ETH, and SOL in 30 fiat quote currencies. The page requests `/api/crypto-prices`; the project handler in `api/crypto-prices.js` retrieves reference data from CoinGecko. Cached or fallback values may appear when current data is unavailable; displayed rates are not guaranteed exchange execution prices.
+- **SaaS LTV:** The current formula multiplies monthly net revenue per customer by the entered average customer lifespan. The visible churn-rate field is not used in the calculation.
+- **E-commerce:** The per-unit model uses the entered product cost, selling price, shipping, platform-fee percentage, payment-fee percentage, and ad spend. The displayed status describes modeled per-unit profitability; the calculator does not calculate break-even unit volume or include unentered costs.
+- **Tax:** The tax calculator uses fixed built-in income bands and rates. It does not select a jurisdiction or tax year, and changing the site-wide currency display does not convert the thresholds.
+- **Projections:** Compound-interest, SIP, savings, and retirement outputs rely on entered assumptions, including constant-rate assumptions. They are estimates, not guarantees.
+
+## Privacy and Exports
+
+- Most calculator formulas execute in the browser. Supported inputs/preferences may be stored in `localStorage`; some session state is stored in `sessionStorage`.
+- Google Analytics is used for site-usage measurement. The current page code configures `anonymize_ip` and disables Google Signals and ad-personalization signals.
+- The browser requests the same-origin crypto-price endpoint; the project handler fetches CoinGecko reference data server-side.
+- Calculator share links place active calculator values in the URL fragment after `#`. The values are not encrypted; anyone with the link can view or restore them.
+- PDF and CSV files are assembled in the browser. XLSX export uses the locally hosted `/xlsx.mini.min.js` SheetJS file, loaded before export use and also preloaded after a short delay. The CSV action also loads that local file before running the built-in CSV generator.
+- The app shell and Simple/Scientific calculators can work offline; other calculators and information pages require a connection.
+
+## Guides
+
+- [How to Calculate ROAS](https://www.fincalchub.xyz/how-to-calculate-roas.html)
+- [Compound Interest Explained](https://www.fincalchub.xyz/compound-interest-explained.html)
+- [How SIP Investment Projections Work](https://www.fincalchub.xyz/how-sip-projections-work.html)
+- [Understanding Progressive Tax Slab Rates](https://www.fincalchub.xyz/understanding-tax-slab-rates.html)
+- [How to Calculate Profit Margins](https://www.fincalchub.xyz/how-to-calculate-profit-margin.html)
+- [Understanding SaaS Metrics: CAC, LTV & Payback](https://www.fincalchub.xyz/saas-metrics-cac-ltv-payback.html)
+- [E-Commerce Profitability: Per-Unit Costs & Calculator Limits](https://www.fincalchub.xyz/ecommerce-hidden-costs.html)
+- [How Cryptocurrency Price Conversion Works](https://www.fincalchub.xyz/how-crypto-conversion-works.html)
+- [Specialized Calculators vs. Scientific Tools](https://www.fincalchub.xyz/specialized-vs-scientific-calculators.html)
+
+## Usage and Accuracy
+
+FinCalcHub Marketing provides general educational information and estimates based on entered values and simplified formulas. Results should not be treated as financial, investment, tax, accounting, legal, or other professional advice. Verify important inputs and assumptions with appropriate authoritative or professional sources.
+
+## Site Resources
+
+- [Sitemap](https://www.fincalchub.xyz/sitemap.xml)
+- [Robots.txt](https://www.fincalchub.xyz/robots.txt)
+- [Web App Manifest](https://www.fincalchub.xyz/manifest.json)
