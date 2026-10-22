@@ -116,7 +116,7 @@
   window.loadSheetJS = loadSheetJS;
   // Background preload is delayed 20 seconds to keep the initial render lighter;
   // export interactions can load the local file sooner.
-  setTimeout(function(){ loadSheetJS().catch(function(){}); }, 20000);
+  setTimeout(function(){ loadSheetJS().catch(function(){}); }, 25000);
   function primeExport(e){
     var target = e.target && e.target.closest ? e.target.closest('button, a') : null;
     if (!target) return;
