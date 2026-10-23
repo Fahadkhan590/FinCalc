@@ -1,0 +1,5 @@
+# FinCalcHub robots.txt - https://www.fincalchub.xyz/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.fincalchub.xyz/sitemap.xml
