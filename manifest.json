@@ -1,0 +1,65 @@
+{
+  "id": "/",
+  "name": "FinCalcHub Marketing",
+  "short_name": "FinCalcHub",
+  "description": "Free browser-based calculators for marketing and SaaS metrics, personal-finance estimates, tax, crypto-to-fiat pricing, and everyday math.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#1e293b",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": [
+    "finance",
+    "business",
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "ROAS Calculator",
+      "short_name": "ROAS",
+      "description": "Free ROAS calculator: enter ad revenue, ad spend and gross margin to get ROAS, break-even ROAS and daily.",
+      "url": "/roas-calculator.html"
+    },
+    {
+      "name": "SIP Calculator",
+      "short_name": "SIP",
+      "description": "Free SIP calculator. Enter your monthly investment, expected annual return and period to estimate maturity.",
+      "url": "/sip-calculator.html"
+    },
+    {
+      "name": "Profit Margin Calculator",
+      "short_name": "Margin",
+      "description": "Free profit margin calculator. Enter cost and selling price to get profit, profit margin and markup, and.",
+      "url": "/profit-margin-calculator.html"
+    },
+    {
+      "name": "CAC & LTV Calculator",
+      "short_name": "CAC & LTV",
+      "description": "Free SaaS CAC and LTV calculator. Get customer acquisition cost, lifetime value, LTV:CAC ratio, ROI and CAC.",
+      "url": "/saas-cac-ltv-calculator.html"
+    }
+  ]
+}
